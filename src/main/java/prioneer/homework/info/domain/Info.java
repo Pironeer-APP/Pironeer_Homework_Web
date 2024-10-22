@@ -27,4 +27,11 @@ public class Info {
     private String content;
 
 
+    public Info(){
+
+    }
+
+    public Info(String content) {
+        this.content = content;
+    }
 }
