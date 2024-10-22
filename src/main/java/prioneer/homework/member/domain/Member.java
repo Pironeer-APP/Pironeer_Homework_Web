@@ -31,7 +31,7 @@ public class Member {
     @Transient
     private String passwordCheck;
 
-    @Column(columnDefinition = "default '0'")
+    @Column(columnDefinition = "varchar(255) default '0'")
     private String password;
 
     private String name;
@@ -39,11 +39,11 @@ public class Member {
     private String phone;
 
     // 현재 보증금
-    @Column(columnDefinition = "default '0'")
+    @Column(columnDefinition = "bigint default '0'")
     private String deposit;
 
     // 보증금 방어 횟수
-    @Column(columnDefinition = "default '0'")
+    @Column(columnDefinition = "bigint default '0'")
     private String depositDepend;
 
     //원래 enum으로 할려했는데 좀 복잡함 이게.... 그래서 그냥 이렇게 함
