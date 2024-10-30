@@ -25,7 +25,7 @@ public class SystemLoginController {
                                  @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false)
                                  Member loginMember) {
 
-        //민수야 이거 보고 감을 익히렴 이게 기본 구조임
+        // 민수야 이거 보고 감을 익히렴 이게 기본 구조임
 
         if(loginMember == null){
             return "로그인 안 된 홈 html";
