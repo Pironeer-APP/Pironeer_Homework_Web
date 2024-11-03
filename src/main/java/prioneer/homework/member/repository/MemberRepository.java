@@ -18,12 +18,12 @@ public class MemberRepository {
 
     private final EntityManager em;
 
-    //회원 저장
+    // 회원 저장
     public void save(Member member){
         em.persist(member);
     }
 
-    //회원 업데이트
+    // 회원 업데이트
     public void update(Member member){
         Member member1 = em.find(Member.class, member);
         member1.setMemberId("da"); // 이렇게만 하면 업데이트 됨
@@ -41,7 +41,7 @@ public class MemberRepository {
         }
     }
 
-    //전화번호 정보로 유저 유무 찾기
+    // 전화번호 정보로 회원 유무 찾기
     public boolean existsByPhone(String phone) {
         try {
             em.createQuery("select m from Member m where m.phone = :phone ", Member.class)
@@ -52,4 +52,20 @@ public class MemberRepository {
             return false; // 결과가 없으면 false 반환
         }
     }
+
+    //  전화번호 정보로 회원 삭제
+    public void deleteByPhone(String phone) {
+        try {
+            Member findMember = em.createQuery("select m from Member m where m.phone = :phone ", Member.class)
+                    .setParameter("phone", phone)
+                    .getSingleResult();
+            em.remove(findMember);
+            log.info("회원 삭제 완료: {}", phone);
+        } catch (NoResultException e) {
+            log.error("존재하지 않는 회원: {}", phone);
+            throw e;
+        }
+    }
+
+
 }
