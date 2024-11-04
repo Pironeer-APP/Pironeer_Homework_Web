@@ -40,11 +40,11 @@ public class Member {
 
     // 현재 보증금
     @Column(columnDefinition = "bigint default '0'")
-    private String deposit;
+    private Long deposit;
 
     // 보증금 방어 횟수
     @Column(columnDefinition = "bigint default '0'")
-    private String depositDepend;
+    private Long depositDepend;
 
     //원래 enum으로 할려했는데 좀 복잡함 이게.... 그래서 그냥 이렇게 함
     private String role;

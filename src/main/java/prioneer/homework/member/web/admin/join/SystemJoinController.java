@@ -18,6 +18,7 @@ public class SystemJoinController {
 
     private final MemberRepository memberRepository;
 
+    // GET 관리자 회원가입
     @GetMapping("/system/join")
     public String join(Model model) {
         model.addAttribute("member", new Member());
@@ -25,6 +26,7 @@ public class SystemJoinController {
 
     }
 
+    // POST 관리자 회원가입
     @PostMapping("/system/join")
     public String join(@ModelAttribute Member member, Model model) {
         // 회원 정보가 이미 존재하는 지 확인
@@ -43,7 +45,7 @@ public class SystemJoinController {
     }
 
     // 관리자 삭제, update는 구현 안함
-    @DeleteMapping("system/delete")
+    @PostMapping("system/delete")
     public String delete(@ModelAttribute Member member, Model model) {
 
         // 해당 전화번호로 등록된 관리자가 있는지 확인함
