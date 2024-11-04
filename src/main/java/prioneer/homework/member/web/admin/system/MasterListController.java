@@ -1,13 +1,12 @@
 package prioneer.homework.member.web.admin.system;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import prioneer.homework.member.domain.Member;
 import prioneer.homework.member.repository.MemberRepository;
 
@@ -34,10 +33,10 @@ public class MasterListController {
 
     // 관리자 권한 부여
     @PostMapping("system/master/updateToAdmin")
-    @ResponseBody
-    public ResponseEntity<String> updateToAdmin(
+    public String updateToAdmin(
             @RequestParam("phone") String phone,
-            @RequestParam("role") String role) {
+            @RequestParam("role") String role,
+            RedirectAttributes redirectAttributes) {
         try {
 
             Member member = memberRepository.findByPhone(phone)
@@ -46,27 +45,32 @@ public class MasterListController {
             member.setRole(role);
             memberRepository.save(member);
 
-            return ResponseEntity.ok("권한 변경 성공");
+            redirectAttributes.addFlashAttribute("message", "권한 변경 성공");
+            return "redirect:/system/master/list";
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("권한 변경 중 오류 발생");
+            redirectAttributes.addFlashAttribute("message", "권한 변경 중 오류 발생");
+            return "redirect:/system/master/list";
         }
     }
 
     // preadmin 삭제
     @PostMapping("system/master/deletePreadmin")
-    @ResponseBody
-    public ResponseEntity<String> deletePreadmin(
-            @RequestParam("phone") String phone) {
+    public String deletePreadmin(
+            @RequestParam("phone") String phone,
+            RedirectAttributes redirectAttributes) {
         try {
             if (!memberRepository.existsByPhone(phone)) {
-                return ResponseEntity.badRequest().body("사용자를 찾을 수 없습니다");
+                redirectAttributes.addFlashAttribute("message", "사용자를 찾을 수 없습니다.");
+                return "redirect:/system/master/list";
             }
 
             memberRepository.deleteByPhone(phone);
-            return ResponseEntity.ok("회원 삭제 성공");
+            redirectAttributes.addFlashAttribute("message", "회원 삭제 성공");
+            return "redirect:/system/master/list";
 
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("회원 삭제 중 오류 발생");
+            redirectAttributes.addFlashAttribute("message", "회원 삭제 중 오류 발생");
+            return "redirect:/system/master/list";
         }
     }
 

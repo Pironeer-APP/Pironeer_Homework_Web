@@ -1,13 +1,12 @@
 package prioneer.homework.member.web.admin.system;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import prioneer.homework.member.domain.Member;
 import prioneer.homework.member.repository.MemberRepository;
 
@@ -32,17 +31,20 @@ public class SystemListController {
 
     // 회원 삭제
     @PostMapping("/system/deleteMember")
-    @ResponseBody
-    public ResponseEntity<String> deleteMember(@RequestParam("phone") String phone) {
+    public String deleteMember(@RequestParam("phone") String phone,
+                               RedirectAttributes redirectAttributes) {
         try {
             if (!memberRepository.existsByPhone(phone)) {
-                return ResponseEntity.badRequest().body("존재하지 않는 회원입니다.");
+                redirectAttributes.addFlashAttribute("message", "존재하지 않는 회원입니다.");
+                return "redirect:/system/list";
             }
 
             memberRepository.deleteByPhone(phone);
-            return ResponseEntity.ok().body("회원 삭제 성공");
+            redirectAttributes.addFlashAttribute("message", "회원 삭제 성공");
+            return "redirect:/system/list";
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("회원 삭제 중 오류 발생");
+            redirectAttributes.addFlashAttribute("message", "회원 삭제 중 오류 발생");
+            return "redirect:/system/list";
         }
     }
 }
