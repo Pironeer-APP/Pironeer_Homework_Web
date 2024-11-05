@@ -43,15 +43,16 @@ public class UserLoginController {
             return "home/login";
         }
 
-        Member passwordMember = userMemberService.nameCheck(member);
-        if (passwordMember == null) {
+        String message = userMemberService.nameCheck(member);
+
+        if (message.equals("Fail")) {
             bindingResult.reject("loginFail", "이름이 존재하지 않습니다.");
             return "home/login";
         }
 
         //로그인 성공
         HttpSession session = request.getSession();
-        session.setAttribute(SessionConst.LOGIN_MEMBER, passwordMember);
+        session.setAttribute(SessionConst.LOGIN_MEMBER, member);
 
         return "redirect:" + redirectURL;
     }
