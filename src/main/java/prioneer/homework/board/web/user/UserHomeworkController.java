@@ -18,7 +18,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Slf4j
 public class UserHomeworkController {
-
     private final HomeworkRepository homeworkRepository;
 
     @GetMapping("/homework")
@@ -29,5 +28,4 @@ public class UserHomeworkController {
         model.addAttribute("homework",memberHomework);
         return "과제 결과 html";
     }
-
 }
