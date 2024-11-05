@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import prioneer.homework.member.domain.Member;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -52,6 +54,30 @@ public class MemberRepository {
             return true; // 결과가 있으면 true 반환
         } catch (NoResultException e) {
             return false; // 결과가 없으면 false 반환
+        }
+    }
+
+    // 전화번호로 회원 찾기
+    public Optional<Member> findByPhone(String phone) {
+        try {
+            Member findMember = em.createQuery("select m from Member m where m.phone = :phone", Member.class)
+                    .setParameter("phone", phone)
+                    .getSingleResult();
+            return Optional.of(findMember);
+        } catch (NoResultException e) {
+            return Optional.empty();
+        }
+    }
+
+    // 역할 정보로 회원들 찾기
+    public List<Member> findByRole(String role) {
+        try {
+            List<Member> findMembers = em.createQuery("select m from Member m where m.role = :role ", Member.class)
+                    .setParameter("role", role)
+                    .getResultList();
+            return findMembers;
+        } catch (NoResultException e) {
+            return new ArrayList<>();
         }
     }
 
