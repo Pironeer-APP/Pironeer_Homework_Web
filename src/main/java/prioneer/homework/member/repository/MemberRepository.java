@@ -20,8 +20,6 @@ public class MemberRepository {
 
     private final EntityManager em;
 
-
-
     // 회원 저장
     public void save(Member member){
         em.persist(member);

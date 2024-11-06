@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import prioneer.homework.board.domain.Board;
 import prioneer.homework.board.repository.HomeworkRepository;
+import prioneer.homework.board.service.admin.AdminBoardService;
 import prioneer.homework.config.session.SessionConst;
 import prioneer.homework.member.domain.Member;
 
@@ -19,18 +20,19 @@ public class AdminHomeworkController {
     // 관리자의 부원 과제 페이지
     // 부원 이름을 누르면 해당 부원의 과제를 채점하거나 코멘트를 달 수 있음
     // url은 /homework/{memberId}
-    private final HomeworkRepository homeworkRepository;
+
+    private final AdminBoardService adminBoardService;
 
     @GetMapping("/homework/{memberId}")
     public String getMemberHomework(@PathVariable Long memberId,
                                     Model model,
                                     @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false)
                                         Member loginMember) {
-        if (loginMember == null || !loginMember.getRole().equals("admin")) {
+        if (!AdminBoardService.isAdmin(loginMember)) {
             return "redirect:/"; // 홈 화면으로 리다이렉트
         }
 
-        List<Board> homeworkList = homeworkRepository.findByMemberId(memberId);
+        List<Board> homeworkList = adminBoardService.getMemberHomework(memberId);
         model.addAttribute("homeworkList", homeworkList);
         model.addAttribute("memberId", memberId);
 
@@ -43,15 +45,17 @@ public class AdminHomeworkController {
     public String gradeHomework(@PathVariable Long memberId,
                                 @RequestParam Long boardId,
                                 @RequestParam String result,
-                                @RequestParam String comment) {
-        Board homework = homeworkRepository.findByBoardId(boardId)
-                .orElseThrow(() -> new IllegalArgumentException("과제를 찾을 수 없습니다."));
+                                @RequestParam String comment,
+                                @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false)
+                                Member loginMember) {
 
-        homework.setResult(result);
-        homework.setComment(comment);
-        homeworkRepository.save(homework);
-
-        return "redirect:/homework/" + memberId;
+        try {
+            adminBoardService.gradeHomework(boardId, result, comment);
+            return "redirect:/homework/" + memberId;
+        } catch (IllegalArgumentException e) {
+            // 과제 채점 실패
+            return "redirect:/homework/" + memberId;
+        }
     }
 
 }
