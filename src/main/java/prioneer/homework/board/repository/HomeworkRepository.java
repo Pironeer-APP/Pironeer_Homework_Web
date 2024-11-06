@@ -10,6 +10,7 @@ import prioneer.homework.board.domain.Board;
 import prioneer.homework.member.domain.Member;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @Transactional
@@ -23,5 +24,20 @@ public class HomeworkRepository {
         return em.createQuery("select b from Board b where b.userMember.memberId= :id", Board.class)
                 .setParameter("id",member.getMemberId())
                 .getResultList();
+    }
+
+    public List<Board> findByMemberId(Long memberId) {
+        return em.createQuery("select b from Board b where b.userMember.memberId = :id", Board.class)
+                .setParameter("id", memberId)
+                .getResultList();
+    }
+
+    public Optional<Board> findByBoardId(Long boardId) {
+        return Optional.ofNullable(em.find(Board.class, boardId));
+    }
+
+
+    public void save(Board homework) {
+        em.persist(homework);
     }
 }

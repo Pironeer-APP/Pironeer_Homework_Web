@@ -20,7 +20,6 @@ public class UserMemberService {
 
     }
 
-
     public String nameCheck(Member member){
         Optional<Member> byPhone = memberRepository.findByPhone(member.getPhone());
         if(byPhone.isPresent()){
