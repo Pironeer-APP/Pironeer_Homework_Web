@@ -3,6 +3,8 @@ package prioneer.homework.member.web.admin.system;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,13 +30,18 @@ public class UserNewController {
     }
 
     @PostMapping("/system/user")
-    public String registerNewUser(@ModelAttribute("member") Member member, RedirectAttributes redirectAttributes) {
+    public String registerNewUser(@Validated @ModelAttribute("member") Member member,
+                                  BindingResult bindingResult) {
+        
         try {
+            // 성공
             adminMemberService.registerNewMember(member);
-            redirectAttributes.addFlashAttribute("message", "회원 등록 성공");
+            return "redirect:/system/user";
+
         } catch (IllegalStateException e) {
-            redirectAttributes.addFlashAttribute("message", "회원 등록 중 에러 발생");
+            // 에러 발생
+            bindingResult.reject("registerNewUserFail", "회원 등록 중 에러 발생");
+            return "system/user";
         }
-        return "redirect:/system/user";
     }
 }

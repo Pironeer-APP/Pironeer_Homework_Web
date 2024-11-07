@@ -14,6 +14,10 @@ import java.util.List;
 public class AdminMemberService {
     private final MemberRepository memberRepository;
 
+    private static final long INITIAL_DEPOSIT = 120000L;
+    private static final long INITIAL_DEPOSIT_DEPEND = 0L;
+    private static final String MEMBER_ROLE = "user";
+
     // 회원가입
     public void join(Member member) {
         try {
@@ -66,31 +70,14 @@ public class AdminMemberService {
         return preadminList;
     }
 
-    // admin으로 승격
-    public void updateToAdmin(String phone, String role) {
-        try {
-            Member member = memberRepository.findByPhone(phone)
-                    .orElseThrow(() -> new IllegalStateException("회원을 찾을 수 없습니다."));
-
-            // member의 role이 preadmin인 경우만 가능
-            validateRoleChange(member, role);
-
-            member.setRole(role);
-            memberRepository.save(member);
-
-        } catch (Exception e) {
-            throw new IllegalStateException("권한 변경 중 오류 발생");
-        }
-    }
-
     // 역할 변경 가능 여부 검증
-    private void validateRoleChange(Member member, String newRole) {
+    public void validateRoleChange(Member member, String newRole) {
         if (!"preadmin".equals(member.getRole())) {
             throw new IllegalStateException("예비 관리자만 권한 변경이 가능합니다.");
         }
 
         if (!"admin".equals(member.getRole())) {
-            throw new IllegalStateException("권한은 dmin으로만 변경 가능합니다.");
+            throw new IllegalStateException("권한은 admin으로만 변경 가능합니다.");
         }
     }
 
@@ -119,13 +106,16 @@ public class AdminMemberService {
 
     // 신규 부원 등록
     public void registerNewMember(Member member) {
+
         try {
             if (memberRepository.existsByPhone(member.getPhone())) {
                 throw new IllegalStateException("이미 등록된 전화번호입니다.");
             }
 
             // 신규 부원 초기값
-            initializeNewMember(member);
+            member.setRole(MEMBER_ROLE);
+            member.setDeposit(INITIAL_DEPOSIT);
+            member.setDepositDepend(INITIAL_DEPOSIT_DEPEND);
 
             memberRepository.save(member);
         } catch (Exception e) {
@@ -133,10 +123,4 @@ public class AdminMemberService {
         }
     }
 
-    // 신규 부원 초기화
-    public void initializeNewMember(Member member) {
-        member.setRole("member");
-        member.setDeposit(120000L);
-        member.setDepositDepend(0L);
-    }
 }

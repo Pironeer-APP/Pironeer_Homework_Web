@@ -10,6 +10,7 @@ import prioneer.homework.board.repository.HomeworkRepository;
 import prioneer.homework.board.service.admin.AdminBoardService;
 import prioneer.homework.config.session.SessionConst;
 import prioneer.homework.member.domain.Member;
+import prioneer.homework.member.repository.MemberRepository;
 
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class AdminHomeworkController {
     // url은 /homework/{memberId}
 
     private final AdminBoardService adminBoardService;
+    private final HomeworkRepository homeworkRepository;
 
     @GetMapping("/homework/{memberId}")
     public String getMemberHomework(@PathVariable Long memberId,
@@ -50,7 +52,7 @@ public class AdminHomeworkController {
                                 Member loginMember) {
 
         try {
-            adminBoardService.gradeHomework(boardId, result, comment);
+            homeworkRepository.gradeHomework(boardId, result, comment);
             return "redirect:/homework/" + memberId;
         } catch (IllegalArgumentException e) {
             // 과제 채점 실패

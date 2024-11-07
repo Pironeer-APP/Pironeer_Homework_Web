@@ -3,12 +3,11 @@ package prioneer.homework.member.web.admin.system;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import prioneer.homework.member.domain.Member;
-import prioneer.homework.member.repository.MemberRepository;
 import prioneer.homework.member.service.admin.AdminMemberService;
 
 import java.util.List;
@@ -38,12 +37,12 @@ public class SystemListController {
     // 회원 삭제
     @PostMapping("/system/deleteMember")
     public String deleteMember(@RequestParam("phone") String phone,
-                               RedirectAttributes redirectAttributes) {
+                               BindingResult bindingResult) {
         try {
             adminMemberService.deleteMember(phone);
-            redirectAttributes.addFlashAttribute("message", "회원 삭제 성공");
+
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("message", "회원 삭제 중 오류 발생");
+            bindingResult.reject("memberDeleteFail", "회원 삭제 중 오류 발생");
         }
         return "redirect:/system/list";
     }

@@ -3,6 +3,7 @@ package prioneer.homework.member.web.admin.system;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,6 +22,7 @@ public class MasterListController {
     // url은 /system/master/list
 
     private final AdminMemberService adminMemberService;
+    private final MemberRepository memberRepository;
 
     // 관리자 신청 확인 명단 페이지를 보여줌
     @GetMapping("/system/master/list")
@@ -35,26 +37,26 @@ public class MasterListController {
     public String updateToAdmin(
             @RequestParam("phone") String phone,
             @RequestParam("role") String role,
-            RedirectAttributes redirectAttributes) {
+            BindingResult bindingResult) {
         try {
-            adminMemberService.updateToAdmin(phone, role);
-            redirectAttributes.addFlashAttribute("message", "권한 변경 완료");
+            memberRepository.updateToAdmin(phone, role);
+
         } catch (IllegalArgumentException e) {
-            redirectAttributes.addFlashAttribute("message", "권한 변경 중 오류 발생");
+            bindingResult.reject("updateToAdminFail", "권한 변경 중 오류 발생");
         }
         return "redirect:/system/master/list";
     }
 
     // preadmin 삭제
-    @PostMapping("/system/master/deletePreadmin")
+    @PostMapping("/system/master/{id}")
     public String deletePreadmin(
             @RequestParam("phone") String phone,
-            RedirectAttributes redirectAttributes) {
+            BindingResult bindingResult) {
         try {
             adminMemberService.deleteMember(phone);
-            redirectAttributes.addFlashAttribute("message", "preadmin 삭제 완료");
+
         } catch (IllegalArgumentException e) {
-            redirectAttributes.addFlashAttribute("message", "preadmin 삭제 중 오류 발생");
+            bindingResult.reject("deletePreadminFail", "preadmin 삭제 중 오류 발생");
         }
         return "redirect:/system/master/list";
     }
