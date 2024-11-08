@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import prioneer.homework.member.domain.Member;
@@ -35,8 +36,8 @@ public class SystemListController {
     }
 
     // 회원 삭제
-    @PostMapping("/system/deleteMember")
-    public String deleteMember(@RequestParam("phone") String phone,
+    @PostMapping("/system/deleteMember/{phone}")
+    public String deleteMember(@PathVariable("phone") String phone,
                                BindingResult bindingResult) {
         try {
             adminMemberService.deleteMember(phone);

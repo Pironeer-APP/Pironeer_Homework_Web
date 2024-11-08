@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -35,11 +36,11 @@ public class MasterListController {
     // 관리자 권한 부여
     @PostMapping("/system/master/updateToAdmin")
     public String updateToAdmin(
-            @RequestParam("phone") String phone,
+            @ModelAttribute Member member,
             @RequestParam("role") String role,
             BindingResult bindingResult) {
         try {
-            memberRepository.updateToAdmin(phone, role);
+            memberRepository.updateToAdmin(member, role);
 
         } catch (IllegalArgumentException e) {
             bindingResult.reject("updateToAdminFail", "권한 변경 중 오류 발생");
@@ -53,10 +54,11 @@ public class MasterListController {
             @RequestParam("phone") String phone,
             BindingResult bindingResult) {
         try {
-            adminMemberService.deleteMember(phone);
+            adminMemberService.deletePreadmin(phone);
 
         } catch (IllegalArgumentException e) {
             bindingResult.reject("deletePreadminFail", "preadmin 삭제 중 오류 발생");
+
         }
         return "redirect:/system/master/list";
     }

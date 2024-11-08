@@ -31,17 +31,4 @@ public class AdminBoardService {
         List<Board> homeworkList = homeworkRepository.findByMemberId(memberid);
         return homeworkList;
     }
-
-    // 과제 채점
-    public void gradeHomework(Long boardId, String result, String comment) {
-        Board homework = homeworkRepository.findByBoardId(boardId)
-                .orElseThrow(() -> new IllegalArgumentException("과제를 찾을 수 없습니다"));
-
-        homework.setResult(result);
-        homework.setComment(comment);
-    }
-
-
-
-
 }

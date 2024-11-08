@@ -34,7 +34,7 @@ public class MemberRepository {
     }
 
     //회원 찾기
-    public Optional<Member> findMemberId(Member member) {
+    public Optional<Member> findMemberById(Member member) {
         try {
             Member findMember = em.createQuery("select m from Member m where m.memberId = :id ", Member.class)
                     .setParameter("id", member.getMemberId())
@@ -96,15 +96,15 @@ public class MemberRepository {
     }
 
     // admin으로 승격
-    public void updateToAdmin(String phone, String role) {
+    public void updateToAdmin(Member member, String role) {
         try {
-            Member member = findByPhone(phone)
+            Member preadminMember = findMemberById(member)
                     .orElseThrow(() -> new IllegalStateException("회원을 찾을 수 없습니다."));
 
             // member의 role이 preadmin인 경우만 가능
-            adminMemberService.validateRoleChange(member, role);
+            adminMemberService.validateRoleChange(preadminMember, role);
 
-            member.setRole(role);
+            preadminMember.setRole(role);
 
         } catch (Exception e) {
             throw new IllegalStateException("권한 변경 중 오류 발생");

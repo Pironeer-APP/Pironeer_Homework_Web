@@ -46,9 +46,8 @@ public class AdminMemberService {
             throw new IllegalStateException("로그인 정보가 없습니다");
         }
 
-        return memberRepository.findMemberId(loginMember)
+        return memberRepository.findMemberById(loginMember)
                 .orElseThrow(() -> new IllegalStateException("회원 정보를 찾을 수 없습니다."));
-
     }
 
     // 회원 삭제
@@ -82,7 +81,7 @@ public class AdminMemberService {
     }
 
     // preadmin의 삭제
-    private void deletePreadmin(String phone) {
+    public void deletePreadmin(String phone) {
         try {
             // 우선 preadmin인지 확인
             Member member = memberRepository.findByPhone(phone)

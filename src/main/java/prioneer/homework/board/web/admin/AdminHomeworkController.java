@@ -47,9 +47,7 @@ public class AdminHomeworkController {
     public String gradeHomework(@PathVariable Long memberId,
                                 @RequestParam Long boardId,
                                 @RequestParam String result,
-                                @RequestParam String comment,
-                                @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false)
-                                Member loginMember) {
+                                @RequestParam String comment) {
 
         try {
             homeworkRepository.gradeHomework(boardId, result, comment);

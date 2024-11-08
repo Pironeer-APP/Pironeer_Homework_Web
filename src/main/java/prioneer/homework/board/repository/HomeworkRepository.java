@@ -36,11 +36,6 @@ public class HomeworkRepository {
         return Optional.ofNullable(em.find(Board.class, boardId));
     }
 
-
-    public void save(Board homework) {
-        em.persist(homework);
-    }
-
     // 과제 채점
     public void gradeHomework(Long boardId, String result, String comment) {
         Board homework = findByBoardId(boardId)
