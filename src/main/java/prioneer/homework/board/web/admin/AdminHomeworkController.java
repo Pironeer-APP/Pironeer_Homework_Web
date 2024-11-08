@@ -10,8 +10,6 @@ import prioneer.homework.board.repository.HomeworkRepository;
 import prioneer.homework.board.service.admin.AdminBoardService;
 import prioneer.homework.config.session.SessionConst;
 import prioneer.homework.member.domain.Member;
-import prioneer.homework.member.repository.MemberRepository;
-
 import java.util.List;
 
 @Controller
@@ -30,7 +28,7 @@ public class AdminHomeworkController {
                                     Model model,
                                     @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false)
                                         Member loginMember) {
-        if (!AdminBoardService.isAdmin(loginMember)) {
+        if (loginMember == null || !AdminBoardService.isAdmin(loginMember)) {
             return "redirect:/"; // 홈 화면으로 리다이렉트
         }
 
@@ -45,13 +43,12 @@ public class AdminHomeworkController {
     // 과제 채점
     @PostMapping("/homework/{memberId}")
     public String gradeHomework(@PathVariable Long memberId,
-                                @RequestParam Long boardId,
-                                @RequestParam String result,
-                                @RequestParam String comment) {
-
+                                @ModelAttribute Board board) {
         try {
-            homeworkRepository.gradeHomework(boardId, result, comment);
+            homeworkRepository.gradeHomework(board);
+
             return "redirect:/homework/" + memberId;
+
         } catch (IllegalArgumentException e) {
             // 과제 채점 실패
             return "redirect:/homework/" + memberId;
