@@ -51,7 +51,7 @@ public class MasterListController {
             Member member,
             BindingResult bindingResult) {
         try {
-            adminMemberService.deletePreadmin(member.getPhone());
+            adminMemberService.deletePreadmin(member);
 
         } catch (IllegalArgumentException e) {
             bindingResult.reject("deletePreadminFail", "preadmin 삭제 중 오류 발생");

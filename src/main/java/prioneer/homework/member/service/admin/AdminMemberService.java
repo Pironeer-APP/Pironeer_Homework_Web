@@ -81,17 +81,17 @@ public class AdminMemberService {
     }
 
     // preadmin의 삭제
-    public void deletePreadmin(String phone) {
+    public void deletePreadmin(Member member) {
         try {
             // 우선 preadmin인지 확인
-            Member member = memberRepository.findByPhone(phone)
+            Member preadminMember = memberRepository.findMemberById(member)
                     .orElseThrow(() -> new IllegalStateException("회원을 찾을 수 없습니다."));
 
-            if (!"preadmin".equals(member.getRole())) {
+            if (!"preadmin".equals(preadminMember.getRole())) {
                 throw new IllegalStateException("예비 관리자만 삭제 가능합니다.");
             }
 
-            memberRepository.deleteByPhone(phone);
+            memberRepository.deleteByPhone(preadminMember.getPhone());
         } catch (Exception e) {
             throw new IllegalStateException("삭제 중 에러 발생");
         }
