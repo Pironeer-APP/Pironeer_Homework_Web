@@ -7,8 +7,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import prioneer.homework.member.domain.Member;
 import prioneer.homework.member.repository.MemberRepository;
 import prioneer.homework.member.service.admin.AdminMemberService;
@@ -37,10 +35,9 @@ public class MasterListController {
     @PostMapping("/system/master/updateToAdmin")
     public String updateToAdmin(
             @ModelAttribute Member member,
-            @RequestParam("role") String role,
             BindingResult bindingResult) {
         try {
-            memberRepository.updateToAdmin(member, role);
+            memberRepository.updateToAdmin(member, "admin");
 
         } catch (IllegalArgumentException e) {
             bindingResult.reject("updateToAdminFail", "권한 변경 중 오류 발생");
@@ -51,10 +48,10 @@ public class MasterListController {
     // preadmin 삭제
     @PostMapping("/system/master/{id}")
     public String deletePreadmin(
-            @RequestParam("phone") String phone,
+            Member member,
             BindingResult bindingResult) {
         try {
-            adminMemberService.deletePreadmin(phone);
+            adminMemberService.deletePreadmin(member.getPhone());
 
         } catch (IllegalArgumentException e) {
             bindingResult.reject("deletePreadminFail", "preadmin 삭제 중 오류 발생");

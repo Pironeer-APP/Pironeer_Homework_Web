@@ -26,7 +26,7 @@ public class HomeworkRepository {
                 .getResultList();
     }
 
-    public List<Board> findByMemberId(Long memberId) {
+    public List<Board> findByMemberId(String memberId) {
         return em.createQuery("select b from Board b where b.userMember.memberId = :id", Board.class)
                 .setParameter("id", memberId)
                 .getResultList();

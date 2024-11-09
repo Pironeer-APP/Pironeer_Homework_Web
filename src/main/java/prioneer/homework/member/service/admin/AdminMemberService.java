@@ -75,7 +75,7 @@ public class AdminMemberService {
             throw new IllegalStateException("예비 관리자만 권한 변경이 가능합니다.");
         }
 
-        if (!"admin".equals(member.getRole())) {
+        if (!"admin".equals(newRole)) {
             throw new IllegalStateException("권한은 admin으로만 변경 가능합니다.");
         }
     }

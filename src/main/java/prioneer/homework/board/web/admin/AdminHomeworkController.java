@@ -24,7 +24,7 @@ public class AdminHomeworkController {
     private final HomeworkRepository homeworkRepository;
 
     @GetMapping("/homework/{memberId}")
-    public String getMemberHomework(@PathVariable Long memberId,
+    public String getMemberHomework(@PathVariable String memberId,
                                     Model model,
                                     @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false)
                                         Member loginMember) {
@@ -42,7 +42,7 @@ public class AdminHomeworkController {
 
     // 과제 채점
     @PostMapping("/homework/{memberId}")
-    public String gradeHomework(@PathVariable Long memberId,
+    public String gradeHomework(@PathVariable String memberId,
                                 @ModelAttribute Board board) {
         try {
             homeworkRepository.gradeHomework(board);

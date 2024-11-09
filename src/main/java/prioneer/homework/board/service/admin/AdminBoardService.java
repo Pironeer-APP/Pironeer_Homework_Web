@@ -27,8 +27,8 @@ public class AdminBoardService {
     }
 
     // 회원 과제 목록 조회
-    public List<Board> getMemberHomework(Long memberid) {
-        List<Board> homeworkList = homeworkRepository.findByMemberId(memberid);
+    public List<Board> getMemberHomework(String memberId) {
+        List<Board> homeworkList = homeworkRepository.findByMemberId(memberId);
         return homeworkList;
     }
 }
