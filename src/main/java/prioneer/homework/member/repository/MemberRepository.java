@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import prioneer.homework.member.domain.Member;
+import prioneer.homework.member.service.admin.AdminMemberService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +20,7 @@ import java.util.Optional;
 public class MemberRepository {
 
     private final EntityManager em;
-
-
+    private final AdminMemberService adminMemberService;
 
     // 회원 저장
     public void save(Member member){
@@ -34,7 +34,7 @@ public class MemberRepository {
     }
 
     //회원 찾기
-    public Optional<Member> findMemberId(Member member) {
+    public Optional<Member> findMemberById(Member member) {
         try {
             Member findMember = em.createQuery("select m from Member m where m.memberId = :id ", Member.class)
                     .setParameter("id", member.getMemberId())
@@ -92,6 +92,22 @@ public class MemberRepository {
         } catch (NoResultException e) {
             log.error("존재하지 않는 회원: {}", phone);
             throw e;
+        }
+    }
+
+    // admin으로 승격
+    public void updateToAdmin(Member member, String role) {
+        try {
+            Member preadminMember = findMemberById(member)
+                    .orElseThrow(() -> new IllegalStateException("회원을 찾을 수 없습니다."));
+
+            // member의 role이 preadmin인 경우만 가능
+            adminMemberService.validateRoleChange(preadminMember, role);
+
+            preadminMember.setRole(role);
+
+        } catch (Exception e) {
+            throw new IllegalStateException("권한 변경 중 오류 발생");
         }
     }
 }

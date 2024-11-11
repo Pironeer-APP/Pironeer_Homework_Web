@@ -26,7 +26,7 @@ public class HomeworkRepository {
                 .getResultList();
     }
 
-    public List<Board> findByMemberId(Long memberId) {
+    public List<Board> findByMemberId(String memberId) {
         return em.createQuery("select b from Board b where b.userMember.memberId = :id", Board.class)
                 .setParameter("id", memberId)
                 .getResultList();
@@ -36,8 +36,12 @@ public class HomeworkRepository {
         return Optional.ofNullable(em.find(Board.class, boardId));
     }
 
+    // 과제 채점
+    public void gradeHomework(Board board) {
+        Board homework = findByBoardId(board.getBoardId())
+                .orElseThrow(() -> new IllegalArgumentException("과제를 찾을 수 없습니다"));
 
-    public void save(Board homework) {
-        em.persist(homework);
+        homework.setResult(board.getResult());
+        homework.setComment(board.getComment());
     }
 }
