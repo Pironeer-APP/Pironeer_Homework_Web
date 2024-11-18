@@ -213,7 +213,7 @@
 }
 
 .day-content li {
-    padding-left: 0.5rem;  /* 리스트 아이템 텍스트와 마커 사이 간격 */
+    padding-left: 0.5rem;
 }
 
 @media (max-width: 768px) {
