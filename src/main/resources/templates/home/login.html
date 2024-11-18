@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,14 +20,18 @@
         <main class="main">
             <div class="login-card">
                 <h2 class="login-title">로그인</h2>
-                <form class="login-form">
-                    <div class="form-group">
+                <form class="login-form" th:object="${member}">
+                    <div class="form-group" th:>
                         <label for="name">이름</label>
-                        <input type="text" id="name" name="name" required>
+                        <input type="text" id="name" name="name"
+                               th:field="*{name}"
+                               required>
                     </div>
                     <div class="form-group">
                         <label for="phone">전화번호</label>
-                        <input type="tel" id="phone" name="phone" required>
+                        <input type="tel" id="phone" name="phone"
+                               th:field="*{phone}"
+                               required>
                     </div>
                     <button type="submit" class="btn">로그인</button>
                 </form>
