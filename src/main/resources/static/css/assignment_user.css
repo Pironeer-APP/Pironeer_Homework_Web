@@ -1,0 +1,253 @@
+.user-info-card {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    border: 2px solid var(--primary-color);
+}
+
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-name {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.deposit-info {
+    text-align: right;
+}
+
+.deposit-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+}
+
+.deposit-amount {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.assignments-container {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* 주차 스타일 */
+.week-container {
+    margin-bottom: 15px;
+}
+
+.week-toggle {
+    display: none;
+}
+
+.week-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: rgba(11, 236, 18, 0.1);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.week-header:hover {
+    background-color: rgba(11, 236, 18, 0.2);
+}
+
+.week-title {
+    font-weight: bold;
+    color: var(--primary-color);
+    min-width: 80px;
+}
+
+.week-subject {
+    flex-grow: 1;
+    margin-left: 20px;
+    color: var(--text-color);
+}
+
+.toggle-icon {
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+    margin-left: 25px;
+}
+
+.week-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.week-toggle:checked ~ .week-content {
+    max-height: 2000px;
+}
+
+.week-toggle:checked ~ .week-header .toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* 일별 과제 스타일 */
+.day-container {
+    margin: 10px 0;
+}
+
+.day-toggle {
+    display: none;
+}
+
+.day-header {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+    padding: 12px 15px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.day-info {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.day-name {
+    font-weight: bold;
+    color: var(--text-secondary);
+    min-width: 30px;
+}
+
+.day-subject {
+    margin-left: 15px;
+    color: var(--text-color);
+}
+
+.day-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.assignment-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    font-size: 1.2rem;
+}
+
+.status-success {
+    color: #00ff00;
+}
+
+.status-warning {
+    color: #ffaa00;
+}
+
+.status-fail {
+    color: #ff0000;
+}
+
+.detail-btn {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.detail-btn:hover {
+    opacity: 0.9;
+}
+
+/* 과제 내용 토글 */
+.day-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.02);
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 0 15px;
+}
+
+.day-toggle:checked ~ .day-content {
+    max-height: 500px;
+    padding: 15px;
+}
+
+.close-btn {
+    display: inline-block;
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 4px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 15px;
+    text-decoration: none;
+}
+
+.close-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+}
+
+.day-content ol {
+    padding-left: 1.2rem;  /* 마커를 오른쪽으로 이동 */
+    list-style-position: outside;  /* 마커를 텍스트 영역 밖에 위치 */
+}
+
+.day-content li {
+    padding-left: 0.5rem;  /* 리스트 아이템 텍스트와 마커 사이 간격 */
+}
+
+@media (max-width: 768px) {
+    .user-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .deposit-info {
+        text-align: left;
+        margin-top: 15px;
+    }
+
+    .week-subject {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .day-header {
+        display: flex;
+        padding: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .day-actions {
+        width: 100%;
+        margin-top: 10px;
+        justify-content: space-between;
+    }
+
+    .detail-btn {
+        width: calc(100% - 39px);
+        text-align: center;
+    }
+}

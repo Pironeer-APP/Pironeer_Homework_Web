@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>과제 확인 - PiroCheck</title>
+    <link rel="stylesheet" href="/src/main/resources/static/css/style.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/assignment_user.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&family=Poor+Story&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="/" class="logo-link"></a>
+            <h1 id="pirocheck" class="title">PiroCheck</h1>
+        </div>
+    
+        <div class="main" role="main">
+            <div class="user-info-card">
+                <div class="user-info">
+                    <h2 id="홍길동님" class="user-name">홍길동님</h2>
+                    <div class="deposit-info">
+                        <span class="deposit-label">보증금 현황</span>
+                        <span class="deposit-amount">300,000원</span>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="assignments-container">
+                <div class="week-container">
+                    <input type="checkbox" id="week1" class="week-toggle">
+                    <label for="week1" class="week-header">
+                        <span class="week-title">1주차</span>
+                        <span class="week-subject">프로그래밍 기초와 환경설정</span>
+                        <span class="toggle-icon">▼</span>
+                    </label>
+    
+                    <div class="week-content">
+                        <div class="day-container">
+                            <input type="checkbox" id="day1" class="day-toggle">
+                            <div class="day-header">
+                                <div class="day-info">
+                                    <span class="day-name">월</span>
+                                    <span class="day-subject">Git 기초</span>
+                                </div>
+                                <div class="day-actions">
+                                    <span class="assignment-status status-success">○</span>
+                                    <label for="day1" class="detail-btn">자세히</label>
+                                </div>
+                            </div>
+                            <div class="day-content">
+                                <ol>
+                                    <li>Git 설치하기</li>
+                                    <li>GitHub 계정 만들기</li>
+                                    <li>기본적인 Git 명령어 학습하기</li>
+                                </ol>
+                                <label for="day1" class="close-btn">닫기</label>
+                            </div>
+                        </div>
+    
+                        <div class="day-container">
+                            <input type="checkbox" id="day2" class="day-toggle">
+                            <div class="day-header">
+                                <div class="day-info">
+                                    <span class="day-name">목</span>
+                                    <span class="day-subject">Java 기초 문법</span>
+                                </div>
+                                <div class="day-actions">
+                                    <span class="assignment-status status-warning">△</span>
+                                    <label for="day2" class="detail-btn">자세히</label>
+                                </div>
+                            </div>
+                            <div class="day-content">
+                                <ol>
+                                    <li>변수와 데이터 타입</li>
+                                    <li>조건문과 반복문</li>
+                                    <li>배열과 컬렉션</li>
+                                </ol>
+                                <label for="day2" class="close-btn">닫기</label>
+                            </div>
+                        </div>
+    
+                        <div class="day-container">
+                            <input type="checkbox" id="day3" class="day-toggle">
+                            <div class="day-header">
+                                <div class="day-info">
+                                    <span class="day-name">토</span>
+                                    <span class="day-subject">객체지향 프로그래밍</span>
+                                </div>
+                                <div class="day-actions">
+                                    <span class="assignment-status status-fail">×</span>
+                                    <label for="day3" class="detail-btn">자세히</label>
+                                </div>
+                            </div>
+                            <div class="day-content">
+                                <ol>
+                                    <li>클래스와 객체</li>
+                                    <li>상속과 다형성</li>
+                                    <li>인터페이스와 추상클래스</li>
+                                </ol>
+                                <label for="day3" class="close-btn">닫기</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
