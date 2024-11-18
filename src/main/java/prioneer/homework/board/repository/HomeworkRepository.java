@@ -43,5 +43,6 @@ public class HomeworkRepository {
 
         homework.setResult(board.getResult());
         homework.setComment(board.getComment());
+        homework.setFlag(board.isFlag());
     }
 }
