@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import prioneer.homework.info.domain.Info;
 import prioneer.homework.info.repository.InfoRepository;
+import prioneer.homework.member.domain.Member;
+import prioneer.homework.member.repository.MemberRepository;
 
 import java.time.LocalDate;
 
@@ -16,6 +18,7 @@ import java.time.LocalDate;
 public class DataInitializer {
 
     private final InfoRepository infoRepository;
+    private final MemberRepository memberRepository;
 
 
 //    @Bean
@@ -26,6 +29,28 @@ public class DataInitializer {
 //        };
 //    }
 
+    @PostConstruct
+    public void init() {
+        initializeInfo();
+        initializeNewMember();
+
+    }
+
+    // 신규 부원 초기화
+    @PostConstruct
+    public void initializeNewMember() {
+
+        final String INITIAL_MEMBER_ROLE = "user";
+        final Long INITIAL_DEPOSIT = 120000L;
+        final Long INITIAL_DEPOSIT_DEPEND = 0L;
+
+        Member defaultMember = new Member();
+
+        defaultMember.setRole(INITIAL_MEMBER_ROLE);
+        defaultMember.setDeposit(INITIAL_DEPOSIT);
+        defaultMember.setDepositDepend(INITIAL_DEPOSIT_DEPEND);
+
+    }
 
     @PostConstruct
     public void initializeInfo() {
