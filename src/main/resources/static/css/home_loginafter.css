@@ -1,0 +1,90 @@
+.main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background-color: var(--card-bg);
+    padding: 50px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+}
+
+.welcome-section {
+    margin-bottom: 40px;
+}
+
+.welcome-title {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.welcome-text {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.feature-item {
+    flex: 1;
+    padding: 10px;
+    background-color: rgba(11, 236, 18, 0.1);
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+
+.feature-title {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.feature-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.assignmentcheck-btn {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .card {
+        padding: 30px 20px;
+    }
+
+    .features {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .welcome-title {
+        font-size: 1.4rem;
+    }
+
+    .welcome-text, .feature-icon {
+        display: none;
+    }
+}

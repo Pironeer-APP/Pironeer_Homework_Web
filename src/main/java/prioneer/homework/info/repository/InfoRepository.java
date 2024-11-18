@@ -1,11 +1,15 @@
 package prioneer.homework.info.repository;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import prioneer.homework.info.domain.Info;
+import prioneer.homework.member.domain.Member;
+
+import java.util.Optional;
 
 @Repository
 @Transactional
@@ -17,5 +21,16 @@ public class InfoRepository {
 
     public void save(Info info){
         em.persist(info);
+    }
+
+
+    public Optional<Info> findById(Long id){
+        try {
+            return Optional.ofNullable(em.createQuery("select m from Info m where m.id = :id ", Info.class)
+                    .setParameter("id", id)
+                    .getSingleResult());
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 }
