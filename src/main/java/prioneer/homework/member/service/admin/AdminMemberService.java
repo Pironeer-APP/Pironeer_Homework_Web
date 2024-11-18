@@ -3,20 +3,28 @@ package prioneer.homework.member.service.admin;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import prioneer.homework.board.domain.Board;
+import prioneer.homework.board.repository.HomeworkRepository;
+import prioneer.homework.info.domain.Info;
+import prioneer.homework.info.repository.InfoRepository;
 import prioneer.homework.member.domain.Member;
 import prioneer.homework.member.repository.MemberRepository;
 
+import java.security.BasicPermission;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
 public class AdminMemberService {
     private final MemberRepository memberRepository;
+    private final HomeworkRepository homeworkRepository;
+    private final InfoRepository infoRepository;
 
     private static final long INITIAL_DEPOSIT = 120000L;
     private static final long INITIAL_DEPOSIT_DEPEND = 0L;
-    private static final String MEMBER_ROLE = "user";
+    private static final String MEMBER_ROLE = "USER";
 
     // 회원가입
     public void join(Member member) {
@@ -99,7 +107,7 @@ public class AdminMemberService {
 
     // 부원 리스트 가져오기
     public List<Member> getMemberList() {
-        List<Member> memberList = memberRepository.findByRole("member");
+        List<Member> memberList = memberRepository.findByRole(MEMBER_ROLE);
         return memberList;
     }
 
@@ -115,8 +123,25 @@ public class AdminMemberService {
             member.setRole(MEMBER_ROLE);
             member.setDeposit(INITIAL_DEPOSIT);
             member.setDepositDepend(INITIAL_DEPOSIT_DEPEND);
-
             memberRepository.save(member);
+
+
+            //신규 부원 생성했으면 과제 18개??도 같이 만들어줘야됨
+            // ㅋㅋㅋ 서비스 계층에서 for문이라 신비롭네
+            for (int i = 1; i < 19; i++) {
+                Optional<Info> info = infoRepository.findById((long) i);
+                if (info.isPresent()) {
+                    Info f_info = info.get();
+                    Board board = new Board();
+                    board.setUserMember(member);
+                    board.setInfo(f_info);
+                    board.setFlag(false);
+                    board.setResult("X");
+                    homeworkRepository.save(board);
+
+                }
+            }
+
         } catch (Exception e) {
             throw new IllegalStateException("회원 등록 중 오류 발생");
         }

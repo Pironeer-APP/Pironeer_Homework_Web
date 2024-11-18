@@ -20,6 +20,11 @@ public class HomeworkRepository {
 
     private final EntityManager em;
 
+    //신규회원 추가될때 과제 18개 저장
+    public void save(Board board){
+        em.persist(board);
+    }
+
     public List<Board> findMemberHomework(Member member){
         return em.createQuery("select b from Board b where b.userMember.memberId= :id", Board.class)
                 .setParameter("id",member.getMemberId())

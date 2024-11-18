@@ -26,6 +26,6 @@ public class UserHomeworkController {
 
         List<Board> memberHomework = homeworkRepository.findMemberHomework(loginMember);
         model.addAttribute("homework",memberHomework);
-        return "과제 결과 html";
+        return "user/assignment_user";
     }
 }
