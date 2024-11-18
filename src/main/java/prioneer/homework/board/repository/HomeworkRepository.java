@@ -42,12 +42,13 @@ public class HomeworkRepository {
     }
 
     // 과제 채점
-    public void gradeHomework(Board board) {
+    public void gradeHomework(Board board,Member adminMember) {
         Board homework = findByBoardId(board.getBoardId())
                 .orElseThrow(() -> new IllegalArgumentException("과제를 찾을 수 없습니다"));
 
         homework.setResult(board.getResult());
         homework.setComment(board.getComment());
         homework.setFlag(board.isFlag());
+        homework.setAdminMember(adminMember);
     }
 }
