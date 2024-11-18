@@ -43,9 +43,11 @@ public class AdminHomeworkController {
     // 과제 채점
     @PostMapping("/homework/{memberId}")
     public String gradeHomework(@PathVariable String memberId,
-                                @ModelAttribute Board board) {
+                                @ModelAttribute Board board,
+                                @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false)
+                                    Member loginMember) {
         try {
-            homeworkRepository.gradeHomework(board);
+            homeworkRepository.gradeHomework(board, loginMember);
 
             return "redirect:/homework/" + memberId;
 
