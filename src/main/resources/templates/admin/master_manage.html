@@ -1,105 +1,107 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PiroCheck - Admin Management</title>
     <link rel="stylesheet" href="../../static/css/style.css">
     <link rel="stylesheet" href="../../static/css/master_manage.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&family=Poor+Story&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&family=Poor+Story&display=swap"
+          rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <a href="master_start.html" class="logo-link">
-                <h1 id="pirocheck" class="title">PiroCheck</h1>
-            </a>
-        </header>
+<div class="container">
+    <header class="header">
+        <a href="master_start.html" class="logo-link">
+            <h1 id="pirocheck" class="title">PiroCheck</h1>
+        </a>
+    </header>
 
-        <main class="main" role="main">
-            <div class="manage-card">
-                <div class="manage-header">
-                    <h2 class="manage-title">관리자 권한 관리</h2>
-                    <p class="manage-subtitle">운영진 권한을 설정하고 관리할 수 있습니다</p>
-                </div>
+    <main class="main" role="main">
+        <div class="manage-card">
+            <div class="manage-header">
+                <h2 class="manage-title">관리자 권한 관리</h2>
+                <p class="manage-subtitle">운영진 권한을 설정하고 관리할 수 있습니다</p>
+            </div>
 
-                <div class="manage-content">
-                    <div class="admin-list">
-                        <div class="list-header">
-                            <span class="header-name">이름</span>
-                            <span class="header-phone">전화번호</span>
-                            <span class="header-status">권한 설정</span>
-                            <span class="header-action">관리</span>
-                        </div>
+            <div class="manage-content">
+                <div class="admin-list">
+                    <div class="list-header">
+                        <span class="header-name">이름</span>
+                        <span class="header-phone">전화번호</span>
+                        <span class="header-status">권한 설정</span>
+                        <span class="header-action">관리</span>
+                    </div>
 
-                        <div class="list-body">
-                            <!-- 각 운영진 항목 -->
-                            <div class="admin-item">
-                                <span class="admin-name">이지현</span>
-                                <span class="admin-phone">010-3346-0334</span>
-                                <div class="admin-status">
-                                    <select class="status-select">
-                                        <option value="preadmin">Pre-Admin</option>
-                                        <option value="admin">Admin</option>
-                                    </select>
-                                </div>
-                                <div class="admin-action">
-                                    <button class="delete-btn">삭제</button>
-                                </div>
+                    <div class="list-body" th:each="admin :${preAdminList}">
+                        <!-- 각 운영진 항목 -->
+
+                        <div class="admin-item" th:attr="data-id=${admin.memberId}">
+                            <span class="admin-name" th:text="${admin.name}">손관우</span>
+                            <span class="admin-phone" th:text="${admin.phone}">010-8648-1730</span>
+                            <div class="admin-status">
+                                <select class="status-select" th:field="*{admin.role}">
+                                    <option value="preadmin" th:selected="${admin.role == 'preadmin'}">Pre-Admin
+                                    </option>
+                                    <option value="admin" th:selected="${admin.role == 'admin'}">Admin</option>
+                                </select>
                             </div>
-
-                            <div class="admin-item">
-                                <span class="admin-name">김민수</span>
-                                <span class="admin-phone">010-8551-0687</span>
-                                <div class="admin-status">
-                                    <select class="status-select">
-                                        <option value="preadmin">Pre-Admin</option>
-                                        <option value="admin">Admin</option>
-                                    </select>
-                                </div>
-                                <div class="admin-action">
-                                    <button class="delete-btn">삭제</button>
-                                </div>
-                            </div>
-
-                            <div class="admin-item">
-                                <span class="admin-name">손관우</span>
-                                <span class="admin-phone">010-8648-1730</span>
-                                <div class="admin-status">
-                                    <select class="status-select">
-                                        <option value="preadmin">Pre-Admin</option>
-                                        <option value="admin">Admin</option>
-                                    </select>
-                                </div>
-                                <div class="admin-action">
-                                    <button class="delete-btn">삭제</button>
-                                </div>
-                            </div>
-
-                            <div class="admin-item">
-                                <span class="admin-name">장지요</span>
-                                <span class="admin-phone">010-7162-8842</span>
-                                <div class="admin-status">
-                                    <select class="status-select">
-                                        <option value="preadmin">Pre-Admin</option>
-                                        <option value="admin">Admin</option>
-                                    </select>
-                                </div>
-                                <div class="admin-action">
-                                    <button class="delete-btn">삭제</button>
-                                </div>
+                            <div class="admin-action">
+                                <button class="edit-btn">수정</button>
+                                <button class="delete-btn">삭제</button>
                             </div>
                         </div>
+
                     </div>
                 </div>
-
-                <div class="manage-footer">
-                    <button class="submit-btn">변경사항 반영하기</button>
-                </div>
             </div>
-        </main>
-    </div>
+
+            <div class="manage-footer">
+                <button class="submit-btn">변경사항 반영하기</button>
+            </div>
+        </div>
+    </main>
+</div>
+
+
+<script>
+    document.querySelectorAll('.edit-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            // 버튼에서 data-id로 memberId 가져오기
+            const memberId = this.getAttribute('data-id');
+            // 선택된 role 값 가져오기
+            const selectedRole = this.closest('.admin-item').querySelector('.status-select').value;
+
+            // Spring 컨트롤러에 요청 보내기
+            fetch(`/system/master/updateToAdmin/${memberId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ role: selectedRole }) // role을 JSON 형태로 전달
+            })
+                .then(response => {
+                    if (response.redirected) {
+                        // Spring에서 리다이렉트를 처리하는 경우, 새 페이지로 이동
+                        window.location.href = response.url;
+                    } else {
+                        return response.json(); // JSON 응답 처리
+                    }
+                })
+                .then(data => {
+                    if (data && data.success) {
+                        alert('등급이 바꼈어요!');
+                    } else if (data && data.error) {
+                        alert('Error: ' + data.error);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    });
+
+</script>
 </body>
 </html>
