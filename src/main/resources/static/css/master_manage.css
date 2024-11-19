@@ -90,8 +90,23 @@
     transition: all 0.2s;
 }
 
+.edit-btn {
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 1px solid #0BEC12;
+    color: #0BEC12;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
 .delete-btn:hover {
     background-color: #ff4444;
+    color: var(--primary-color);
+}
+
+.edit-btn:hover {
+    background-color: #0BEC12;
     color: var(--bg-color);
 }
 
