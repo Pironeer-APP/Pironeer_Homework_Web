@@ -26,7 +26,7 @@ public class UserNewController {
     @GetMapping("/system/user")
     public String showNewUserForm(Model model) {
         model.addAttribute("member", new Member());
-        return "system/user";
+        return "admin/admin_register";
     }
 
     @PostMapping("/system/user")
@@ -40,8 +40,8 @@ public class UserNewController {
 
         } catch (IllegalStateException e) {
             // 에러 발생
-            bindingResult.reject("registerNewUserFail", "회원 등록 중 에러 발생");
-            return "system/user";
+            bindingResult.reject("registerNewUserFail", "이미 존재하는 번호가 있습니다.");
+            return "admin/admin_register";
         }
     }
 }
