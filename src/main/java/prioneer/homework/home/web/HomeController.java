@@ -24,10 +24,10 @@ public class HomeController {
 
 
         if (loginMember == null) {
-            return "home/noLoginHome";
+            return "home/home_loginbefore";
         }
 
-        return "home/loginHome";
+        return "home/home_loginafter";
     }
 
 }

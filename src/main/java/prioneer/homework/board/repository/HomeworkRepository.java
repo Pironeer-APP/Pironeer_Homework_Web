@@ -20,6 +20,11 @@ public class HomeworkRepository {
 
     private final EntityManager em;
 
+    //신규회원 추가될때 과제 18개 저장
+    public void save(Board board){
+        em.persist(board);
+    }
+
     public List<Board> findMemberHomework(Member member){
         return em.createQuery("select b from Board b where b.userMember.memberId= :id", Board.class)
                 .setParameter("id",member.getMemberId())
@@ -37,11 +42,13 @@ public class HomeworkRepository {
     }
 
     // 과제 채점
-    public void gradeHomework(Board board) {
+    public void gradeHomework(Board board,Member adminMember) {
         Board homework = findByBoardId(board.getBoardId())
                 .orElseThrow(() -> new IllegalArgumentException("과제를 찾을 수 없습니다"));
 
         homework.setResult(board.getResult());
         homework.setComment(board.getComment());
+        homework.setFlag(board.isFlag());
+        homework.setAdminMember(adminMember);
     }
 }

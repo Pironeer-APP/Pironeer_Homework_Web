@@ -24,9 +24,10 @@ public class UserLoginController {
 
     private final UserMemberService userMemberService;
     @GetMapping("/login")
-    public String getUserLogin(Model model,
-                                 @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false)
-                                 Member loginMember) {
+    public String getUserLogin(Model model) {
+        Member member =new Member();
+
+        model.addAttribute("member",member);
 
         return "/home/login";
     }

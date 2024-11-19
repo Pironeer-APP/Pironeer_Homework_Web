@@ -34,7 +34,7 @@ public class SystemLoginController {
         return "로그인 된 홈 html";
 
         } catch (IllegalStateException e) {
-            return "로그인 안 된 홈 html";
+            return "admin/admin_home_loginbefore";
         }
     }
 }
