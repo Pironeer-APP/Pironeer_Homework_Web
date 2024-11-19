@@ -1,17 +1,19 @@
 package prioneer.homework.member.web.admin.system;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import prioneer.homework.member.domain.Member;
 import prioneer.homework.member.repository.MemberRepository;
 import prioneer.homework.member.service.admin.AdminMemberService;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -28,22 +30,27 @@ public class MasterListController {
     public String masterList(Model model) {
         List<Member> preAdminList = adminMemberService.getPreadminList();
         model.addAttribute("preAdminList", preAdminList);
-        return "system/master/list";
+        return "admin/master_manage";
     }
 
     // 관리자 권한 부여
-    @PostMapping("/system/master/updateToAdmin")
-    public String updateToAdmin(
-            @ModelAttribute Member member,
-            BindingResult bindingResult) {
-        try {
-            memberRepository.updateToAdmin(member, "admin");
+    @PostMapping("/system/master/updateToAdmin/{id}")
+    public ResponseEntity<?> updateToAdmin(
+            @PathVariable("id") String memberId,
+            @RequestBody Map<String, String> requestBody) {
 
-        } catch (IllegalArgumentException e) {
-            bindingResult.reject("updateToAdminFail", "권한 변경 중 오류 발생");
+        String role = requestBody.get("role");
+
+        // Role 업데이트 처리
+        try {
+            memberRepository.updateToAdmin(memberId, role);
+            return ResponseEntity.ok().body(Map.of("success", true));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("success", false, "error", e.getMessage()));
         }
-        return "redirect:/system/master/list";
     }
+
 
     // preadmin 삭제
     @PostMapping("/system/master/{id}")

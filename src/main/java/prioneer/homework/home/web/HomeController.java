@@ -17,17 +17,47 @@ import java.util.Optional;
 @Slf4j
 public class HomeController {
 
+    // 22기 부원
     @GetMapping("/")
     public String home(Model model,
                        @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false)
                        Member loginMember) {
-
+        if (!loginMember.getRole().equals("USER")) {
+            return "redirect:/system";
+        }
 
         if (loginMember == null) {
             return "home/home_loginbefore";
         }
 
         return "home/home_loginafter";
+    }
+
+
+    // 운영진
+    @GetMapping("/system")
+    public String getSystem(Model model,
+                            @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false)
+                            Member loginMember) {
+
+        if (loginMember == null) {
+            return "admin/admin_home_loginbefore";
+        }
+
+
+        if (loginMember.getRole().equals("USER")) {
+            return "redirect:/";
+        }
+
+        if (loginMember.getRole().equals("PREADMIN")) {
+            return "redirect:/";
+        }
+
+
+        // 로그인 회원 정보 비교
+        return "admin/admin_home_loginafter";
+
+
     }
 
 }
