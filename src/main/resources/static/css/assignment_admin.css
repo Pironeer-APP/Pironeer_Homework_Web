@@ -18,6 +18,12 @@
     margin: 0;
 }
 
+.assignment-form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .deposit-info {
     text-align: right;
 }
@@ -214,21 +220,99 @@
 
 .day-content li {
     padding-left: 0.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: 0.5rem;
+}
+
+.info-details {
+    display: flex;
+    gap: 30px;
+}
+
+.shield-info {
+    text-align: right;
+}
+
+.shield-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+}
+
+.shield-amount {
+    font-size: 1.3rem;
+    color: #00aaff;
+    font-weight: bold;
+}
+
+.assignment-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+.visibility-checkbox {
+    margin: 0 10px;
+}
+
+.status-select {
+    padding: 6px 10px;
+    background-color: #222;
+    border: 1px solid #333;
+    color: var(--text-color);
+    border-radius: 3px;
+}
+
+.status-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.edit-btn {
+    padding: 6px 12px;
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.edit-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+}
+
+.submit-container {
+    text-align: center;
+    margin-top: 40px;
+    padding: 0 20px;
+}
+
+.submit-btn {
+    padding: 15px 40px;
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
     .user-info {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
     }
 
     .deposit-info {
         text-align: left;
-        margin-top: 15px;
     }
 
     .week-subject {
@@ -249,13 +333,41 @@
         justify-content: space-between;
     }
 
-    .day-content li {
-        flex-wrap: wrap;
-    }
-
     .detail-btn {
         width: 100%;
         text-align: center;
         margin-top: 10px;
+    }
+
+    .info-details {
+        flex-direction: row;
+        gap: 25px;
+    }
+
+    .shield-info {
+        text-align: left;
+    }
+
+    .assignment-control {
+        flex-direction: row;
+        align-items: stretch;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .submit-btn {
+        width: 100%;
+    }
+
+    .day-content li {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .assignment-form {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: flex-start;
     }
 }

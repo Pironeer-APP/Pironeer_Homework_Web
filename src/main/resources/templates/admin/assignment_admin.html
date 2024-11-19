@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PiroCheck - Assignment Management</title>
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="../../static/css/assignment_admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&family=Poor+Story&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="admin_start.html" class="logo-link">
+                <h1 id="pirocheck" class="title">PiroCheck</h1>
+            </a>
+        </header>
+
+        <main class="main" role="main">
+            <div class="user-info-card">
+                <div class="user-info">
+                    <h2 class="user-name">이지현님</h2>
+                    <div class="info-details">
+                        <div class="deposit-info">
+                            <span class="deposit-label">보증금 현황</span>
+                            <span class="deposit-amount">30,000원</span>
+                        </div>
+                        <div class="shield-info">
+                            <span class="shield-label">방어권</span>
+                            <span class="shield-amount">2개</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="assignments-container">
+                <!-- 1주차 -->
+                <div class="week-container">
+                    <input type="checkbox" id="week1" class="week-toggle">
+                    <label for="week1" class="week-header">
+                        <span class="week-title">1주차</span>
+                        <span class="week-subject">Git, HTML, CSS</span>
+                        <span class="toggle-icon">▼</span>
+                    </label>
+
+                    <div class="week-content">
+                        <!-- 월요일 -->
+                        <div class="day-container">
+                            <input type="checkbox" id="day1-1" class="day-toggle">
+                            <label for="day1-1" class="day-header">
+                                <div class="day-info">
+                                    <span class="day-name">월</span>
+                                    <span class="day-subject">Git, HTML, CSS</span>
+                                </div>
+                                <div class="day-actions">
+                                    <button type="button" class="detail-btn" onclick="document.getElementById('day1-1').checked = !document.getElementById('day1-1').checked">자세히</button>
+                                </div>
+                            </label>
+
+                            <div class="day-content">
+                                <ol>
+                                    <li>
+                                        <form action="/submit-assignment" method="post" class="assignment-form">
+                                            <span>제로초 HTML/CSS/Flex/Grid 27강(3-9강)까지 수강하고 커밋</span>
+                                            <div class="assignment-control">
+                                                <select name="status" class="status-select">
+                                                    <option value="">미평가</option>
+                                                    <option value="success">성공</option>
+                                                    <option value="warning">경고</option>
+                                                    <option value="fail">실패</option>
+                                                </select>
+                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <button type="submit" class="edit-btn">수정</button>
+                                            </div>
+                                        </form>
+                                    </li>
+                                    <li>
+                                        <form action="/submit-assignment" method="post" class="assignment-form">
+                                            <span>깃허브 사이트 구현하고 커밋</span>
+                                            <div class="assignment-control">
+                                                <select name="status" class="status-select">
+                                                    <option value="">미평가</option>
+                                                    <option value="success">성공</option>
+                                                    <option value="warning">경고</option>
+                                                    <option value="fail">실패</option>
+                                                </select>
+                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <button type="submit" class="edit-btn">수정</button>
+                                            </div>
+                                        </form>
+                                    </li>
+                                </ol>
+                                <button type="button" class="close-btn" onclick="document.getElementById('day1-1').checked = false">닫기</button>
+                            </div>
+                        </div>
+
+                        <!-- 1주차 목요일 -->
+                        <div class="day-container">
+                            <input type="checkbox" id="day1-2" class="day-toggle">
+                            <label for="day1-2" class="day-header">
+                                <div class="day-info">
+                                    <span class="day-name">목</span>
+                                    <span class="day-subject">CSS 심화, CSS 반응형</span>
+                                </div>
+                                <div class="day-actions">
+                                    <button type="button" class="detail-btn" onclick="document.getElementById('day1-2').checked = !document.getElementById('day1-2').checked">자세히</button>
+                                </div>
+                            </label>
+
+                            <div class="day-content">
+                                <ol>
+                                    <li>
+                                        <form action="/submit-assignment" method="post" class="assignment-form">
+                                            <span>파이썬 코딩도장 20강까지 수강 및 퀴즈/심사문제 이미지 파일 커밋</span>
+                                            <div class="assignment-control">
+                                                <select name="status" class="status-select">
+                                                    <option value="">미평가</option>
+                                                    <option value="success">성공</option>
+                                                    <option value="warning">경고</option>
+                                                    <option value="fail">실패</option>
+                                                </select>
+                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <button type="submit" class="edit-btn">수정</button>
+                                            </div>
+                                        </form>
+                                    </li>
+                                    <li>
+                                        <form action="/submit-assignment" method="post" class="assignment-form">
+                                            <span>과제 설명 노션을 참고하여 피로그래밍 홈페이지 만들고 커밋</span>
+                                            <div class="assignment-control">
+                                                <select name="status" class="status-select">
+                                                    <option value="">미평가</option>
+                                                    <option value="success">성공</option>
+                                                    <option value="warning">경고</option>
+                                                    <option value="fail">실패</option>
+                                                </select>
+                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <button type="submit" class="edit-btn">수정</button>
+                                            </div>
+                                        </form>
+                                    </li>
+                                </ol>
+                                <button type="button" class="close-btn" onclick="document.getElementById('day1-2').checked = false">닫기</button>
+                            </div>
+                        </div>
+
+                        <!-- 1주차 토요일 -->
+                        <div class="day-container">
+                            <input type="checkbox" id="day1-3" class="day-toggle">
+                            <label for="day1-3" class="day-header">
+                                <div class="day-info">
+                                    <span class="day-name">토</span>
+                                    <span class="day-subject">Git 협업 실습, 인스타그램 클론 코딩 (대면)</span>
+                                </div>
+                                <div class="day-actions">
+                                    <button type="button" class="detail-btn" onclick="document.getElementById('day1-3').checked = !document.getElementById('day1-3').checked">자세히</button>
+                                </div>
+                            </label>
+
+                            <div class="day-content">
+                                <ol>
+                                    <li>
+                                        <form action="/submit-assignment" method="post" class="assignment-form">
+                                            <span>HTML/CSS를 이용한 Arsha 페이지 전체 클론코딩</span>
+                                            <div class="assignment-control">
+                                                <select name="status" class="status-select">
+                                                    <option value="">미평가</option>
+                                                    <option value="success">성공</option>
+                                                    <option value="warning">경고</option>
+                                                    <option value="fail">실패</option>
+                                                </select>
+                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <button type="submit" class="edit-btn">수정</button>
+                                            </div>
+                                        </form>
+                                    </li>
+                                </ol>
+                                <button type="button" class="close-btn" onclick="document.getElementById('day1-3').checked = false">닫기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2주차 -->
+                <div class="week-container">
+                    <input type="checkbox" id="week2" class="week-toggle">
+                    <label for="week2" class="week-header">
+                        <span class="week-title">2주차</span>
+                        <span class="week-subject">JavaScript 개론 / HTML+CSS+JS 종합 마무리 / 웹 개발 개론 / 프로젝트 기획</span>
+                        <span class="toggle-icon">▼</span>
+                    </label>
+
+                    <div class="week-content">
+                        <!-- 2주차 화요일 -->
+                        <div class="day-container">
+                            <input type="checkbox" id="day2-1" class="day-toggle">
+                            <label for="day2-1" class="day-header">
+                                <div class="day-info">
+                                    <span class="day-name">화</span>
+                                    <span class="day-subject">자바스크립트 이론 및 기본 문법</span>
+                                </div>
+                                <div class="day-actions">
+                                    <button type="button" class="detail-btn" onclick="document.getElementById('day2-1').checked = !document.getElementById('day2-1').checked">자세히</button>
+                                </div>
+                            </label>
+
+                            <div class="day-content">
+                                <ol>
+                                    <li>
+                                        <form action="/submit-assignment" method="post" class="assignment-form">
+                                            <span>드림코딩 아카데미 사이트에서 '쇼핑몰 미니게임 & 코드 리뷰' 강의를 챕터 1까지 수강하고 커밋</span>
+                                            <div class="assignment-control">
+                                                <select name="status" class="status-select">
+                                                    <option value="">미평가</option>
+                                                    <option value="success">성공</option>
+                                                    <option value="warning">경고</option>
+                                                    <option value="fail">실패</option>
+                                                </select>
+                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <button type="submit" class="edit-btn">수정</button>
+                                            </div>
+                                        </form>
+                                    </li>
+                                    <li>
+                                        <form action="/submit-assignment" method="post" class="assignment-form">
+                                            <span>숫자야구 게임</span>
+                                            <div class="assignment-control">
+                                                <select name="status" class="status-select">
+                                                    <option value="">미평가</option>
+                                                    <option value="success">성공</option>
+                                                    <option value="warning">경고</option>
+                                                    <option value="fail">실패</option>
+                                                </select>
+                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <button type="submit" class="edit-btn">수정</button>
+                                            </div>
+                                        </form>
+                                    </li>
+                                </ol>
+                                <button type="button" class="close-btn" onclick="document.getElementById('day2-1').checked = false">닫기</button>
+                            </div>
+                        </div>
+
+                        <!-- 2주차 목요일 -->
+                        <div class="day-container">
+                            <input type="checkbox" id="day2-2" class="day-toggle">
+                            <label for="day2-2" class="day-header">
+                                <div class="day-info">
+                                    <span class="day-name">목</span>
+                                    <span class="day-subject">html, css, js 종합 마무리</span>
+                                </div>
+                                <div class="day-actions">
+                                    <button type="button" class="detail-btn" onclick="document.getElementById('day2-2').checked = !document.getElementById('day2-2').checked">자세히</button>
+                                </div>
+                            </label>
+
+                            <div class="day-content">
+                                <ol>
+                                    <li>
+                                        <form action="/submit-assignment" method="post" class="assignment-form">
+                                            <span>파이썬 개인 과제</span>
+                                            <div class="assignment-control">
+                                                <select name="status" class="status-select">
+                                                    <option value="">미평가</option>
+                                                    <option value="success">성공</option>
+                                                    <option value="warning">경고</option>
+                                                    <option value="fail">실패</option>
+                                                </select>
+                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <button type="submit" class="edit-btn">수정</button>
+                                            </div>
+                                        </form>
+                                    </li>
+                                    <li>
+                                        <form action="/submit-assignment" method="post" class="assignment-form">
+                                            <span>Javascript 스톱워치 과제</span>
+                                            <div class="assignment-control">
+                                                <select name="status" class="status-select">
+                                                    <option value="">미평가</option>
+                                                    <option value="success">성공</option>
+                                                    <option value="warning">경고</option>
+                                                    <option value="fail">실패</option>
+                                                </select>
+                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <button type="submit" class="edit-btn">수정</button>
+                                            </div>
+                                        </form>
+                                    </li>
+                                </ol>
+                                <button type="button" class="close-btn" onclick="document.getElementById('day2-2').checked = false">닫기</button>
+                            </div>
+                        </div>
+
+                        <!-- 2주차 토요일 -->
+                        <div class="day-container">
+                            <input type="checkbox" id="day2-3" class="day-toggle">
+                            <label for="day2-3" class="day-header">
+                                <div class="day-info">
+                                    <span class="day-name">토</span>
+                                    <span class="day-subject">웹 개발 개론(피로그래밍 조언) / 프로젝트 기획 (대면)</span>
+                                </div>
+                                <div class="day-actions">
+                                    <button type="button" class="detail-btn" onclick="document.getElementById('day2-3').checked = !document.getElementById('day2-3').checked">자세히</button>
+                                </div>
+                            </label>
+
+                            <div class="day-content">
+                                <ol>
+                                    <li>
+                                        <form action="/submit-assignment" method="post" class="assignment-form">
+                                            <span>python 술 game 만들기</span>
+                                            <div class="assignment-control">
+                                                <select name="status" class="status-select">
+                                                    <option value="">미평가</option>
+                                                    <option value="success">성공</option>
+                                                    <option value="warning">경고</option>
+                                                    <option value="fail">실패</option>
+                                                </select>
+                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <button type="submit" class="edit-btn">수정</button>
+                                            </div>
+                                        </form>
+                                    </li>
+                                </ol>
+                                <button type="button" class="close-btn" onclick="document.getElementById('day2-3').checked = false">닫기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3주차 -->
+                <div class="week-container">
+                    <input type="checkbox" id="week3" class="week-toggle">
+                    <label for="week3" class="week-header">
+                        <span class="week-title">3주차</span>
+                        <span class="week-subject">Django 설치 및 가상환경 / CRUD 기초 / DB 개론 / user model</span>
+                        <span class="toggle-icon">▼</span>
+                    </label>
+
+                    <div class="week-content">
+                        <!-- 3주차 화요일 -->
+                        <div class="day-container">
+                            <input type="checkbox" id="day3-1" class="day-toggle">
+                            <label for="day3-1" class="day-header">
+                                <div class="day-info">
+                                    <span class="day-name">화</span>
+                                    <span class="day-subject">크롤링 / Django 설치 및 가상환경 설정</span>
+                                </div>
+                                <div class="day-actions">
+                                    <button type="button" class="detail-btn" onclick="document.getElementById('day3-1').checked = !document.getElementById('day3-1').checked">자세히</button>
+                                </div>
+                            </label>
+
+                            <div class="day-content">
+                                <ol>
+                                    <li>
+                                        <form action="/submit-assignment" method="post" class="assignment-form">
+                                            <span>DjangoGirls 튜토리얼 따라하기</span>
+                                            <div class="assignment-control">
+                                                <select name="status" class="status-select">
+                                                    <option value="">미평가</option>
+                                                    <option value="success">성공</option>
+                                                    <option value="warning">경고</option>
+                                                    <option value="fail">실패</option>
+                                                </select>
+                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <button type="submit" class="edit-btn">수정</button>
+                                            </div>
+                                        </form>
+                                    </li>
+                                </ol>
+                                <button type="button" class="close-btn" onclick="document.getElementById('day3-1').checked = false">닫기</button>
+                            </div>
+                        </div>
+
+                        <!-- 3주차 목요일 -->
+                        <div class="day-container">
+                            <input type="checkbox" id="day3-2" class="day-toggle">
+                            <label for="day3-2" class="day-header">
+                                <div class="day-info">
+                                    <span class="day-name">목</span>
+                                    <span class="day-subject">CRUD 기초</span>
+                                </div>
+                                <div class="day-actions">
+                                    <button type="button" class="detail-btn" onclick="document.getElementById('day3-2').checked = !document.getElementById('day3-2').checked">자세히</button>
+                                </div>
+                            </label>
+
+                            <div class="day-content">
+                                <ol>
+                                    <li>
+                                        <form action="/submit-assignment" method="post" class="assignment-form">
+                                            <span>"나만의 영화 기록 사이트" 제작</span>
+                                            <div class="assignment-control">
+                                                <select name="status" class="status-select">
+                                                    <option value="">미평가</option>
+                                                    <option value="success">성공</option>
+                                                    <option value="warning">경고</option>
+                                                    <option value="fail">실패</option>
+                                                </select>
+                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <button type="submit" class="edit-btn">수정</button>
+                                            </div>
+                                        </form>
+                                    </li>
+                                </ol>
+                                <button type="button" class="close-btn" onclick="document.getElementById('day3-2').checked = false">닫기</button>
+                            </div>
+                        </div>
+
+                        <!-- 3주차 토요일 -->
+                        <div class="day-container">
+                            <input type="checkbox" id="day3-3" class="day-toggle">
+                            <label for="day3-3" class="day-header">
+                                <div class="day-info">
+                                    <span class="day-name">토</span>
+                                    <span class="day-subject">user model custom / DB 개론 (대면)</span>
+                                </div>
+                                <div class="day-actions">
+                                    <button type="button" class="detail-btn" onclick="document.getElementById('day3-3').checked = !document.getElementById('day3-3').checked">자세히</button>
+                                </div>
+                            </label>
+
+                            <div class="day-content">
+                                <ol>
+                                    <li>
+                                        <form action="/submit-assignment" method="post" class="assignment-form">
+                                            <span>ERD Cloud로 피로마켓 ERD 작성하기</span>
+                                            <div class="assignment-control">
+                                                <select name="status" class="status-select">
+                                                    <option value="">미평가</option>
+                                                    <option value="success">성공</option>
+                                                    <option value="warning">경고</option>
+                                                    <option value="fail">실패</option>
+                                                </select>
+                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <button type="submit" class="edit-btn">수정</button>
+                                            </div>
+                                        </form>
+                                    </li>
+                                    <li>
+                                        <form action="/submit-assignment" method="post" class="assignment-form">
+                                            <span>Ajax 선행강의 수강하기</span>
+                                            <div class="assignment-control">
+                                                <select name="status" class="status-select">
+                                                    <option value="">미평가</option>
+                                                    <option value="success">성공</option>
+                                                    <option value="warning">경고</option>
+                                                    <option value="fail">실패</option>
+                                                </select>
+                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <button type="submit" class="edit-btn">수정</button>
+                                            </div>
+                                        </form>
+                                    </li>
+                                </ol>
+                                <button type="button" class="close-btn" onclick="document.getElementById('day3-3').checked = false">닫기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4주차 -->
+                <div class="week-container">
+                    <input type="checkbox" id="week4" class="week-toggle">
+                    <label for="week4" class="week-header">
+                        <span class="week-title">4주차</span>
+                        <span class="week-subject">장고 중급 / 장고 ORM / Ajax</span>
+                        <span class="toggle-icon">▼</span>
+                    </label>
+
+                    <div class="week-content">
+                        <!-- 4주차 화요일 -->
+                        <div class="day-container">
+                            <input type="checkbox" id="day4-1" class="day-toggle">
+                            <label for="day4-1" class="day-header">
+                                <div class="day-info">
+                                    <span class="day-name">화</span>
+                                    <span class="day-subject">장고 ORM 및 장고 개론 / Django 중급 실습</span>
+                                </div>
+                                <div class="day-actions">
+                                    <button type="button" class="detail-btn" onclick="document.getElementById('day4-1').checked = !document.getElementById('day4-1').checked">자세히</button>
+                                </div>
+                            </label>
+
+                            <div class="day-content">
+                                <ol>
+                                    <li>
+                                        <form action="/submit-assignment" method="post" class="assignment-form">
+                                            <span>"아이디어 관리 사이트" 제작</span>
+                                            <div class="assignment-control">
+                                                <select name="status" class="status-select">
+                                                    <option value="">미평가</option>
+                                                    <option value="success">성공</option>
+                                                    <option value="warning">경고</option>
+                                                    <option value="fail">실패</option>
+                                                </select>
+                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <button type="submit" class="edit-btn">수정</button>
+                                            </div>
+                                        </form>
+                                    </li>
+                                </ol>
+                                <button type="button" class="close-btn" onclick="document.getElementById('day4-1').checked = false">닫기</button>
+                            </div>
+                        </div>
+
+                        <!-- 4주차 목요일 -->
+                        <div class="day-container">
+                            <input type="checkbox" id="day4-2" class="day-toggle">
+                            <label for="day4-2" class="day-header">
+                                <div class="day-info">
+                                    <span class="day-name">목</span>
+                                    <span class="day-subject">협업 툴 세션</span>
+                                </div>
+                                <div class="day-actions">
+                                    <button type="button" class="detail-btn" onclick="document.getElementById('day4-2').checked = !document.getElementById('day4-2').checked">자세히</button>
+                                </div>
+                            </label>
+
+                            <div class="day-content">
+                                <ol>
+                                    <li>
+                                        <form action="/submit-assignment" method="post" class="assignment-form">
+                                            <span>"피로그래머 카드 게임" 제작</span>
+                                            <div class="assignment-control">
+                                                <select name="status" class="status-select">
+                                                    <option value="">미평가</option>
+                                                    <option value="success">성공</option>
+                                                    <option value="warning">경고</option>
+                                                    <option value="fail">실패</option>
+                                                </select>
+                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <button type="submit" class="edit-btn">수정</button>
+                                            </div>
+                                        </form>
+                                    </li>
+                                </ol>
+                                <button type="button" class="close-btn" onclick="document.getElementById('day4-2').checked = false">닫기</button>
+                            </div>
+                        </div>
+
+                        <!-- 4주차 토요일 -->
+                        <div class="day-container">
+                            <input type="checkbox" id="day4-3" class="day-toggle">
+                            <label for="day4-3" class="day-header">
+                                <div class="day-info">
+                                    <span class="day-name">토</span>
+                                    <span class="day-subject">AJAX (대면)</span>
+                                </div>
+                                <div class="day-actions">
+                                    <button type="button" class="detail-btn" onclick="document.getElementById('day4-3').checked = !document.getElementById('day4-3').checked">자세히</button>
+                                </div>
+                            </label>
+
+                            <div class="day-content">
+                                <ol>
+                                    <li>
+                                        <form action="/submit-assignment" method="post" class="assignment-form">
+                                            <span>Ajax를 사용한 "Pirostagram 사이트" 제작</span>
+                                            <div class="assignment-control">
+                                                <select name="status" class="status-select">
+                                                    <option value="">미평가</option>
+                                                    <option value="success">성공</option>
+                                                    <option value="warning">경고</option>
+                                                    <option value="fail">실패</option>
+                                                </select>
+                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <button type="submit" class="edit-btn">수정</button>
+                                            </div>
+                                        </form>
+                                    </li>
+                                </ol>
+                                <button type="button" class="close-btn" onclick="document.getElementById('day4-3').checked = false">닫기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5주차 -->
+                <div class="week-container">
+                    <input type="checkbox" id="week5" class="week-toggle">
+                    <label for="week5" class="week-header">
+                        <span class="week-title">5주차</span>
+                        <span class="week-subject">배포 / 개인 아이디어 발표 / 최종 아이디어 발표 / 팀빌딩 및 MT</span>
+                        <span class="toggle-icon">▼</span>
+                    </label>
+
+                    <div class="week-content">
+                        <!-- 5주차 화요일 -->
+                        <div class="day-container">
+                            <input type="checkbox" id="day5-1" class="day-toggle">
+                            <label for="day5-1" class="day-header">
+                                <div class="day-info">
+                                    <span class="day-name">화</span>
+                                    <span class="day-subject">배포 (대면)</span>
+                                </div>
+                                <div class="day-actions">
+                                    <button type="button" class="detail-btn" onclick="document.getElementById('day5-1').checked = !document.getElementById('day5-1').checked">자세히</button>
+                                </div>
+                            </label>
+
+                            <div class="day-content">
+                                <ol>
+                                    <li>
+                                        <!-- <form action="/submit-assignment" method="post" class="assignment-form">
+                                            <span>배포 실습</span>
+                                            <div class="assignment-control">
+                                                <select name="status" class="status-select">
+                                                    <option value="">미평가</option>
+                                                    <option value="success">성공</option>
+                                                    <option value="warning">경고</option>
+                                                    <option value="fail">실패</option>
+                                                </select>
+                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <button type="submit" class="edit-btn">수정</button>
+                                            </div>
+                                        </form> -->
+                                    </li>
+                                </ol>
+                                <button type="button" class="close-btn" onclick="document.getElementById('day5-1').checked = false">닫기</button>
+                            </div>
+                        </div>
+
+                        <!-- 5주차 목요일 -->
+                        <div class="day-container">
+                            <input type="checkbox" id="day5-2" class="day-toggle">
+                            <label for="day5-2" class="day-header">
+                                <div class="day-info">
+                                    <span class="day-name">목</span>
+                                    <span class="day-subject">1차 개인 아이디어 발표</span>
+                                </div>
+                                <div class="day-actions">
+                                    <button type="button" class="detail-btn" onclick="document.getElementById('day5-2').checked = !document.getElementById('day5-2').checked">자세히</button>
+                                </div>
+                            </label>
+
+                            <div class="day-content">
+                                <ol>
+                                    <li>
+                                        <!-- <form action="/submit-assignment" method="post" class="assignment-form">
+                                            <span>개인 아이디어 발표 자료 제출</span>
+                                            <div class="assignment-control">
+                                                <select name="status" class="status-select">
+                                                    <option value="">미평가</option>
+                                                    <option value="success">성공</option>
+                                                    <option value="warning">경고</option>
+                                                    <option value="fail">실패</option>
+                                                </select>
+                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <button type="submit" class="edit-btn">수정</button>
+                                            </div>
+                                        </form> -->
+                                    </li>
+                                </ol>
+                                <button type="button" class="close-btn" onclick="document.getElementById('day5-2').checked = false">닫기</button>
+                            </div>
+                        </div>
+
+                        <!-- 5주차 토요일 -->
+                        <div class="day-container">
+                            <input type="checkbox" id="day5-3" class="day-toggle">
+                            <label for="day5-3" class="day-header">
+                                <div class="day-info">
+                                    <span class="day-name">토</span>
+                                    <span class="day-subject">2차 최종 아이디어 발표 및 팀빌딩 (대면)</span>
+                                </div>
+                                <div class="day-actions">
+                                    <button type="button" class="detail-btn" onclick="document.getElementById('day5-3').checked = !document.getElementById('day5-3').checked">자세히</button>
+                                </div>
+                            </label>
+
+                            <div class="day-content">
+                                <ol>
+                                    <li>
+                                        <!-- <form action="/submit-assignment" method="post" class="assignment-form">
+                                            <span>최종 아이디어 발표 자료 제출</span>
+                                            <div class="assignment-control">
+                                                <select name="status" class="status-select">
+                                                    <option value="">미평가</option>
+                                                    <option value="success">성공</option>
+                                                    <option value="warning">경고</option>
+                                                    <option value="fail">실패</option>
+                                                </select>
+                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <button type="submit" class="edit-btn">수정</button>
+                                            </div>
+                                        </form> -->
+                                    </li>
+                                </ol>
+                                <button type="button" class="close-btn" onclick="document.getElementById('day5-3').checked = false">닫기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PiroCheck - Admin Join</title>
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="../../static/css/admin_join.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&family=Poor+Story&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="admin_home_loginbefore.html" class="logo-link">
+                <h1 id="pirocheck" class="title">PiroCheck</h1>
+            </a>
+        </header>
+
+        <main class="main" role="main">
+            <div class="login-card">
+                <h2 class="login-title join-title">운영진 회원가입</h2>
+
+                <form class="login-form">
+                    <div class="form-group">
+                        <label for="name">이름</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">전화번호</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">비밀번호</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password-confirm">비밀번호 확인</label>
+                        <input type="password" id="password-confirm" name="password-confirm" required>
+                    </div>
+
+                    <button type="submit" class="btn join-btn">회원가입 신청</button>
+
+                    <p class="join-notice">
+                        회원가입은 마스터 계정의 승인 후 완료됩니다
+                    </p>
+                </form>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
