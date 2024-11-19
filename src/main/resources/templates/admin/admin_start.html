@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="admin-menu">
-                    <a href="admin_register.html" class="menu-item">
+                    <a href="/system/user" class="menu-item">
                         <div class="menu-icon">👥</div>
                         <h3 class="menu-title">회원 정보 입력</h3>
                         <p class="menu-description">
@@ -35,7 +35,7 @@
                         </p>
                     </a>
 
-                    <a href="admin_assignment_list.html" class="menu-item">
+                    <a href="/system/list" class="menu-item">
                         <div class="menu-icon">📝</div>
                         <h3 class="menu-title">과제 반영하기</h3>
                         <p class="menu-description">
