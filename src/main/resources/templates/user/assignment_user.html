@@ -16,18 +16,18 @@
             <a href="/" class="logo-link"></a>
             <h1 id="pirocheck" class="title">PiroCheck</h1>
         </div>
-    
+
         <div class="main" role="main">
             <div class="user-info-card">
                 <div class="user-info">
-                    <h2 id="홍길동님" class="user-name">홍길동님</h2>
+                    <h2 id="홍길동님" class="user-name" th:text="${member.name}">홍길동님</h2>
                     <div class="deposit-info">
                         <span class="deposit-label">보증금 현황</span>
-                        <span class="deposit-amount">300,000원</span>
+                        <span class="deposit-amount" th:text="${member.deposit}">300,000원</span>
                     </div>
                 </div>
             </div>
-    
+
             <div class="assignments-container">
                 <div class="week-container">
                     <input type="checkbox" id="week1" class="week-toggle">
@@ -36,7 +36,7 @@
                         <span class="week-subject">Git, HTML, CSS</span>
                         <span class="toggle-icon">▼</span>
                     </label>
-    
+
                     <div class="week-content">
                         <div class="day-container">
                             <input type="checkbox" id="day1" class="day-toggle">
@@ -50,18 +50,24 @@
                             <div class="day-content">
                                 <ol>
                                     <li>
-                                        제로초 HTML/CSS/Flex/Grid 27강(3-9강)까지 수강하고 커밋
-                                        <span class="assignment-status status-success">○</span>
+                                        <span th:text="${homework1.info.content}">제로초 HTML/CSS/Flex/Grid 27강(3-9강)까지 수강하고 커밋 </span>
+
+                                        <span th:if="${homework1.result == '성공'}" class="assignment-status status-success">○</span>
+                                        <span th:if="${homework1.result == '경고'}" class="assignment-status status-fail">X</span>
+                                        <span th:if="${homework1.result == '실패'}" class="assignment-status status-warning">△</span>
+
                                     </li>
                                     <li>
-                                        깃허브 사이트 구현하고 커밋
-                                        <span class="assignment-status status-warning">△</span>
+                                        <span th:text="${homework2.info.content}">깃허브 사이트 구현하고 커밋 </span>
+                                        <span th:if="${homework2.result == '성공'}" class="assignment-status status-success">○</span>
+                                        <span th:if="${homework2.result == '경고'}" class="assignment-status status-fail">X</span>
+                                        <span th:if="${homework2.result == '실패'}" class="assignment-status status-warning">△</span>
                                     </li>
                                 </ol>
                                 <label for="day1" class="close-btn">닫기</label>
                             </div>
                         </div>
-    
+
                         <div class="day-container">
                             <input type="checkbox" id="day2" class="day-toggle">
                             <div class="day-header">
@@ -73,19 +79,27 @@
                             </div>
                             <div class="day-content">
                                 <ol>
+
                                     <li>
-                                        파이썬 코딩도장 20강까지 수강 및 퀴즈/심사문제 이미지 파일 커밋
-                                        <span class="assignment-status status-success">○</span>
+
+                                        <span th:text="${homework3.info.content}"> 과제 설명 노션을 참고하여 피로그래밍 홈페이지 만들고 커밋 </span>
+                                        <span th:if="${homework3.result == '성공'}" class="assignment-status status-success">○</span>
+                                        <span th:if="${homework3.result == '경고'}" class="assignment-status status-fail">X</span>
+                                        <span th:if="${homework3.result == '실패'}" class="assignment-status status-warning">△</span>
                                     </li>
+
                                     <li>
-                                        과제 설명 노션을 참고하여 피로그래밍 홈페이지 만들고 커밋
-                                        <span class="assignment-status status-success">○</span>
+
+                                        <span th:text="${homework4.info.content}">    파이썬 코딩도장 20강까지 수강 및 퀴즈/심사문제 이미지 파일 커밋 </span>
+                                        <span th:if="${homework4.result == '성공'}" class="assignment-status status-success">○</span>
+                                        <span th:if="${homework4.result == '경고'}" class="assignment-status status-fail">X</span>
+                                        <span th:if="${homework4.result == '실패'}" class="assignment-status status-warning">△</span>
                                     </li>
                                 </ol>
                                 <label for="day2" class="close-btn">닫기</label>
                             </div>
                         </div>
-    
+
                         <div class="day-container">
                             <input type="checkbox" id="day3" class="day-toggle">
                             <div class="day-header">
@@ -98,8 +112,11 @@
                             <div class="day-content">
                                 <ol>
                                     <li>
-                                        HTML/CSS를 이용한 Arsha 페이지 전체 클론코딩
-                                        <span class="assignment-status status-warning">△</span>
+
+                                        <span th:text="${homework5.info.content}">HTML/CSS를 이용한 Arsha 페이지 전체 클론코딩 </span>
+                                        <span th:if="${homework5.result == '성공'}" class="assignment-status status-success">○</span>
+                                        <span th:if="${homework5.result == '경고'}" class="assignment-status status-fail">X</span>
+                                        <span th:if="${homework5.result == '실패'}" class="assignment-status status-warning">△</span>
                                     </li>
                                 </ol>
                                 <label for="day3" class="close-btn">닫기</label>
@@ -115,7 +132,7 @@
                         <span class="week-subject">JavaScript 개론 / HTML+CSS+JS 종합 마무리 / 웹 개발 개론 / 프로젝트 기획</span>
                         <span class="toggle-icon">▼</span>
                     </label>
-    
+
                     <div class="week-content">
                         <div class="day-container">
                             <input type="checkbox" id="day4" class="day-toggle">
@@ -129,18 +146,23 @@
                             <div class="day-content">
                                 <ol>
                                     <li>
-                                        드림코딩 아카데미 사이트에서 ‘쇼핑몰 미니게임 & 코드 리뷰’ 강의를 챕터 1까지 수강하고 커밋
-                                        <span class="assignment-status status-success">○</span>
+                                        <span th:text="${homework6.info.content}">드림코딩 아카데미 사이트에서 ‘쇼핑몰 미니게임 & 코드 리뷰’ 강의를 챕터 1까지 수강하고 커밋 </span>
+                                        <span th:if="${homework6.result == '성공'}" class="assignment-status status-success">○</span>
+                                        <span th:if="${homework6.result == '경고'}" class="assignment-status status-fail">X</span>
+                                        <span th:if="${homework6.result == '실패'}" class="assignment-status status-warning">△</span>
                                     </li>
                                     <li>
-                                        숫자야구 게임
-                                        <span class="assignment-status status-warning">△</span>
+
+                                        <span th:text="${homework7.info.content}">숫자야구 게임 </span>
+                                        <span th:if="${homework7.result == '성공'}" class="assignment-status status-success">○</span>
+                                        <span th:if="${homework7.result == '경고'}" class="assignment-status status-fail">X</span>
+                                        <span th:if="${homework7.result == '실패'}" class="assignment-status status-warning">△</span>
                                     </li>
                                 </ol>
                                 <label for="day4" class="close-btn">닫기</label>
                             </div>
                         </div>
-    
+
                         <div class="day-container">
                             <input type="checkbox" id="day5" class="day-toggle">
                             <div class="day-header">
@@ -152,19 +174,34 @@
                             </div>
                             <div class="day-content">
                                 <ol>
+
                                     <li>
-                                        파이썬 개인 과제
-                                        <span class="assignment-status status-success">○</span>
+                                        <span th:text="${homework8.info.content}"> Javascript 스톱워치 과제 </span>
+                                        <span th:if="${homework8.result == '성공'}" class="assignment-status status-success">○</span>
+                                        <span th:if="${homework8.result == '경고'}" class="assignment-status status-fail">X</span>
+                                        <span th:if="${homework8.result == '실패'}" class="assignment-status status-warning">△</span>
+                                    </li>
+
+                                    <li>
+
+                                        <span th:text="${homework9.info.content}"> 코딩 도장 심화</span>
+                                        <span th:if="${homework9.result == '성공'}" class="assignment-status status-success">○</span>
+                                        <span th:if="${homework9.result == '경고'}" class="assignment-status status-fail">X</span>
+                                        <span th:if="${homework9.result == '실패'}" class="assignment-status status-warning">△</span>
                                     </li>
                                     <li>
-                                        Javascript 스톱워치 과제
-                                        <span class="assignment-status status-success">○</span>
+
+                                        <span th:text="${homework10.info.content}"> 파이썬 개인 과제</span>
+                                        <span th:if="${homework10.result == '성공'}" class="assignment-status status-success">○</span>
+                                        <span th:if="${homework10.result == '경고'}" class="assignment-status status-fail">X</span>
+                                        <span th:if="${homework10.result == '실패'}" class="assignment-status status-warning">△</span>
                                     </li>
+
                                 </ol>
                                 <label for="day5" class="close-btn">닫기</label>
                             </div>
                         </div>
-    
+
                         <div class="day-container">
                             <input type="checkbox" id="day6" class="day-toggle">
                             <div class="day-header">
@@ -177,8 +214,11 @@
                             <div class="day-content">
                                 <ol>
                                     <li>
-                                        python 술 game 만들기
-                                        <span class="assignment-status status-warning">△</span>
+
+                                        <span th:text="${homework11.info.content}">  python 술 game 만들기</span>
+                                        <span th:if="${homework11.result == '성공'}" class="assignment-status status-success">○</span>
+                                        <span th:if="${homework11.result == '경고'}" class="assignment-status status-fail">X</span>
+                                        <span th:if="${homework11.result == '실패'}" class="assignment-status status-warning">△</span>
                                     </li>
                                 </ol>
                                 <label for="day6" class="close-btn">닫기</label>
@@ -194,7 +234,7 @@
                         <span class="week-subject">Django 설치 및 가상환경 / CRUD 기초 / DB 개론 / user model</span>
                         <span class="toggle-icon">▼</span>
                     </label>
-    
+
                     <div class="week-content">
                         <div class="day-container">
                             <input type="checkbox" id="day7" class="day-toggle">
@@ -208,14 +248,17 @@
                             <div class="day-content">
                                 <ol>
                                     <li>
-                                        DjangoGirls 튜토리얼 따라하기
-                                        <span class="assignment-status status-success">○</span>
+
+                                        <span th:text="${homework12.info.content}">   DjangoGirls 튜토리얼 따라하기</span>
+                                        <span th:if="${homework12.result == '성공'}" class="assignment-status status-success">○</span>
+                                        <span th:if="${homework12.result == '경고'}" class="assignment-status status-fail">X</span>
+                                        <span th:if="${homework12.result == '실패'}" class="assignment-status status-warning">△</span>
                                     </li>
                                 </ol>
                                 <label for="day7" class="close-btn">닫기</label>
                             </div>
                         </div>
-    
+
                         <div class="day-container">
                             <input type="checkbox" id="day8" class="day-toggle">
                             <div class="day-header">
@@ -228,14 +271,17 @@
                             <div class="day-content">
                                 <ol>
                                     <li>
-                                        "나만의 영화 기록 사이트" 제작
-                                        <span class="assignment-status status-success">○</span>
+
+                                        <span th:text="${homework13.info.content}">  "나만의 영화 기록 사이트" 제작</span>
+                                        <span th:if="${homework13.result == '성공'}" class="assignment-status status-success">○</span>
+                                        <span th:if="${homework13.result == '경고'}" class="assignment-status status-fail">X</span>
+                                        <span th:if="${homework13.result == '실패'}" class="assignment-status status-warning">△</span>
                                     </li>
                                 </ol>
                                 <label for="day8" class="close-btn">닫기</label>
                             </div>
                         </div>
-    
+
                         <div class="day-container">
                             <input type="checkbox" id="day9" class="day-toggle">
                             <div class="day-header">
@@ -248,12 +294,18 @@
                             <div class="day-content">
                                 <ol>
                                     <li>
-                                        ERD Cloud로 피로마켓 ERD 작성하기
-                                        <span class="assignment-status status-warning">△</span>
+
+                                        <span th:text="${homework14.info.content}"> ERD Cloud로 피로마켓 ERD 작성하기</span>
+                                        <span th:if="${homework14.result == '성공'}" class="assignment-status status-success">○</span>
+                                        <span th:if="${homework14.result == '경고'}" class="assignment-status status-fail">X</span>
+                                        <span th:if="${homework14.result == '실패'}" class="assignment-status status-warning">△</span>
                                     </li>
                                     <li>
-                                        Ajax 선행강의 수강하기
-                                        <span class="assignment-status status-warning">△</span>
+
+                                        <span th:text="${homework15.info.content}">    Ajax 선행강의 수강하기</span>
+                                        <span th:if="${homework15.result == '성공'}" class="assignment-status status-success">○</span>
+                                        <span th:if="${homework15.result == '경고'}" class="assignment-status status-fail">X</span>
+                                        <span th:if="${homework15.result == '실패'}" class="assignment-status status-warning">△</span>
                                     </li>
                                 </ol>
                                 <label for="day9" class="close-btn">닫기</label>
@@ -269,7 +321,7 @@
                         <span class="week-subject">장고 중급 / 장고 ORM / Ajax</span>
                         <span class="toggle-icon">▼</span>
                     </label>
-    
+
                     <div class="week-content">
                         <div class="day-container">
                             <input type="checkbox" id="day10" class="day-toggle">
@@ -283,14 +335,17 @@
                             <div class="day-content">
                                 <ol>
                                     <li>
-                                        "아이디어 관리 사이트" 제작
-                                        <span class="assignment-status status-success">○</span>
+
+                                        <span th:text="${homework16.info.content}">  "아이디어 관리 사이트" 제작</span>
+                                        <span th:if="${homework16.result == '성공'}" class="assignment-status status-success">○</span>
+                                        <span th:if="${homework16.result == '경고'}" class="assignment-status status-fail">X</span>
+                                        <span th:if="${homework16.result == '실패'}" class="assignment-status status-warning">△</span>
                                     </li>
                                 </ol>
                                 <label for="day10" class="close-btn">닫기</label>
                             </div>
                         </div>
-    
+
                         <div class="day-container">
                             <input type="checkbox" id="day11" class="day-toggle">
                             <div class="day-header">
@@ -303,14 +358,17 @@
                             <div class="day-content">
                                 <ol>
                                     <li>
-                                        "피로그래머 카드 게임" 제작
-                                        <span class="assignment-status status-success">○</span>
+
+                                        <span th:text="${homework17.info.content}">   "피로그래머 카드 게임" 제작</span>
+                                        <span th:if="${homework17.result == '성공'}" class="assignment-status status-success">○</span>
+                                        <span th:if="${homework17.result == '경고'}" class="assignment-status status-fail">X</span>
+                                        <span th:if="${homework17.result == '실패'}" class="assignment-status status-warning">△</span>
                                     </li>
                                 </ol>
                                 <label for="day11" class="close-btn">닫기</label>
                             </div>
                         </div>
-    
+
                         <div class="day-container">
                             <input type="checkbox" id="day12" class="day-toggle">
                             <div class="day-header">
@@ -323,8 +381,11 @@
                             <div class="day-content">
                                 <ol>
                                     <li>
-                                        Ajax를 사용한 "Pirostagram 사이트" 제작
-                                        <span class="assignment-status status-warning">△</span>
+
+                                        <span th:text="${homework18.info.content}">      Ajax를 사용한 "Pirostagram 사이트" 제작</span>
+                                        <span th:if="${homework18.result == '성공'}" class="assignment-status status-success">○</span>
+                                        <span th:if="${homework18.result == '경고'}" class="assignment-status status-fail">X</span>
+                                        <span th:if="${homework18.result == '실패'}" class="assignment-status status-warning">△</span>
                                     </li>
                                 </ol>
                                 <label for="day12" class="close-btn">닫기</label>
@@ -340,7 +401,7 @@
                         <span class="week-subject">배포 / 개인 아이디어 발표 / 최종 아이디어 발표 / 팀빌딩 및 MT</span>
                         <span class="toggle-icon">▼</span>
                     </label>
-    
+
                     <div class="week-content">
                         <div class="day-container">
                             <input type="checkbox" id="day13" class="day-toggle">
@@ -355,7 +416,7 @@
                                 <label for="day13" class="close-btn">닫기</label>
                             </div>
                         </div>
-    
+
                         <div class="day-container">
                             <input type="checkbox" id="day14" class="day-toggle">
                             <div class="day-header">
@@ -369,7 +430,7 @@
                                 <label for="day14" class="close-btn">닫기</label>
                             </div>
                         </div>
-    
+
                         <div class="day-container">
                             <input type="checkbox" id="day15" class="day-toggle">
                             <div class="day-header">

@@ -24,8 +24,31 @@ public class UserHomeworkController {
     public String getAdmin(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false)
                            Member loginMember, Model model) {
 
+        if(!loginMember.getRole().equals("USER")){
+            return "redirect:/";
+        }
         List<Board> memberHomework = homeworkRepository.findMemberHomework(loginMember);
-        model.addAttribute("homework",memberHomework);
+        model.addAttribute("member",loginMember);
+        model.addAttribute("homework1",memberHomework.get(0));
+        model.addAttribute("homework2",memberHomework.get(1));
+        model.addAttribute("homework3",memberHomework.get(2));
+        model.addAttribute("homework4",memberHomework.get(3));
+        model.addAttribute("homework5",memberHomework.get(4));
+        model.addAttribute("homework6",memberHomework.get(5));
+        model.addAttribute("homework7",memberHomework.get(6));
+        model.addAttribute("homework8",memberHomework.get(7));
+        model.addAttribute("homework9",memberHomework.get(8));
+        model.addAttribute("homework10",memberHomework.get(9));
+        model.addAttribute("homework11",memberHomework.get(10));
+        model.addAttribute("homework12",memberHomework.get(11));
+        model.addAttribute("homework13",memberHomework.get(12));
+        model.addAttribute("homework14",memberHomework.get(13));
+        model.addAttribute("homework15",memberHomework.get(14));
+        model.addAttribute("homework16",memberHomework.get(15));
+        model.addAttribute("homework17",memberHomework.get(16));
+        model.addAttribute("homework18",memberHomework.get(17));
+
+
         return "user/assignment_user";
     }
 }

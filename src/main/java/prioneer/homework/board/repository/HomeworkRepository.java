@@ -26,7 +26,7 @@ public class HomeworkRepository {
     }
 
     public List<Board> findMemberHomework(Member member){
-        return em.createQuery("select b from Board b where b.userMember.memberId= :id", Board.class)
+        return em.createQuery("select b from Board b where b.userMember.memberId= :id order by b.id desc", Board.class)
                 .setParameter("id",member.getMemberId())
                 .getResultList();
     }
