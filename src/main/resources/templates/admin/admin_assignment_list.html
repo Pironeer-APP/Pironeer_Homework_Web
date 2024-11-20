@@ -36,7 +36,12 @@
 
                         <div class="list-body" th:each="list :${memberList}">
                             <div class="member-item" >
-                                <button onclick="location.href='admin_assignment.html'" class="member-name-btn" th:text="${list.name}">이지현</button>
+                                <button
+                                        th:onclick="'location.href=\'/homework/\' + ' + ${list.memberId}"
+                                        th:text="${list.name}"
+                                        class="member-name-btn">
+                                </button>
+
                                 <form class="member-form" th:attr="data-id=${list.memberId}">
                                     <input type="number" name="deposit" th:value="${list.deposit}" class="member-input deposit-input"> 원
                                     <input type="number" name="shields" th:value="${list.depositDepend}" class="member-input shields-input"> 개
