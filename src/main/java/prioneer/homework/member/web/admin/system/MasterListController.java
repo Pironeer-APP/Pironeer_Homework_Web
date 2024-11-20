@@ -11,6 +11,7 @@ import prioneer.homework.member.domain.Member;
 import prioneer.homework.member.repository.MemberRepository;
 import prioneer.homework.member.service.admin.AdminMemberService;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -54,17 +55,18 @@ public class MasterListController {
 
     // preadmin 삭제
     @PostMapping("/system/master/{id}")
-    public String deletePreadmin(
-            Member member,
-            BindingResult bindingResult) {
+    public ResponseEntity<Map<String, Object>> deletePreadmin (@PathVariable("id") String id) {
+        Map<String, Object> response = new HashMap<>();
         try {
-            adminMemberService.deletePreadmin(member);
-
-        } catch (IllegalArgumentException e) {
-            bindingResult.reject("deletePreadminFail", "preadmin 삭제 중 오류 발생");
-
+            adminMemberService.deletePreadmin(id);
+            response.put("success", true);
+            response.put("message", "삭제가 완료되었습니다.");
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            response.put("success", false);
+            response.put("message", "삭제 중 오류 발생: " + e.getMessage());
+            return ResponseEntity.badRequest().body(response);
         }
-        return "redirect:/system/master/list";
     }
 
 
