@@ -20,7 +20,7 @@ import java.util.Optional;
 public class MemberRepository {
 
     private final EntityManager em;
-    private final AdminMemberService adminMemberService;
+
 
     // 회원 저장
     public void save(Member member){
@@ -32,6 +32,13 @@ public class MemberRepository {
         Member member1 = em.find(Member.class, member.getMemberId());
         member1.setDepositDepend(member.getDepositDepend());
         member1.setDeposit(member.getDeposit());
+    }
+
+
+    //보증금 업데이트
+    public void updateDeposit(Member member, Long money){
+        Member member1 = em.find(Member.class, member.getMemberId());
+        member1.setDeposit(money);
     }
 
     //회원 찾기

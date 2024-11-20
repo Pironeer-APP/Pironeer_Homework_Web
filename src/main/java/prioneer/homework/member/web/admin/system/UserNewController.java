@@ -8,7 +8,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import prioneer.homework.config.session.SessionConst;
 import prioneer.homework.member.domain.Member;
 import prioneer.homework.member.repository.MemberRepository;
 import prioneer.homework.member.service.admin.AdminMemberService;
@@ -24,7 +26,12 @@ public class UserNewController {
     private final AdminMemberService adminMemberService;
 
     @GetMapping("/system/user")
-    public String showNewUserForm(Model model) {
+    public String showNewUserForm(Model model, @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false)
+    Member loginMember) {
+
+        if (loginMember.getRole().equals("USER")) {
+            return "redirect:/";
+        }
         model.addAttribute("member", new Member());
         return "admin/admin_register";
     }

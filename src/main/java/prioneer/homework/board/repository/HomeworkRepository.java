@@ -47,8 +47,10 @@ public class HomeworkRepository {
                 .orElseThrow(() -> new IllegalArgumentException("과제를 찾을 수 없습니다"));
 
         homework.setResult(board.getResult());
-        homework.setComment(board.getComment());
         homework.setFlag(board.isFlag());
         homework.setAdminMember(adminMember);
+        homework.setDeposit(board.getDeposit());
+
+
     }
 }
