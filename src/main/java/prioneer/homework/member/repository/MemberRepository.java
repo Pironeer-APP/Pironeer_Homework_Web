@@ -20,7 +20,7 @@ import java.util.Optional;
 public class MemberRepository {
 
     private final EntityManager em;
-    private final AdminMemberService adminMemberService;
+
 
     // 회원 저장
     public void save(Member member){
@@ -29,15 +29,24 @@ public class MemberRepository {
 
     // 회원 업데이트
     public void update(Member member){
-        Member member1 = em.find(Member.class, member);
-        member1.setMemberId("da"); // 이렇게만 하면 업데이트 됨
+        log.info("zzz");
+        Member member1 = em.find(Member.class, member.getMemberId());
+        member1.setDepositDepend(member.getDepositDepend());
+
+    }
+
+
+    //보증금 업데이트
+    public void updateDeposit(Member member, Long money){
+        Member member1 = em.find(Member.class, member.getMemberId());
+        member1.setDeposit(money);
     }
 
     //회원 찾기
-    public Optional<Member> findMemberById(Member member) {
+    public Optional<Member> findMemberById(String memberId) {
         try {
             Member findMember = em.createQuery("select m from Member m where m.memberId = :id ", Member.class)
-                    .setParameter("id", member.getMemberId())
+                    .setParameter("id", memberId)
                     .getSingleResult();
             return Optional.of(findMember);
         } catch (NoResultException e) {
@@ -45,9 +54,17 @@ public class MemberRepository {
         }
     }
 
+
+    //회원삭제
+    public void remove(Member member){
+        em.remove(member);
+    }
+
+
     // 전화번호 정보로 회원 유무 찾기
     public boolean existsByPhone(String phone) {
         try {
+            log.info(phone);
             em.createQuery("select m from Member m where m.phone = :phone ", Member.class)
                     .setParameter("phone", phone)
                     .getSingleResult();
@@ -69,11 +86,38 @@ public class MemberRepository {
         }
     }
 
+    // 이름으로 회원 찾기
+    public Optional<Member> findByName(String name) {
+        try {
+            Member findMember = em.createQuery("select m from Member m where m.name = :name", Member.class)
+                    .setParameter("name", name)
+                    .getSingleResult();
+            return Optional.of(findMember);
+        } catch (NoResultException e) {
+            return Optional.empty();
+        }
+    }
+
     // 역할 정보로 회원들 찾기
     public List<Member> findByRole(String role) {
         try {
             List<Member> findMembers = em.createQuery("select m from Member m where m.role = :role ", Member.class)
                     .setParameter("role", role)
+                    .getResultList();
+            return findMembers;
+        } catch (NoResultException e) {
+            return new ArrayList<>();
+        }
+    }
+
+
+    public List<Member> findByRole2() {
+        try {
+            List<Member> findMembers = em.createQuery(
+                            "select m from Member m where m.role = :role OR m.role = :role2 " +
+                                    "order by case when m.role = 'PREADMIN' then 0 when m.role = 'ADMIN' then 1 else 2 end", Member.class)
+                    .setParameter("role", "ADMIN")
+                    .setParameter("role2", "PREADMIN")
                     .getResultList();
             return findMembers;
         } catch (NoResultException e) {
@@ -96,18 +140,10 @@ public class MemberRepository {
     }
 
     // admin으로 승격
-    public void updateToAdmin(Member member, String role) {
-        try {
-            Member preadminMember = findMemberById(member)
-                    .orElseThrow(() -> new IllegalStateException("회원을 찾을 수 없습니다."));
+    public void updateToAdmin(String memberId,String role) {
 
-            // member의 role이 preadmin인 경우만 가능
-            adminMemberService.validateRoleChange(preadminMember, role);
-
-            preadminMember.setRole(role);
-
-        } catch (Exception e) {
-            throw new IllegalStateException("권한 변경 중 오류 발생");
-        }
+        Member member = em.find(Member.class, memberId);
+        member.setRole(role);
+        log.info("ㅎㅇ");
     }
 }

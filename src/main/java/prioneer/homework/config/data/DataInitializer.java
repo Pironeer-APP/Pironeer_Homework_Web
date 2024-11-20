@@ -13,7 +13,7 @@ import prioneer.homework.member.repository.MemberRepository;
 import java.time.LocalDate;
 
 //초기 데이터 생성했으면 component 바로 주석처리 해주세요.
-//@Component
+@Component
 @RequiredArgsConstructor
 public class DataInitializer {
 
@@ -32,7 +32,7 @@ public class DataInitializer {
     @PostConstruct
     public void init() {
         initializeInfo();
-        initializeNewMember();
+        //initializeNewMember();
 
     }
 
@@ -55,27 +55,27 @@ public class DataInitializer {
     @PostConstruct
     public void initializeInfo() {
         // 데이터베이스 초기화를 위한 코드 작성
-        Info info1 = new Info("제로초27강");
-        Info info2 = new Info("깃허브클론코딩");
-        Info info3 = new Info("CSS반응형");
-        Info info4 = new Info("코딩도장20강");
-        Info info5 = new Info("팀플(ARSHA)");
+        Info info1 = new Info("제로초27강","1");
+        Info info2 = new Info("깃허브클론코딩","1");
+        Info info3 = new Info("CSS반응형","1");
+        Info info4 = new Info("코딩도장20강","1");
+        Info info5 = new Info("팀플(ARSHA)","1");
 
-        Info info6 = new Info("쇼핑몰 미니게임");
-        Info info7 = new Info("숫자야구");
-        Info info8 = new Info("JS 스톱워치");
-        Info info9 = new Info("코딩도장 심화");
-        Info info10 = new Info("파이썬 개인과제");
-        Info info11 = new Info("팀플(파이썬 술게임)");
+        Info info6 = new Info("쇼핑몰 미니게임","2");
+        Info info7 = new Info("숫자야구","2");
+        Info info8 = new Info("JS 스톱워치","2");
+        Info info9 = new Info("코딩도장 심화","2");
+        Info info10 = new Info("파이썬 개인과제","2");
+        Info info11 = new Info("팀플(파이썬 술게임)","2");
 
-        Info info12 = new Info("장고걸스");
-        Info info13 = new Info("나만의 영화");
-        Info info14 = new Info("ERD");
-        Info info15 = new Info("AJAX 선행강의");
+        Info info12 = new Info("장고걸스","3");
+        Info info13 = new Info("나만의 영화","3");
+        Info info14 = new Info("ERD","3");
+        Info info15 = new Info("AJAX 선행강의","3");
 
-        Info info16 = new Info("SWIDEA");
-        Info info17 = new Info("팀플(카드게임)");
-        Info info18 = new Info("AJAX");
+        Info info16 = new Info("SWIDEA","4");
+        Info info17 = new Info("팀플(카드게임)","4");
+        Info info18 = new Info("AJAX","4");
 
         infoRepository.save(info1);
         infoRepository.save(info2);

@@ -1,0 +1,169 @@
+.main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.manage-card {
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.manage-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.manage-title {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.manage-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.admin-list {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.list-header {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr 1fr;
+    padding: 15px 20px;
+    background-color: rgba(11, 236, 18, 0.1);
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.list-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-item {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr 1fr;
+    padding: 15px 20px;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+.admin-item:last-child {
+    border-bottom: none;
+}
+
+.admin-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.status-select {
+    width: 85%;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: #222;
+    color: var(--text-color);
+    border: 1px solid #333;
+}
+
+.status-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.delete-btn {
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 1px solid #ff4444;
+    color: #ff4444;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.edit-btn {
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 1px solid #0BEC12;
+    color: #0BEC12;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: #ff4444;
+    color: var(--primary-color);
+}
+
+.edit-btn:hover {
+    background-color: #0BEC12;
+    color: var(--bg-color);
+}
+
+.manage-footer {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.submit-btn {
+    font-family: "IBM Plex Sans KR", sans-serif;
+    padding: 15px 30px;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .manage-card {
+        padding: 20px;
+    }
+
+    .manage-title {
+        font-size: 1.6rem;
+    }
+
+    .list-header {
+        display: none;
+    }
+
+    .admin-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .list-header span:not(.header-name) {
+        display: none;
+    }
+
+    .admin-item {
+        padding: 15px;
+        border-bottom: 1px solid #333;
+    }
+
+    .submit-btn {
+        width: 100%;
+    }
+
+    .status-select {
+        width: 100%;
+    }
+}

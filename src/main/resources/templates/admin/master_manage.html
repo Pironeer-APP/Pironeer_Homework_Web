@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PiroCheck - Admin Management</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/master_manage.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&family=Poor+Story&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <a href="master_start.html" class="logo-link">
+            <h1 id="pirocheck" class="title">PiroCheck</h1>
+        </a>
+    </header>
+
+    <main class="main" role="main">
+        <div class="manage-card">
+            <div class="manage-header">
+                <h2 class="manage-title">관리자 권한 관리</h2>
+                <p class="manage-subtitle">운영진 권한을 설정하고 관리할 수 있습니다</p>
+            </div>
+
+            <div class="manage-content">
+                <div class="admin-list">
+                    <div class="list-header">
+                        <span class="header-name">이름</span>
+                        <span class="header-phone">전화번호</span>
+                        <span class="header-status">권한 설정</span>
+                        <span class="header-action">관리</span>
+                    </div>
+
+                    <div class="list-body" th:each="admin :${preAdminList}">
+                        <!-- 각 운영진 항목 -->
+
+                        <div class="admin-item" th:attr="data-id=${admin.memberId}">
+                            <span class="admin-name" th:text="${admin.name}">손관우</span>
+                            <span class="admin-phone" th:text="${admin.phone}">010-8648-1730</span>
+                            <div class="admin-status">
+                                <select class="status-select" name="role" id="role">
+                                    <option value="PREADMIN" th:selected="${admin.role == 'PREADMIN'}">Pre-Admin</option>
+                                    <option value="ADMIN" th:selected="${admin.role == 'ADMIN'}">Admin</option>
+                                </select>
+
+                            </div>
+                            <div class="admin-action">
+                                <button class="edit-btn">수정</button>
+                                <button class="delete-btn" onclick="deletePreadmin(this)">삭제</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="manage-footer">
+
+            </div>
+        </div>
+    </main>
+</div>
+<script>
+    function deletePreadmin(button) {
+        // 버튼의 부모 요소인 '.admin-item'에서 data-id 가져오기
+        const adminItem = button.closest('.admin-item'); // 부모 요소 찾기
+        const memberId = adminItem.getAttribute('data-id'); // data-id 속성 가져오기
+
+        if (confirm('정말 삭제하시겠습니까?')) {
+            fetch(`/system/master/${memberId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('삭제 중 오류가 발생했습니다.');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        alert('삭제 완료');
+                        adminItem.remove(); // 삭제 후 DOM에서 제거
+                    } else {
+                        alert(data.message || '삭제 실패');
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert('삭제 요청 실패');
+                });
+        }
+    }
+
+</script>
+
+<script>
+    document.querySelectorAll('.edit-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            // Get the memberId from the closest parent div with class 'admin-item'
+            const memberId2 = this.closest('.admin-item').getAttribute('data-id');
+
+            // Get the selected role value
+            const selectedRole = this.closest('.admin-item').querySelector('.status-select').value;
+
+            console.log(memberId2);
+
+            // Spring 컨트롤러에 요청 보내기
+            fetch(`/system/master/updateadmin/${memberId2}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ role: selectedRole }) // role을 JSON 형태로 전달
+            })
+                .then(response => {
+                    if (response.redirected) {
+                        // Spring에서 리다이렉트를 처리하는 경우, 새 페이지로 이동
+                        window.location.href = response.url;
+                    } else {
+                        return response.json(); // JSON 응답 처리
+                    }
+                })
+                .then(data => {
+                    if (data && data.success) {
+                        alert('등급이 바꼈어요!');
+                    } else if (data && data.error) {
+                        alert('Error: ' + data.error);
+                    }
+                });
+        });
+    });
+
+
+</script>
+</body>
+</html>

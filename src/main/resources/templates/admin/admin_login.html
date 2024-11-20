@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인 - PiroCheck</title>
+    <title>PiroCheck - Admin Login</title>
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/admin_login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&family=Poor+Story&display=swap" rel="stylesheet">
@@ -13,13 +13,15 @@
 <body>
     <div class="container">
         <header class="header">
-            <a href="home_loginbefore.html" class="logo-link">
-                <h1 class="title">PiroCheck</h1>
+            <a href="admin_home_loginbefore.html" class="logo-link">
+                <h1 id="pirocheck" class="title">PiroCheck</h1>
             </a>
         </header>
-        <main class="main">
+
+        <main class="main" role="main">
             <div class="login-card">
-                <h2 class="login-title">로그인</h2>
+                <h2 id="로그인" class="login-title">운영진 로그인</h2>
+
                 <form class="login-form" th:object="${member}" method="post">
                     <div th:if="${#fields.hasGlobalErrors()}" style="text-align: center">
                         <p class="field-error" style="color:red;" th:each="err : ${#fields.globalErrors()}"
@@ -27,17 +29,23 @@
                     </div>
                     <div class="form-group">
                         <label for="name">이름</label>
-                        <input type="text" id="name" name="name"
-                               th:field="*{name}"
-                               required>
+                        <input type="text" id="name" name="name" required th:field="*{name}">
                     </div>
+
                     <div class="form-group">
                         <label for="phone">전화번호</label>
-                        <input type="tel" id="phone" name="phone"
-                               th:field="*{phone}"
-                               required>
+                        <input type="tel" id="phone" name="phone" th:field="*{phone}" required >
                     </div>
-                    <button type="submit" class="btn">로그인</button>
+
+                    <div class="form-group">
+                        <label for="password">비밀번호</label>
+                        <input type="password" id="password" name="password" th:field="*{password}" required>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="submit" class="btn">로그인</button>
+                        <a href="/system/join" class="btn signup-btn">회원가입</a>
+                    </div>
                 </form>
             </div>
         </main>
