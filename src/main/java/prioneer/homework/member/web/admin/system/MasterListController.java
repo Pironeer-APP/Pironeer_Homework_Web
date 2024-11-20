@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import prioneer.homework.config.session.SessionConst;
 import prioneer.homework.member.domain.Member;
 import prioneer.homework.member.repository.MemberRepository;
 import prioneer.homework.member.service.admin.AdminMemberService;
@@ -28,7 +29,15 @@ public class MasterListController {
 
     // 관리자 신청 확인 명단 페이지를 보여줌
     @GetMapping("/system/master/list")
-    public String masterList(Model model) {
+    public String masterList(Model model, @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false)
+    Member loginMember) {
+
+        if (loginMember.getRole().equals("USER")) {
+            return "redirect:/";
+        }
+        if (loginMember.getRole().equals("ADMIN")) {
+            return "redirect:/system";
+        }
         List<Member> preAdminList = adminMemberService.getPreadminList();
         model.addAttribute("preAdminList", preAdminList);
         return "admin/master_manage";

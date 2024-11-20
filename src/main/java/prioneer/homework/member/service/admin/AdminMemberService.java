@@ -154,7 +154,8 @@ public class AdminMemberService {
                     board.setUserMember(member);
                     board.setInfo(f_info);
                     board.setFlag(false);
-                    board.setResult("O");
+                    board.setResult("성공");
+                    board.setDeposit(0);
                     homeworkRepository.save(board);
 
                 }

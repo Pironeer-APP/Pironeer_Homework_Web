@@ -25,7 +25,7 @@ public class UserHomeworkController {
                            Member loginMember, Model model) {
 
         if(!loginMember.getRole().equals("USER")){
-            return "redirect:/";
+            return "redirect:/system";
         }
         List<Board> memberHomework = homeworkRepository.findMemberHomework(loginMember);
         model.addAttribute("member",loginMember);
@@ -49,6 +49,12 @@ public class UserHomeworkController {
         model.addAttribute("homework18",memberHomework.get(17));
 
 
+        int sum=0;
+        for(int i=0; i<18; i++){
+            sum+=memberHomework.get(i).getDeposit();
+        }
+
+        model.addAttribute("sum",sum);
         return "user/assignment_user";
     }
 }

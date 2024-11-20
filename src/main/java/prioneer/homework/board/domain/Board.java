@@ -32,8 +32,8 @@ public class Board {
     @JoinColumn(name = "info_id")
     private Info info;
 
-    // 과제 결과 커멘트 - 관리자가 달고 22기 부원들이 볼 수 있음
-    private String comment;
+    // 각각의 과제 보증금 멤버에다 넣을려 했는데 복잡해서 여기다 하는게 나을듯
+    private int deposit;
 
     // 과제 결과 (통과, 미흡, 불성실) - 관리자가 달고 22기 부원들이 볼 수 있음
     private String result;

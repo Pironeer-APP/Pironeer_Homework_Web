@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PiroCheck - Assignment Management</title>
-    <link rel="stylesheet" href="../../static/css/style.css">
-    <link rel="stylesheet" href="../../static/css/assignment_admin.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/assignment_admin.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&family=Poor+Story&display=swap" rel="stylesheet">
@@ -21,15 +21,15 @@
         <main class="main" role="main">
             <div class="user-info-card">
                 <div class="user-info">
-                    <h2 class="user-name">이지현님</h2>
+                    <h2 class="user-name" th:text="${member.name}">이지현님</h2>
                     <div class="info-details">
                         <div class="deposit-info">
                             <span class="deposit-label">보증금 현황</span>
-                            <span class="deposit-amount">30,000원</span>
+                            <span class="deposit-amount" th:text="${sum}">30,000원</span>
                         </div>
                         <div class="shield-info">
                             <span class="shield-label">방어권</span>
-                            <span class="shield-amount">2개</span>
+                            <span class="shield-amount" th:text="${member.depositDepend}">2개</span>
                         </div>
                     </div>
                 </div>
@@ -62,31 +62,29 @@
                             <div class="day-content">
                                 <ol>
                                     <li>
-                                        <form action="/submit-assignment" method="post" class="assignment-form">
-                                            <span>제로초 HTML/CSS/Flex/Grid 27강(3-9강)까지 수강하고 커밋</span>
+                                        <form  method="post" class="assignment-form" th:object="${homework1}">
+                                            <span th:text="${homework1.info}">제로초 HTML/CSS/Flex/Grid 27강(3-9강)까지 수강하고 커밋</span>
                                             <div class="assignment-control">
-                                                <select name="status" class="status-select">
-                                                    <option value="">미평가</option>
+                                                <select  th:field="*{result}" class="status-select">
                                                     <option value="success">성공</option>
                                                     <option value="warning">경고</option>
                                                     <option value="fail">실패</option>
                                                 </select>
-                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <input type="checkbox" th:field="*{flag}" class="visibility-checkbox">
                                                 <button type="submit" class="edit-btn">수정</button>
                                             </div>
                                         </form>
                                     </li>
                                     <li>
-                                        <form action="/submit-assignment" method="post" class="assignment-form">
-                                            <span>깃허브 사이트 구현하고 커밋</span>
+                                        <form method="post" class="assignment-form" th:object="${homework2}">
+                                            <span th:text="${homework2.info}">깃허브 사이트 구현하고 커밋</span>
                                             <div class="assignment-control">
-                                                <select name="status" class="status-select">
-                                                    <option value="">미평가</option>
+                                                <select  th:field="*{result}" class="status-select">
                                                     <option value="success">성공</option>
                                                     <option value="warning">경고</option>
                                                     <option value="fail">실패</option>
                                                 </select>
-                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <input type="checkbox" th:field="*{flag}" class="visibility-checkbox">
                                                 <button type="submit" class="edit-btn">수정</button>
                                             </div>
                                         </form>
@@ -112,31 +110,29 @@
                             <div class="day-content">
                                 <ol>
                                     <li>
-                                        <form action="/submit-assignment" method="post" class="assignment-form">
-                                            <span>파이썬 코딩도장 20강까지 수강 및 퀴즈/심사문제 이미지 파일 커밋</span>
+                                        <form method="post" class="assignment-form" th:object="${homework3}">
+                                            <span th:text="${homework3.info}">깃허브 사이트 구현하고 커밋</span>
                                             <div class="assignment-control">
-                                                <select name="status" class="status-select">
-                                                    <option value="">미평가</option>
+                                                <select  th:field="*{result}" class="status-select">
                                                     <option value="success">성공</option>
                                                     <option value="warning">경고</option>
                                                     <option value="fail">실패</option>
                                                 </select>
-                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <input type="checkbox" th:field="*{flag}" class="visibility-checkbox">
                                                 <button type="submit" class="edit-btn">수정</button>
                                             </div>
                                         </form>
                                     </li>
                                     <li>
-                                        <form action="/submit-assignment" method="post" class="assignment-form">
-                                            <span>과제 설명 노션을 참고하여 피로그래밍 홈페이지 만들고 커밋</span>
+                                        <form method="post" class="assignment-form" th:object="${homework4}">
+                                            <span th:text="${homework4.info}">깃허브 사이트 구현하고 커밋</span>
                                             <div class="assignment-control">
-                                                <select name="status" class="status-select">
-                                                    <option value="">미평가</option>
+                                                <select  th:field="*{result}" class="status-select">
                                                     <option value="success">성공</option>
                                                     <option value="warning">경고</option>
                                                     <option value="fail">실패</option>
                                                 </select>
-                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <input type="checkbox" th:field="*{flag}" class="visibility-checkbox">
                                                 <button type="submit" class="edit-btn">수정</button>
                                             </div>
                                         </form>
@@ -162,16 +158,15 @@
                             <div class="day-content">
                                 <ol>
                                     <li>
-                                        <form action="/submit-assignment" method="post" class="assignment-form">
-                                            <span>HTML/CSS를 이용한 Arsha 페이지 전체 클론코딩</span>
+                                        <form method="post" class="assignment-form" th:object="${homework5}">
+                                            <span th:text="${homework5.info}">깃허브 사이트 구현하고 커밋</span>
                                             <div class="assignment-control">
-                                                <select name="status" class="status-select">
-                                                    <option value="">미평가</option>
+                                                <select  th:field="*{result}" class="status-select">
                                                     <option value="success">성공</option>
                                                     <option value="warning">경고</option>
                                                     <option value="fail">실패</option>
                                                 </select>
-                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <input type="checkbox" th:field="*{flag}" class="visibility-checkbox">
                                                 <button type="submit" class="edit-btn">수정</button>
                                             </div>
                                         </form>
@@ -209,31 +204,29 @@
                             <div class="day-content">
                                 <ol>
                                     <li>
-                                        <form action="/submit-assignment" method="post" class="assignment-form">
-                                            <span>드림코딩 아카데미 사이트에서 '쇼핑몰 미니게임 & 코드 리뷰' 강의를 챕터 1까지 수강하고 커밋</span>
+                                        <form method="post" class="assignment-form" th:object="${homework6}">
+                                            <span th:text="${homework6.info}">깃허브 사이트 구현하고 커밋</span>
                                             <div class="assignment-control">
-                                                <select name="status" class="status-select">
-                                                    <option value="">미평가</option>
+                                                <select  th:field="*{result}" class="status-select">
                                                     <option value="success">성공</option>
                                                     <option value="warning">경고</option>
                                                     <option value="fail">실패</option>
                                                 </select>
-                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <input type="checkbox" th:field="*{flag}" class="visibility-checkbox">
                                                 <button type="submit" class="edit-btn">수정</button>
                                             </div>
                                         </form>
                                     </li>
                                     <li>
-                                        <form action="/submit-assignment" method="post" class="assignment-form">
-                                            <span>숫자야구 게임</span>
+                                        <form method="post" class="assignment-form" th:object="${homework7}">
+                                            <span th:text="${homework7.info}">깃허브 사이트 구현하고 커밋</span>
                                             <div class="assignment-control">
-                                                <select name="status" class="status-select">
-                                                    <option value="">미평가</option>
+                                                <select  th:field="*{result}" class="status-select">
                                                     <option value="success">성공</option>
                                                     <option value="warning">경고</option>
                                                     <option value="fail">실패</option>
                                                 </select>
-                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <input type="checkbox" th:field="*{flag}" class="visibility-checkbox">
                                                 <button type="submit" class="edit-btn">수정</button>
                                             </div>
                                         </form>
@@ -258,36 +251,50 @@
 
                             <div class="day-content">
                                 <ol>
+
                                     <li>
-                                        <form action="/submit-assignment" method="post" class="assignment-form">
-                                            <span>파이썬 개인 과제</span>
+                                        <form method="post" class="assignment-form" th:object="${homework8}">
+                                            <span th:text="${homework8.info}">깃허브 사이트 구현하고 커밋</span>
                                             <div class="assignment-control">
-                                                <select name="status" class="status-select">
-                                                    <option value="">미평가</option>
+                                                <select  th:field="*{result}" class="status-select">
                                                     <option value="success">성공</option>
                                                     <option value="warning">경고</option>
                                                     <option value="fail">실패</option>
                                                 </select>
-                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <input type="checkbox" th:field="*{flag}" class="visibility-checkbox">
                                                 <button type="submit" class="edit-btn">수정</button>
                                             </div>
                                         </form>
                                     </li>
                                     <li>
-                                        <form action="/submit-assignment" method="post" class="assignment-form">
-                                            <span>Javascript 스톱워치 과제</span>
+                                        <form method="post" class="assignment-form" th:object="${homework9}">
+                                            <span th:text="${homework9.info}">깃허브 사이트 구현하고 커밋</span>
                                             <div class="assignment-control">
-                                                <select name="status" class="status-select">
-                                                    <option value="">미평가</option>
+                                                <select  th:field="*{result}" class="status-select">
                                                     <option value="success">성공</option>
                                                     <option value="warning">경고</option>
                                                     <option value="fail">실패</option>
                                                 </select>
-                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <input type="checkbox" th:field="*{flag}" class="visibility-checkbox">
                                                 <button type="submit" class="edit-btn">수정</button>
                                             </div>
                                         </form>
                                     </li>
+                                    <li>
+                                        <form method="post" class="assignment-form" th:object="${homework10}">
+                                            <span th:text="${homework10.info}">깃허브 사이트 구현하고 커밋</span>
+                                            <div class="assignment-control">
+                                                <select  th:field="*{result}" class="status-select">
+                                                    <option value="success">성공</option>
+                                                    <option value="warning">경고</option>
+                                                    <option value="fail">실패</option>
+                                                </select>
+                                                <input type="checkbox" th:field="*{flag}" class="visibility-checkbox">
+                                                <button type="submit" class="edit-btn">수정</button>
+                                            </div>
+                                        </form>
+                                    </li>
+
                                 </ol>
                                 <button type="button" class="close-btn" onclick="document.getElementById('day2-2').checked = false">닫기</button>
                             </div>
@@ -309,19 +316,20 @@
                             <div class="day-content">
                                 <ol>
                                     <li>
-                                        <form action="/submit-assignment" method="post" class="assignment-form">
-                                            <span>python 술 game 만들기</span>
+
+                                        <form method="post" class="assignment-form" th:object="${homework11}">
+                                            <span th:text="${homework11.info}">깃허브 사이트 구현하고 커밋</span>
                                             <div class="assignment-control">
-                                                <select name="status" class="status-select">
-                                                    <option value="">미평가</option>
+                                                <select  th:field="*{result}" class="status-select">
                                                     <option value="success">성공</option>
                                                     <option value="warning">경고</option>
                                                     <option value="fail">실패</option>
                                                 </select>
-                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <input type="checkbox" th:field="*{flag}" class="visibility-checkbox">
                                                 <button type="submit" class="edit-btn">수정</button>
                                             </div>
                                         </form>
+
                                     </li>
                                 </ol>
                                 <button type="button" class="close-btn" onclick="document.getElementById('day2-3').checked = false">닫기</button>
@@ -356,19 +364,20 @@
                             <div class="day-content">
                                 <ol>
                                     <li>
-                                        <form action="/submit-assignment" method="post" class="assignment-form">
-                                            <span>DjangoGirls 튜토리얼 따라하기</span>
+
+                                        <form method="post" class="assignment-form" th:object="${homework12}">
+                                            <span th:text="${homework12.info}">깃허브 사이트 구현하고 커밋</span>
                                             <div class="assignment-control">
-                                                <select name="status" class="status-select">
-                                                    <option value="">미평가</option>
+                                                <select  th:field="*{result}" class="status-select">
                                                     <option value="success">성공</option>
                                                     <option value="warning">경고</option>
                                                     <option value="fail">실패</option>
                                                 </select>
-                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <input type="checkbox" th:field="*{flag}" class="visibility-checkbox">
                                                 <button type="submit" class="edit-btn">수정</button>
                                             </div>
                                         </form>
+
                                     </li>
                                 </ol>
                                 <button type="button" class="close-btn" onclick="document.getElementById('day3-1').checked = false">닫기</button>
@@ -391,19 +400,20 @@
                             <div class="day-content">
                                 <ol>
                                     <li>
-                                        <form action="/submit-assignment" method="post" class="assignment-form">
-                                            <span>"나만의 영화 기록 사이트" 제작</span>
+
+                                        <form method="post" class="assignment-form" th:object="${homework13}">
+                                            <span th:text="${homework13.info}">깃허브 사이트 구현하고 커밋</span>
                                             <div class="assignment-control">
-                                                <select name="status" class="status-select">
-                                                    <option value="">미평가</option>
+                                                <select  th:field="*{result}" class="status-select">
                                                     <option value="success">성공</option>
                                                     <option value="warning">경고</option>
                                                     <option value="fail">실패</option>
                                                 </select>
-                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <input type="checkbox" th:field="*{flag}" class="visibility-checkbox">
                                                 <button type="submit" class="edit-btn">수정</button>
                                             </div>
                                         </form>
+
                                     </li>
                                 </ol>
                                 <button type="button" class="close-btn" onclick="document.getElementById('day3-2').checked = false">닫기</button>
@@ -426,31 +436,29 @@
                             <div class="day-content">
                                 <ol>
                                     <li>
-                                        <form action="/submit-assignment" method="post" class="assignment-form">
-                                            <span>ERD Cloud로 피로마켓 ERD 작성하기</span>
+                                        <form method="post" class="assignment-form" th:object="${homework14}">
+                                            <span th:text="${homework14.info}">깃허브 사이트 구현하고 커밋</span>
                                             <div class="assignment-control">
-                                                <select name="status" class="status-select">
-                                                    <option value="">미평가</option>
+                                                <select  th:field="*{result}" class="status-select">
                                                     <option value="success">성공</option>
                                                     <option value="warning">경고</option>
                                                     <option value="fail">실패</option>
                                                 </select>
-                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <input type="checkbox" th:field="*{flag}" class="visibility-checkbox">
                                                 <button type="submit" class="edit-btn">수정</button>
                                             </div>
                                         </form>
                                     </li>
                                     <li>
-                                        <form action="/submit-assignment" method="post" class="assignment-form">
-                                            <span>Ajax 선행강의 수강하기</span>
+                                        <form method="post" class="assignment-form" th:object="${homework15}">
+                                            <span th:text="${homework15.info}">깃허브 사이트 구현하고 커밋</span>
                                             <div class="assignment-control">
-                                                <select name="status" class="status-select">
-                                                    <option value="">미평가</option>
+                                                <select  th:field="*{result}" class="status-select">
                                                     <option value="success">성공</option>
                                                     <option value="warning">경고</option>
                                                     <option value="fail">실패</option>
                                                 </select>
-                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <input type="checkbox" th:field="*{flag}" class="visibility-checkbox">
                                                 <button type="submit" class="edit-btn">수정</button>
                                             </div>
                                         </form>
@@ -488,16 +496,15 @@
                             <div class="day-content">
                                 <ol>
                                     <li>
-                                        <form action="/submit-assignment" method="post" class="assignment-form">
-                                            <span>"아이디어 관리 사이트" 제작</span>
+                                        <form method="post" class="assignment-form" th:object="${homework16}">
+                                            <span th:text="${homework16.info}">깃허브 사이트 구현하고 커밋</span>
                                             <div class="assignment-control">
-                                                <select name="status" class="status-select">
-                                                    <option value="">미평가</option>
+                                                <select  th:field="*{result}" class="status-select">
                                                     <option value="success">성공</option>
                                                     <option value="warning">경고</option>
                                                     <option value="fail">실패</option>
                                                 </select>
-                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <input type="checkbox" th:field="*{flag}" class="visibility-checkbox">
                                                 <button type="submit" class="edit-btn">수정</button>
                                             </div>
                                         </form>
@@ -523,16 +530,15 @@
                             <div class="day-content">
                                 <ol>
                                     <li>
-                                        <form action="/submit-assignment" method="post" class="assignment-form">
-                                            <span>"피로그래머 카드 게임" 제작</span>
+                                        <form method="post" class="assignment-form" th:object="${homework17}">
+                                            <span th:text="${homework17.info}">깃허브 사이트 구현하고 커밋</span>
                                             <div class="assignment-control">
-                                                <select name="status" class="status-select">
-                                                    <option value="">미평가</option>
+                                                <select  th:field="*{result}" class="status-select">
                                                     <option value="success">성공</option>
                                                     <option value="warning">경고</option>
                                                     <option value="fail">실패</option>
                                                 </select>
-                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <input type="checkbox" th:field="*{flag}" class="visibility-checkbox">
                                                 <button type="submit" class="edit-btn">수정</button>
                                             </div>
                                         </form>
@@ -558,16 +564,15 @@
                             <div class="day-content">
                                 <ol>
                                     <li>
-                                        <form action="/submit-assignment" method="post" class="assignment-form">
-                                            <span>Ajax를 사용한 "Pirostagram 사이트" 제작</span>
+                                        <form method="post" class="assignment-form" th:object="${homework18}">
+                                            <span th:text="${homework18.info}">깃허브 사이트 구현하고 커밋</span>
                                             <div class="assignment-control">
-                                                <select name="status" class="status-select">
-                                                    <option value="">미평가</option>
+                                                <select  th:field="*{result}" class="status-select">
                                                     <option value="success">성공</option>
                                                     <option value="warning">경고</option>
                                                     <option value="fail">실패</option>
                                                 </select>
-                                                <input type="checkbox" name="visible" class="visibility-checkbox">
+                                                <input type="checkbox" th:field="*{flag}" class="visibility-checkbox">
                                                 <button type="submit" class="edit-btn">수정</button>
                                             </div>
                                         </form>
