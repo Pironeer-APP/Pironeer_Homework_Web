@@ -26,12 +26,14 @@ public class Info {
     @Lob // 과제 제목들!! 내용은 필요없을 듯 어짜피 민수가 카톡으로 공지해주니깐!
     private String content;
 
+    private String week;
+
 
     public Info(){
 
     }
 
-    public Info(String content) {
-        this.content = content;
+    public Info(String content,String week) {
+        this.content = content; this.week=week;
     }
 }
