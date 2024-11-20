@@ -46,7 +46,7 @@ public class UserNewController {
             // 성공
             adminMemberService.registerNewMember(member);
 
-            return "redirect:/system/user";
+            return "redirect:/system/user?success=true";
 
         } catch (IllegalStateException e) {
             // 에러 발생
