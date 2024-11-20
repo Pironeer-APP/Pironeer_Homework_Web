@@ -53,15 +53,15 @@
                                         <span th:text="${homework1.info.content}">제로초 HTML/CSS/Flex/Grid 27강(3-9강)까지 수강하고 커밋 </span>
 
                                         <span th:if="${homework1.result == '성공'}" class="assignment-status status-success">○</span>
-                                        <span th:if="${homework1.result == '미흡'}" class="assignment-status status-fail">X</span>
-                                        <span th:if="${homework1.result == '실패'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework1.result == '미흡'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework1.result == '실패'}" class="assignment-status status-fail">x</span>
 
                                     </li>
                                     <li th:if="${homework2.flag}">
                                         <span th:text="${homework2.info.content}">깃허브 사이트 구현하고 커밋 </span>
                                         <span th:if="${homework2.result == '성공'}" class="assignment-status status-success">○</span>
-                                        <span th:if="${homework2.result == '미흡'}" class="assignment-status status-fail">△</span>
-                                        <span th:if="${homework2.result == '실패'}" class="assignment-status status-warning">X</span>
+                                        <span th:if="${homework2.result == '미흡'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework2.result == '실패'}" class="assignment-status status-fail">x</span>
                                     </li>
                                 </ol>
                                 <label for="day1" class="close-btn">닫기</label>
@@ -84,16 +84,16 @@
 
                                         <span th:text="${homework3.info.content}"> 과제 설명 노션을 참고하여 피로그래밍 홈페이지 만들고 커밋 </span>
                                         <span th:if="${homework3.result == '성공'}" class="assignment-status status-success">○</span>
-                                        <span th:if="${homework3.result == '미흡'}" class="assignment-status status-fail">X</span>
-                                        <span th:if="${homework3.result == '실패'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework3.result == '미흡'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework3.result == '실패'}" class="assignment-status status-fail">x</span>
                                     </li>
 
                                     <li th:if="${homework4.flag}">
 
                                         <span th:text="${homework4.info.content}">    파이썬 코딩도장 20강까지 수강 및 퀴즈/심사문제 이미지 파일 커밋 </span>
                                         <span th:if="${homework4.result == '성공'}" class="assignment-status status-success">○</span>
-                                        <span th:if="${homework4.result == '미흡'}" class="assignment-status status-fail">X</span>
-                                        <span th:if="${homework4.result == '실패'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework4.result == '미흡'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework4.result == '실패'}" class="assignment-status status-fail">x</span>
                                     </li>
                                 </ol>
                                 <label for="day2" class="close-btn">닫기</label>
@@ -115,8 +115,8 @@
 
                                         <span th:text="${homework5.info.content}">HTML/CSS를 이용한 Arsha 페이지 전체 클론코딩 </span>
                                         <span th:if="${homework5.result == '성공'}" class="assignment-status status-success">○</span>
-                                        <span th:if="${homework5.result == '미흡'}" class="assignment-status status-fail">X</span>
-                                        <span th:if="${homework5.result == '실패'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework5.result == '미흡'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework5.result == '실패'}" class="assignment-status status-fail">x</span>
                                     </li>
                                 </ol>
                                 <label for="day3" class="close-btn">닫기</label>
@@ -148,15 +148,15 @@
                                     <li th:if="${homework6.flag}">
                                         <span th:text="${homework6.info.content}">드림코딩 아카데미 사이트에서 ‘쇼핑몰 미니게임 & 코드 리뷰’ 강의를 챕터 1까지 수강하고 커밋 </span>
                                         <span th:if="${homework6.result == '성공'}" class="assignment-status status-success">○</span>
-                                        <span th:if="${homework6.result == '미흡'}" class="assignment-status status-fail">X</span>
-                                        <span th:if="${homework6.result == '실패'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework6.result == '미흡'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework6.result == '실패'}" class="assignment-status status-fail">x</span>
                                     </li>
                                     <li th:if="${homework7.flag}">
 
                                         <span th:text="${homework7.info.content}">숫자야구 게임 </span>
                                         <span th:if="${homework7.result == '성공'}" class="assignment-status status-success">○</span>
-                                        <span th:if="${homework7.result == '미흡'}" class="assignment-status status-fail">X</span>
-                                        <span th:if="${homework7.result == '실패'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework7.result == '미흡'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework7.result == '실패'}" class="assignment-status status-fail">x</span>
                                     </li>
                                 </ol>
                                 <label for="day4" class="close-btn">닫기</label>
@@ -178,23 +178,23 @@
                                     <li th:if="${homework8.flag}">
                                         <span th:text="${homework8.info.content}"> Javascript 스톱워치 과제 </span>
                                         <span th:if="${homework8.result == '성공'}" class="assignment-status status-success">○</span>
-                                        <span th:if="${homework8.result == '미흡'}" class="assignment-status status-fail">X</span>
-                                        <span th:if="${homework8.result == '실패'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework8.result == '미흡'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework8.result == '실패'}" class="assignment-status status-fail">x</span>
                                     </li>
 
                                     <li th:if="${homework9.flag}">
 
                                         <span th:text="${homework9.info.content}"> 코딩 도장 심화</span>
                                         <span th:if="${homework9.result == '성공'}" class="assignment-status status-success">○</span>
-                                        <span th:if="${homework9.result == '미흡'}" class="assignment-status status-fail">X</span>
-                                        <span th:if="${homework9.result == '실패'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework9.result == '미흡'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework.result == '실패'}" class="assignment-status status-fail">x</span>
                                     </li>
                                     <li th:if="${homework10.flag}">
 
                                         <span th:text="${homework10.info.content}"> 파이썬 개인 과제</span>
                                         <span th:if="${homework10.result == '성공'}" class="assignment-status status-success">○</span>
-                                        <span th:if="${homework10.result == '미흡'}" class="assignment-status status-fail">X</span>
-                                        <span th:if="${homework10.result == '실패'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework10.result == '미흡'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework10.result == '실패'}" class="assignment-status status-fail">x</span>
                                     </li>
 
                                 </ol>
@@ -217,8 +217,8 @@
 
                                         <span th:text="${homework11.info.content}">  python 술 game 만들기</span>
                                         <span th:if="${homework11.result == '성공'}" class="assignment-status status-success">○</span>
-                                        <span th:if="${homework11.result == '미흡'}" class="assignment-status status-fail">X</span>
-                                        <span th:if="${homework11.result == '실패'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework11.result == '미흡'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework11.result == '실패'}" class="assignment-status status-fail">x</span>
                                     </li>
                                 </ol>
                                 <label for="day6" class="close-btn">닫기</label>
@@ -251,8 +251,8 @@
 
                                         <span th:text="${homework12.info.content}">   DjangoGirls 튜토리얼 따라하기</span>
                                         <span th:if="${homework12.result == '성공'}" class="assignment-status status-success">○</span>
-                                        <span th:if="${homework12.result == '미흡'}" class="assignment-status status-fail">X</span>
-                                        <span th:if="${homework12.result == '실패'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework12.result == '미흡'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework12.result == '실패'}" class="assignment-status status-fail">x</span>
                                     </li>
                                 </ol>
                                 <label for="day7" class="close-btn">닫기</label>
@@ -274,8 +274,8 @@
 
                                         <span th:text="${homework13.info.content}">  "나만의 영화 기록 사이트" 제작</span>
                                         <span th:if="${homework13.result == '성공'}" class="assignment-status status-success">○</span>
-                                        <span th:if="${homework13.result == '미흡'}" class="assignment-status status-fail">X</span>
-                                        <span th:if="${homework13.result == '실패'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework13.result == '미흡'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework13.result == '실패'}" class="assignment-status status-fail">x</span>
                                     </li>
                                 </ol>
                                 <label for="day8" class="close-btn">닫기</label>
@@ -297,15 +297,15 @@
 
                                         <span th:text="${homework14.info.content}"> ERD Cloud로 피로마켓 ERD 작성하기</span>
                                         <span th:if="${homework14.result == '성공'}" class="assignment-status status-success">○</span>
-                                        <span th:if="${homework14.result == '미흡'}" class="assignment-status status-fail">X</span>
-                                        <span th:if="${homework14.result == '실패'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework14.result == '미흡'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework14.result == '실패'}" class="assignment-status status-fail">x</span>
                                     </li>
                                     <li th:if="${homework15.flag}">
 
                                         <span th:text="${homework15.info.content}">    Ajax 선행강의 수강하기</span>
                                         <span th:if="${homework15.result == '성공'}" class="assignment-status status-success">○</span>
-                                        <span th:if="${homework15.result == '미흡'}" class="assignment-status status-fail">X</span>
-                                        <span th:if="${homework15.result == '실패'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework15.result == '미흡'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework15.result == '실패'}" class="assignment-status status-fail">x</span>
                                     </li>
                                 </ol>
                                 <label for="day9" class="close-btn">닫기</label>
@@ -338,8 +338,8 @@
 
                                         <span th:text="${homework16.info.content}">  "아이디어 관리 사이트" 제작</span>
                                         <span th:if="${homework16.result == '성공'}" class="assignment-status status-success">○</span>
-                                        <span th:if="${homework16.result == '미흡'}" class="assignment-status status-fail">X</span>
-                                        <span th:if="${homework16.result == '실패'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework16.result == '미흡'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework16.result == '실패'}" class="assignment-status status-fail">x</span>
                                     </li>
                                 </ol>
                                 <label for="day10" class="close-btn">닫기</label>
@@ -361,8 +361,8 @@
 
                                         <span th:text="${homework17.info.content}">   "피로그래머 카드 게임" 제작</span>
                                         <span th:if="${homework17.result == '성공'}" class="assignment-status status-success">○</span>
-                                        <span th:if="${homework17.result == '미흡'}" class="assignment-status status-fail">X</span>
-                                        <span th:if="${homework17.result == '실패'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework17.result == '미흡'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework17.result == '실패'}" class="assignment-status status-fail">x</span>
                                     </li>
                                 </ol>
                                 <label for="day11" class="close-btn">닫기</label>
@@ -384,8 +384,8 @@
 
                                         <span th:text="${homework18.info.content}">      Ajax를 사용한 "Pirostagram 사이트" 제작</span>
                                         <span th:if="${homework18.result == '성공'}" class="assignment-status status-success">○</span>
-                                        <span th:if="${homework18.result == '미흡'}" class="assignment-status status-fail">X</span>
-                                        <span th:if="${homework18.result == '실패'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework18.result == '미흡'}" class="assignment-status status-warning">△</span>
+                                        <span th:if="${homework18.result == '실패'}" class="assignment-status status-fail">x</span>
                                     </li>
                                 </ol>
                                 <label for="day12" class="close-btn">닫기</label>
