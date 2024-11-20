@@ -29,8 +29,9 @@ public class MemberRepository {
 
     // 회원 업데이트
     public void update(Member member){
-        Member member1 = em.find(Member.class, member);
-        member1.setMemberId("da"); // 이렇게만 하면 업데이트 됨
+        Member member1 = em.find(Member.class, member.getMemberId());
+        member1.setDepositDepend(member.getDepositDepend());
+        member1.setDeposit(member.getDeposit());
     }
 
     //회원 찾기
@@ -44,6 +45,13 @@ public class MemberRepository {
             return Optional.empty();
         }
     }
+
+
+    //회원삭제
+    public void remove(Member member){
+        em.remove(member);
+    }
+
 
     // 전화번호 정보로 회원 유무 찾기
     public boolean existsByPhone(String phone) {

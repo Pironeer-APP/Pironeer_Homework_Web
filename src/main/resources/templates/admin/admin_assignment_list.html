@@ -34,46 +34,18 @@
                             <span class="header-action">관리</span>
                         </div>
 
-                        <div class="list-body">
-                            <div class="member-item">
-                                <button onclick="location.href='admin_assignment.html'" class="member-name-btn">이지현</button>
-                                <form action="/update-member" method="post" class="member-form">
-                                    <input type="number" name="deposit" value="0" class="member-input deposit-input"> 원
-                                    <input type="number" name="shields" value="0" class="member-input shields-input"> 개
-                                    <button type="submit" class="edit-btn">수정</button>
-                                    <button type="button" class="delete-btn">삭제</button>
+                        <div class="list-body" th:each="list :${memberList}">
+                            <div class="member-item" >
+                                <button onclick="location.href='admin_assignment.html'" class="member-name-btn" th:text="${list.name}">이지현</button>
+                                <form class="member-form" th:attr="data-id=${list.memberId}">
+                                    <input type="number" name="deposit" th:value="${list.deposit}" class="member-input deposit-input"> 원
+                                    <input type="number" name="shields" th:value="${list.depositDepend}" class="member-input shields-input"> 개
+                                    <button type="button" class="edit-btn" onclick="editMember(this)">수정</button>
+                                    <button type="button" class="delete-btn" onclick="deleteMember(this)">삭제</button>
                                 </form>
                             </div>
 
-                            <div class="member-item">
-                                <button onclick="location.href='admin_assignment.html'" class="member-name-btn">김민수</button>
-                                <form action="/update-member" method="post" class="member-form">
-                                    <input type="number" name="deposit" value="0" class="member-input deposit-input"> 원
-                                    <input type="number" name="shields" value="0" class="member-input shields-input"> 개
-                                    <button type="submit" class="edit-btn">수정</button>
-                                    <button type="button" class="delete-btn">삭제</button>
-                                </form>
-                            </div>
 
-                            <div class="member-item">
-                                <button onclick="location.href='admin_assignment.html'" class="member-name-btn">최승호</button>
-                                <form action="/update-member" method="post" class="member-form">
-                                    <input type="number" name="deposit" value="0" class="member-input deposit-input"> 원
-                                    <input type="number" name="shields" value="0" class="member-input shields-input"> 개
-                                    <button type="submit" class="edit-btn">수정</button>
-                                    <button type="button" class="delete-btn">삭제</button>
-                                </form>
-                            </div>
-
-                            <div class="member-item">
-                                <button onclick="location.href='admin_assignment.html'" class="member-name-btn">이건희</button>
-                                <form action="/update-member" method="post" class="member-form">
-                                    <input type="number" name="deposit" value="0" class="member-input deposit-input"> 원
-                                    <input type="number" name="shields" value="0" class="member-input shields-input"> 개
-                                    <button type="submit" class="edit-btn">수정</button>
-                                    <button type="button" class="delete-btn">삭제</button>
-                                </form>
-                            </div>
 
 
                         </div>
@@ -86,5 +58,70 @@
             </div>
         </main>
     </div>
+
+
+    <script>
+        // 수정 버튼
+        function editMember(button) {
+            const form = button.closest('.member-form');
+            const memberId = form.getAttribute('data-id');
+            const deposit = form.querySelector('.deposit-input').value;
+            const shields = form.querySelector('.shields-input').value;
+
+            fetch(`/system/updateMember/${memberId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ deposit, shields })
+            })
+                .then(response => {
+                    if (!response.ok) throw new Error('수정 중 오류 발생');
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        alert('수정 완료');
+                    } else {
+                        alert(data.message || '수정 실패');
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert('수정 요청 실패');
+                });
+        }
+
+        // 삭제 버튼
+        function deleteMember(button) {
+            const form = button.closest('.member-form');
+            const memberId = form.getAttribute('data-id');
+
+            if (confirm('정말 삭제하시겠습니까?')) {
+                fetch(`/system/deleteMember/${memberId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                })
+                    .then(response => {
+                        if (!response.ok) throw new Error('삭제 중 오류 발생');
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            alert('삭제 완료');
+                            form.remove(); // 삭제된 항목 제거
+                        } else {
+                            alert(data.message || '삭제 실패');
+                        }
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert('삭제 요청 실패');
+                    });
+            }
+        }
+    </script>
 </body>
 </html>

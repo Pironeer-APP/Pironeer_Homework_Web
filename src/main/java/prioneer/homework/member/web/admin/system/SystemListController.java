@@ -1,16 +1,20 @@
 package prioneer.homework.member.web.admin.system;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import prioneer.homework.member.domain.Member;
 import prioneer.homework.member.service.admin.AdminMemberService;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -24,26 +28,52 @@ public class SystemListController {
     // 명단 페이지
     @GetMapping("/system/list")
     public String systemList(Model model) {
+        List<Member> memberList = adminMemberService.getMemberList();
+        model.addAttribute("memberList", memberList);
+        return "admin/admin_assignment_list";
+
+    }
+
+
+    // 보증금 및 방어권 갯수 업데이트
+    @PostMapping("/system/updateMember/{id}")
+    public ResponseEntity<Map<String, Object>> updateMember(
+            @PathVariable("id") String id,
+            @RequestBody Map<String, Object> request) {
+        Map<String, Object> response = new HashMap<>();
         try {
-            List<Member> memberList = adminMemberService.getMemberList();
-            model.addAttribute("memberList", memberList);
-            return "system/list";
+            int deposit = (int) request.get("deposit");
+            int shields = (int) request.get("shields");
+
+            Member member=new Member();
+            member.setMemberId(id);
+            member.setDeposit((long) deposit);
+            member.setDepositDepend((long) shields);
+            adminMemberService.updateDeposit(member);
+            response.put("success", true);
+            response.put("message", "수정이 완료되었습니다.");
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
-            model.addAttribute("message", "회원 목록 조회 중 에러 발생");
-            return "Error";
+            response.put("success", false);
+            response.put("message", "수정 중 오류 발생: " + e.getMessage());
+            return ResponseEntity.badRequest().body(response);
         }
     }
 
     // 회원 삭제
-    @PostMapping("/system/deleteMember/{phone}")
-    public String deleteMember(@PathVariable("phone") String phone,
-                               BindingResult bindingResult) {
+    @PostMapping("/system/deleteMember/{id}")
+    public ResponseEntity<Map<String, Object>> deleteMember(@PathVariable("id") String id) {
+        Map<String, Object> response = new HashMap<>();
         try {
-            adminMemberService.deleteMember(phone);
-
+            adminMemberService.deleteMember(id);
+            response.put("success", true);
+            response.put("message", "삭제가 완료되었습니다.");
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
-            bindingResult.reject("memberDeleteFail", "회원 삭제 중 오류 발생");
+            response.put("success", false);
+            response.put("message", "삭제 중 오류 발생: " + e.getMessage());
+            return ResponseEntity.badRequest().body(response);
         }
-        return "redirect:/system/list";
     }
+
 }

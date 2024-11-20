@@ -85,6 +85,17 @@ public class AdminMemberService {
         }
     }
 
+    // 보증금, 갯수 업데이트
+    public void updateDeposit(Member member) {
+
+        try {
+            memberRepository.update(member);
+        } catch (Exception e) {
+            throw new IllegalStateException("회원 삭제 중 오류 발생");
+        }
+    }
+
+
     // preadmin 목록 조회
     public List<Member> getPreadminList() {
         List<Member> preadminList = memberRepository.findByRole2();
@@ -103,18 +114,11 @@ public class AdminMemberService {
 //    }
 
     // preadmin의 삭제
-    public void deletePreadmin(Member member) {
-        try {
-            // 우선 preadmin인지 확인
-            Member preadminMember = memberRepository.findMemberById(member.getMemberId())
-                    .orElseThrow(() -> new IllegalStateException("회원을 찾을 수 없습니다."));
-
-            if (!"preadmin".equals(preadminMember.getRole())) {
-                throw new IllegalStateException("예비 관리자만 삭제 가능합니다.");
-            }
-
-            memberRepository.deleteByPhone(preadminMember.getPhone());
-        } catch (Exception e) {
+    public void deletePreadmin(String id) {
+        Optional<Member> findMember = memberRepository.findMemberById(id);
+        if (findMember.isPresent()) {
+            memberRepository.remove(findMember.get());
+        } else {
             throw new IllegalStateException("삭제 중 에러 발생");
         }
     }

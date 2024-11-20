@@ -51,7 +51,7 @@
                             </div>
                             <div class="admin-action">
                                 <button class="edit-btn">수정</button>
-                                <button class="delete-btn">삭제</button>
+                                <button class="delete-btn" onclick="deletePreadmin(this)">삭제</button>
                             </div>
                         </div>
 
@@ -65,7 +65,39 @@
         </div>
     </main>
 </div>
+<script>
+    function deletePreadmin(button) {
+        const adminItem = button.closest('.admin-item'); // 부모 요소에서 ID 가져오기
+        const memberId = adminItem.getAttribute('data-id');
 
+        if (confirm('정말 삭제하시겠습니까?')) {
+            fetch(`/system/master/${memberId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('삭제 중 오류가 발생했습니다.');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        alert('삭제 완료');
+                        adminItem.remove(); // 삭제 후 DOM에서 제거
+                    } else {
+                        alert(data.message || '삭제 실패');
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert('삭제 요청 실패');
+                });
+        }
+    }
+</script>
 
 <script>
     document.querySelectorAll('.edit-btn').forEach(button => {
