@@ -1,6 +1,7 @@
 package prioneer.homework.member.web.admin.system;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +17,7 @@ import prioneer.homework.member.repository.MemberRepository;
 import prioneer.homework.member.service.admin.AdminMemberService;
 
 @Controller
+@Slf4j
 @RequiredArgsConstructor
 public class UserNewController {
     // 22기 부원들 신규 등록
@@ -43,6 +45,7 @@ public class UserNewController {
         try {
             // 성공
             adminMemberService.registerNewMember(member);
+
             return "redirect:/system/user";
 
         } catch (IllegalStateException e) {

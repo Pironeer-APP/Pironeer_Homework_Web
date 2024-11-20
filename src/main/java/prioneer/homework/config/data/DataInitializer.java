@@ -13,7 +13,7 @@ import prioneer.homework.member.repository.MemberRepository;
 import java.time.LocalDate;
 
 //초기 데이터 생성했으면 component 바로 주석처리 해주세요.
-//@Component
+@Component
 @RequiredArgsConstructor
 public class DataInitializer {
 

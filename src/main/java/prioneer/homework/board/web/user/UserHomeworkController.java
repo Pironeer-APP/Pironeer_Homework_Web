@@ -53,8 +53,8 @@ public class UserHomeworkController {
         for(int i=0; i<18; i++){
             sum+=memberHomework.get(i).getDeposit();
         }
-
-        model.addAttribute("sum",sum);
+log.info(String.valueOf(memberHomework.get(0).isFlag()));
+        model.addAttribute("sum",120000+sum);
         return "user/assignment_user";
     }
 }

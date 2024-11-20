@@ -42,6 +42,7 @@ public class AdminHomeworkController {
 
 
 
+
         Optional<Member> findMember = memberRepository.findMemberById(memberId);
         if(findMember.isPresent()){
             model.addAttribute("member",findMember.get());
@@ -74,36 +75,42 @@ public class AdminHomeworkController {
             sum+=memberHomework.get(i).getDeposit();
         }
 
-        model.addAttribute("sum",sum);
+        model.addAttribute("sum",120000+sum);
 
         return "admin/assignment_admin";
 
     }
 
     // 과제 채점
-    @PostMapping("/homework/{memberId}")
-    public String gradeHomework(@PathVariable String memberId,
+    @PostMapping("/homework/{memberId}/{boardId}")
+    public String gradeHomework(@PathVariable String memberId, @PathVariable Long boardId,
                                 @ModelAttribute Board board,
                                 @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false)
                                     Member loginMember) {
         try {
 
+            board.setBoardId(boardId);
             Optional<Member> findMember = memberRepository.findMemberById(memberId);
-            if(findMember.isPresent()){
+            Optional<Board> findBoard = homeworkRepository.findByBoardId(boardId);
+            log.info(board.getResult());
+            if(findMember.isPresent() && findBoard.isPresent()){
                 int money=0;
-
                 if(board.getResult().equals("실패")){
                     money=-20000;
                     board.setDeposit(money);
+                    log.info("아니 여기");
+                    board.setResult("실패");
                     homeworkRepository.gradeHomework(board, loginMember);
                 }
                 else if(board.getResult().equals("미흡")){
                     money=-10000;
                     board.setDeposit(money);
+                    board.setResult("미흡");
                     homeworkRepository.gradeHomework(board, loginMember);
                 }else{
                     money=0;
                     board.setDeposit(money);
+                    board.setResult("성공");
                     homeworkRepository.gradeHomework(board, loginMember);
                 }
 
@@ -112,10 +119,9 @@ public class AdminHomeworkController {
                 for(int i=0; i<18; i++){
                     sum+=memberHomework.get(i).getDeposit();
                 }
-                memberRepository.updateDeposit(findMember.get(), (long) sum);
+                memberRepository.updateDeposit(findMember.get(), 120000+(long) sum);
 
             }
-
 
 
             return "redirect:/homework/" + memberId;

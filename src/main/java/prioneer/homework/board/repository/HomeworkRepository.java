@@ -2,6 +2,7 @@ package prioneer.homework.board.repository;
 
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +27,7 @@ public class HomeworkRepository {
     }
 
     public List<Board> findMemberHomework(Member member){
-        return em.createQuery("select b from Board b where b.userMember.memberId= :id order by b.id desc", Board.class)
+        return em.createQuery("select b from Board b where b.userMember.memberId= :id order by b.id", Board.class)
                 .setParameter("id",member.getMemberId())
                 .getResultList();
     }
@@ -38,14 +39,23 @@ public class HomeworkRepository {
     }
 
     public Optional<Board> findByBoardId(Long boardId) {
-        return Optional.ofNullable(em.find(Board.class, boardId));
+        try {
+            Board findMember = em.createQuery("select m from Board m where m.boardId = :phone", Board.class)
+                    .setParameter("phone", boardId)
+                    .getSingleResult();
+            return Optional.of(findMember);
+        } catch (NoResultException e) {
+            return Optional.empty();
+        }
     }
 
     // 과제 채점
     public void gradeHomework(Board board,Member adminMember) {
-        Board homework = findByBoardId(board.getBoardId())
-                .orElseThrow(() -> new IllegalArgumentException("과제를 찾을 수 없습니다"));
 
+        Board homework = em.find(Board.class, board.getBoardId());
+
+        log.info(String.valueOf(board.getDeposit()));
+        log.info(board.getResult());
         homework.setResult(board.getResult());
         homework.setFlag(board.isFlag());
         homework.setAdminMember(adminMember);

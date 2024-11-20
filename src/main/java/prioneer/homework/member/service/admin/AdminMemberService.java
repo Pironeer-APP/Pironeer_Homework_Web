@@ -2,6 +2,7 @@ package prioneer.homework.member.service.admin;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import prioneer.homework.board.domain.Board;
@@ -17,7 +18,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-@Transactional
+
+@Slf4j
 @RequiredArgsConstructor
 public class AdminMemberService {
     private final MemberRepository memberRepository;
@@ -85,15 +87,6 @@ public class AdminMemberService {
         }
     }
 
-    // 보증금, 갯수 업데이트
-    public void updateDeposit(Member member) {
-
-        try {
-            memberRepository.update(member);
-        } catch (Exception e) {
-            throw new IllegalStateException("회원 삭제 중 오류 발생");
-        }
-    }
 
 
     // preadmin 목록 조회
@@ -132,38 +125,38 @@ public class AdminMemberService {
     // 신규 부원 등록
     public void registerNewMember(Member member) {
 
-        try {
-            if (memberRepository.existsByPhone(member.getPhone())) {
-                throw new IllegalStateException("이미 등록된 전화번호입니다.");
-            }
 
-            // 신규 부원 초기값
-            member.setRole(MEMBER_ROLE);
-            member.setDeposit(INITIAL_DEPOSIT);
-            member.setDepositDepend(INITIAL_DEPOSIT_DEPEND);
-            memberRepository.save(member);
-
-
-            //신규 부원 생성했으면 과제 18개??도 같이 만들어줘야됨
-            // ㅋㅋㅋ 서비스 계층에서 for문이라 신비롭네
-            for (int i = 1; i < 19; i++) {
-                Optional<Info> info = infoRepository.findById((long) i);
-                if (info.isPresent()) {
-                    Info f_info = info.get();
-                    Board board = new Board();
-                    board.setUserMember(member);
-                    board.setInfo(f_info);
-                    board.setFlag(false);
-                    board.setResult("성공");
-                    board.setDeposit(0);
-                    homeworkRepository.save(board);
-
-                }
-            }
-
-        } catch (Exception e) {
-            throw new IllegalStateException("회원 등록 중 오류 발생");
+        if (memberRepository.existsByPhone(member.getPhone())) {
+            log.info("ddddd");
+            throw new IllegalStateException("이미 등록된 전화번호입니다.");
         }
+
+        // 신규 부원 초기값
+        member.setRole(MEMBER_ROLE);
+        member.setDeposit(INITIAL_DEPOSIT);
+        member.setDepositDepend(INITIAL_DEPOSIT_DEPEND);
+        member.setMemberId(UUID.randomUUID().toString());
+        memberRepository.save(member);
+        log.info("안녕하ㅏ세요");
+
+        //신규 부원 생성했으면 과제 18개??도 같이 만들어줘야됨
+        // ㅋㅋㅋ 서비스 계층에서 for문이라 신비롭네
+        for (int i = 1; i < 19; i++) {
+            Optional<Info> info = infoRepository.findById((long) i);
+            if (info.isPresent()) {
+                Info f_info = info.get();
+                Board board = new Board();
+                board.setUserMember(member);
+                board.setInfo(f_info);
+                board.setFlag(false);
+                board.setResult("성공");
+                board.setDeposit(0);
+                homeworkRepository.save(board);
+
+            }
+        }
+
+
     }
 
 }

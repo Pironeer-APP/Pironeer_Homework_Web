@@ -43,11 +43,11 @@
                             <span class="admin-name" th:text="${admin.name}">손관우</span>
                             <span class="admin-phone" th:text="${admin.phone}">010-8648-1730</span>
                             <div class="admin-status">
-                                <select class="status-select" th:field="*{admin.role}">
-                                    <option value="preadmin" th:selected="${admin.role == 'preadmin'}">Pre-Admin
-                                    </option>
-                                    <option value="admin" th:selected="${admin.role == 'admin'}">Admin</option>
+                                <select class="status-select" name="role" id="role">
+                                    <option value="PREADMIN" th:selected="${admin.role == 'PREADMIN'}">Pre-Admin</option>
+                                    <option value="ADMIN" th:selected="${admin.role == 'ADMIN'}">Admin</option>
                                 </select>
+
                             </div>
                             <div class="admin-action">
                                 <button class="edit-btn">수정</button>
@@ -60,15 +60,16 @@
             </div>
 
             <div class="manage-footer">
-                <button class="submit-btn">변경사항 반영하기</button>
+
             </div>
         </div>
     </main>
 </div>
 <script>
     function deletePreadmin(button) {
-        const adminItem = button.closest('.admin-item'); // 부모 요소에서 ID 가져오기
-        const memberId = adminItem.getAttribute('data-id');
+        // 버튼의 부모 요소인 '.admin-item'에서 data-id 가져오기
+        const adminItem = button.closest('.admin-item'); // 부모 요소 찾기
+        const memberId = adminItem.getAttribute('data-id'); // data-id 속성 가져오기
 
         if (confirm('정말 삭제하시겠습니까?')) {
             fetch(`/system/master/${memberId}`, {
@@ -97,18 +98,22 @@
                 });
         }
     }
+
 </script>
 
 <script>
     document.querySelectorAll('.edit-btn').forEach(button => {
         button.addEventListener('click', function () {
-            // 버튼에서 data-id로 memberId 가져오기
-            const memberId = this.getAttribute('data-id');
-            // 선택된 role 값 가져오기
+            // Get the memberId from the closest parent div with class 'admin-item'
+            const memberId2 = this.closest('.admin-item').getAttribute('data-id');
+
+            // Get the selected role value
             const selectedRole = this.closest('.admin-item').querySelector('.status-select').value;
 
+            console.log(memberId2);
+
             // Spring 컨트롤러에 요청 보내기
-            fetch(`/system/master/updateToAdmin/${memberId}`, {
+            fetch(`/system/master/updateadmin/${memberId2}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -129,10 +134,10 @@
                     } else if (data && data.error) {
                         alert('Error: ' + data.error);
                     }
-                })
-                .catch(error => console.error('Error:', error));
+                });
         });
     });
+
 
 </script>
 </body>
