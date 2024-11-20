@@ -26,13 +26,15 @@ public class HomeController {
         if (loginMember == null) {
             return "home/home_loginbefore";
         }
-        if (!loginMember.getRole().equals("USER")) {
-            return "redirect:/system";
+
+        log.info(loginMember.getRole());
+        if (loginMember.getRole().equals("USER")) {
+            return "home/home_loginafter";
         }
 
 
 
-        return "home/home_loginafter";
+        return "redirect:/system";
     }
 
 
@@ -50,9 +52,6 @@ public class HomeController {
         if (loginMember.getRole().equals("USER")) {
             return "redirect:/";
         }
-
-
-
 
         // 로그인 회원 정보 비교
         return "admin/admin_home_loginafter";

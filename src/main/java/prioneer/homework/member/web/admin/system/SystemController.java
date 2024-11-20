@@ -19,11 +19,11 @@ public class SystemController {
                                      Member loginMember) {
 
         if (loginMember.getRole().equals("MASTER")) {
-            return "admin/admin_start";
+            return "admin/master_start";
         }
 
         if (loginMember.getRole().equals("ADMIN")) {
-            return "admin/master_start";
+            return "admin/admin_start";
         }
 
         return "redirect:/";

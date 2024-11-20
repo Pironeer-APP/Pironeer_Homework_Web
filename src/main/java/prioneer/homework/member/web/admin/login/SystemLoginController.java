@@ -27,11 +27,9 @@ public class SystemLoginController {
 
 
     @GetMapping("/system/login")
-    public String getSystemLogin(@ModelAttribute("member") Member member
-            , Model model) {
+    public String getSystemLogin(Model model) {
 
-
-        model.addAttribute("member", member);
+        model.addAttribute("member", new Member());
         return "admin/admin_login";
 
 
@@ -40,32 +38,34 @@ public class SystemLoginController {
     @PostMapping("/system/login")
     public String postSystemLogin(@Validated @ModelAttribute Member member, BindingResult bindingResult,
                                   HttpServletRequest request) {
-        Optional<Member> findPhoneMember = adminMemberService.getLoginMember(member);
-        if (findPhoneMember.isEmpty()) {
-            bindingResult.reject("loginFail", "전화번호가 일치하지 않습니다");
-            return "admin/admin_login";
-        }
+
 
         Optional<Member> findNameMember = adminMemberService.getNameMember(member);
         if (findNameMember.isEmpty()) {
-            bindingResult.reject("loginFail", "이름이 일치하지 않습니다");
+            bindingResult.reject("global", "이름이 일치하지 않습니다");
+            return "admin/admin_login";
+        }
+
+        Optional<Member> findPhoneMember = adminMemberService.getLoginMember(member);
+        if (findPhoneMember.isEmpty()) {
+            bindingResult.reject("global", "전화번호가 일치하지 않습니다");
             return "admin/admin_login";
         }
 
         Member passwordMember = adminMemberService.passwordCheck(member);
         if (passwordMember == null) {
-            bindingResult.reject("loginFail", "비밀번호가 일치하지 않습니다");
+            bindingResult.reject("global", "비밀번호가 일치하지 않습니다");
             return "admin/admin_login";
         }
 
         if (passwordMember.getRole().equals("PREADMIN")) {
-            bindingResult.reject("loginFail", "교육팀장님께 문의주세요");
+            bindingResult.reject("global", "교육팀장님께 문의주세요");
             return "admin/admin_login";
         }
 
         //로그인 성공
         HttpSession session = request.getSession();
-        session.setAttribute(SessionConst.LOGIN_MEMBER, passwordMember);
+        session.setAttribute(SessionConst.LOGIN_MEMBER, findNameMember.get());
 
         return "redirect:/system";
 

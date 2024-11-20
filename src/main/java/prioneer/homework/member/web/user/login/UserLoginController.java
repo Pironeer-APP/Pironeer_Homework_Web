@@ -55,9 +55,12 @@ public class UserLoginController {
             bindingResult.reject("loginFail", "관리자는 접근 할 수 없어요");
             return "home/login";
         }
+
+
+
         //로그인 성공
         HttpSession session = request.getSession();
-        session.setAttribute(SessionConst.LOGIN_MEMBER, member);
+        session.setAttribute(SessionConst.LOGIN_MEMBER, findLoginMember.get());
 
         return "redirect:" + redirectURL;
     }

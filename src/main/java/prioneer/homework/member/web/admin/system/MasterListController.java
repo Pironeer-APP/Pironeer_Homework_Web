@@ -1,6 +1,7 @@
 package prioneer.homework.member.web.admin.system;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 public class MasterListController {
     // 마스터 관리자는 들어온 관리자 회원가입 리스트에서 셀렉트 박스를 통해 admin 권한을 부여한다
     // 처음 회원가입한 관리자들은 모두 preadmin이다
@@ -39,12 +41,14 @@ public class MasterListController {
             return "redirect:/system";
         }
         List<Member> preAdminList = adminMemberService.getPreadminList();
+
+
         model.addAttribute("preAdminList", preAdminList);
         return "admin/master_manage";
     }
 
     // 관리자 권한 부여
-    @PostMapping("/system/master/updateToAdmin/{id}")
+    @PostMapping("/system/master/updateadmin/{id}")
     public ResponseEntity<?> updateToAdmin(
             @PathVariable("id") String memberId,
             @RequestBody Map<String, String> requestBody) {
