@@ -159,6 +159,30 @@
     color: var(--bg-color);
 }
 
+.search-container {
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #222;
+    border: 1px solid #333;
+    color: var(--text-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.search-input::placeholder {
+    color: #666;
+}
+
 @media (max-width: 768px) {
     .member-card {
         padding: 20px;
@@ -194,5 +218,9 @@
 
     .member-input.shields-input {
         margin: 0;
+    }
+
+    .search-container {
+        margin-bottom: 15px;
     }
 }

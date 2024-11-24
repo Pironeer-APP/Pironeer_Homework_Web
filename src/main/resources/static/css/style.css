@@ -72,6 +72,28 @@ body {
     background-color: var(--primary-dark);
 }
 
+.footer {
+    margin-top: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.logout-btn {
+    padding: 8px 16px;
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+}
+
+.logout-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+}
+
 @media (max-width: 768px) {
     .container {
         padding: 20px;

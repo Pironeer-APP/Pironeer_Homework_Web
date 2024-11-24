@@ -220,15 +220,44 @@
     margin-bottom: 0.5rem;
 }
 
+.info-details {
+    display: flex;
+    gap: 30px;
+}
+
+.shield-info {
+    text-align: right;
+}
+
+.shield-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+}
+
+.shield-amount {
+    font-size: 1.3rem;
+    color: #00aaff;
+    font-weight: bold;
+}
+
 @media (max-width: 768px) {
     .user-info {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
     }
 
     .deposit-info {
         text-align: left;
-        margin-top: 15px;
+    }
+
+    .info-details {
+        flex-direction: row;
+        gap: 25px;
+    }
+
+    .shield-info {
+        text-align: left;
     }
 
     .week-subject {
