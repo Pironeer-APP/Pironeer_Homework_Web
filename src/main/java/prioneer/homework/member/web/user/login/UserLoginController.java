@@ -29,7 +29,7 @@ public class UserLoginController {
 
         model.addAttribute("member",member);
 
-        return "/home/login";
+        return "home/login";
     }
 
     @PostMapping("/login")

@@ -99,7 +99,16 @@
     cursor: pointer;
     transition: all 0.2s;
 }
-
+.back-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
 .delete-btn:hover {
     background-color: #ff4444;
     color: var(--primary-color);
