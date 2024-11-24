@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PiroCheck - Assignment Management</title>
-    <link rel="stylesheet" href="../../static/css/style.css">
-    <link rel="stylesheet" href="../../static/css/admin_assignment_list.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin_assignment_list.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&family=Poor+Story&display=swap" rel="stylesheet">
@@ -67,8 +67,33 @@
         </main>
     </div>
     <div class="footer">
-        <a href="/logout" class="logout-btn">로그아웃</a>
+        <form th:action="@{/logout}" method="post" >
+            <button type="submit" class="logout-btn" style="cursor: pointer;"> 로그아웃</button>
+        </form>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchInput = document.querySelector(".search-input");
+            const memberItems = document.querySelectorAll(".member-item");
+
+            searchInput.addEventListener("input", function (event) {
+                const query = event.target.value.toLowerCase();
+
+                memberItems.forEach((item) => {
+                    const name = item.querySelector(".member-name-btn").textContent.toLowerCase();
+
+                    if (name.includes(query)) {
+                        item.style.visibility = "visible";
+                        item.style.position = "relative"; // 보이도록 처리
+                    } else {
+                        item.style.visibility = "hidden";
+                        item.style.position = "absolute"; // 레이아웃에 영향을 주지 않도록
+                    }
+                });
+            });
+        });
+
+    </script>
 
 
     <script>

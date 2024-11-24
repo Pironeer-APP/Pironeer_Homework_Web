@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PiroCheck - Master</title>
-    <link rel="stylesheet" href="../../static/css/style.css">
-    <link rel="stylesheet" href="../../static/css/master_start.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/master_start.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&family=Poor+Story&display=swap" rel="stylesheet">
@@ -57,7 +57,9 @@
         </main>
     </div>
     <div class="footer">
-        <a href="/logout" class="logout-btn">로그아웃</a>
+        <form th:action="@{/logout}" method="post" >
+            <button type="submit" class="logout-btn" style="cursor: pointer;"> 로그아웃</button>
+        </form>
     </div>
 </body>
 </html>

@@ -63,6 +63,26 @@ public class UserLoginController {
         session.setAttribute(SessionConst.LOGIN_MEMBER, findLoginMember.get());
 
         return "redirect:" + redirectURL;
+
+    }
+
+
+
+    @PostMapping("/logout")
+    public String logout(HttpServletRequest request,
+                         @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false)
+                         Member loginMember){
+
+        HttpSession session = request.getSession(false);
+        if(session != null){
+            session.invalidate();
+        }
+
+        if(loginMember.getRole().equals("USER")) {
+            return "redirect:/";
+        }else{
+            return "redirect:/system";
+        }
     }
 
 }
