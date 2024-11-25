@@ -38,6 +38,7 @@ public class SystemListController {
         }
         List<Member> memberList = adminMemberService.getMemberList();
         model.addAttribute("memberList", memberList);
+        model.addAttribute("member",loginMember);
         return "admin/admin_assignment_list";
 
     }
@@ -63,7 +64,7 @@ public class SystemListController {
 
             response.put("success", true);
             response.put("message", "수정이 완료되었습니다.");
-            log.info("호호호호호호호");
+
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             response.put("success", false);
