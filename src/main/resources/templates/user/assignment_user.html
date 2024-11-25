@@ -35,7 +35,7 @@
             </div>
 
             <div class="assignments-container">
-                <div class="week-container">
+                <div th:if="${homework1.flag}" class="week-container">
                     <input type="checkbox" id="week1" class="week-toggle">
                     <label for="week1" class="week-header">
                         <span class="week-title">1주차</span>
@@ -131,7 +131,7 @@
                     </div>
                 </div>
 
-                <div class="week-container">
+                <div th:if="${homework6.flag}" class="week-container">
                     <input type="checkbox" id="week2" class="week-toggle">
                     <label for="week2" class="week-header">
                         <span class="week-title">2주차</span>
@@ -193,7 +193,7 @@
                                         <span th:text="${homework9.info.content}"> 코딩 도장 심화</span>
                                         <span th:if="${homework9.result == '성공'}" class="assignment-status status-success">○</span>
                                         <span th:if="${homework9.result == '미흡'}" class="assignment-status status-warning">△</span>
-                                        <span th:if="${homework.result == '실패'}" class="assignment-status status-fail">x</span>
+                                        <span th:if="${homework9.result == '실패'}" class="assignment-status status-fail">x</span>
                                     </li>
                                     <li th:if="${homework10.flag}">
 
@@ -233,7 +233,7 @@
                     </div>
                 </div>
 
-                <div class="week-container">
+                <div th:if="${homework12.flag}" class="week-container">
                     <input type="checkbox" id="week3" class="week-toggle">
                     <label for="week3" class="week-header">
                         <span class="week-title">3주차</span>
@@ -320,7 +320,7 @@
                     </div>
                 </div>
 
-                <div class="week-container">
+                <div th:if="${homework16.flag}" class="week-container">
                     <input type="checkbox" id="week4" class="week-toggle">
                     <label for="week4" class="week-header">
                         <span class="week-title">4주차</span>
@@ -400,7 +400,7 @@
                     </div>
                 </div>
 
-                <div class="week-container">
+                <div th:if="${homework16.flag}" class="week-container">
                     <input type="checkbox" id="week5" class="week-toggle">
                     <label for="week5" class="week-header">
                         <span class="week-title">5주차</span>
