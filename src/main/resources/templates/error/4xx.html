@@ -4,18 +4,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>404 Not Found</title>
+  <title>피로체크</title>
+  <link rel="shortcut icon" href="/logo/logo.png" type="image/x-icon">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff7eb3, #ff758c);
+      color: #ffffff;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .error-container {
+      text-align: center;
+      padding: 50px;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border-radius: 15px;
+    }
+
+    .error-code {
+      font-size: 7rem;
+      font-weight: 900;
+      color: #dc3545;
+      margin-bottom: 20px;
+    }
+
+    .error-message {
+      font-size: 1.5rem;
+      margin: 15px 0;
+      color: #333333;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      background: #ff758c;
+      color: #ffffff;
+      font-weight: bold;
+      padding: 12px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(255, 117, 140, 0.5);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .contact-btn:hover {
+      background: #ff5a77;
+      transform: scale(1.05);
+    }
+
+    .icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #ff758c;
+    }
+  </style>
 </head>
 
-<body class="bg-light text-center">
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h1 class="display-1">404</h1>
-      <p class="lead">고객님! URL이 잘못됐어요. 올바르게 검색해주세요</p>
-    </div>
+<body>
+<div class="error-container">
+  <div class="icon"><i class="fas fa-server"></i></div>
+  <div class="error-code">404</div>
+  <p class="error-message">URL이 없어요... <br>교육팀장 <strong>김민수</strong> 관리자님께 문의하세요! 민수야ㅜㅜㅜ</p>
+  <div>
+    <a href="mailto:minsu.admin@example.com" class="contact-btn">010-8551-0687</a>
+    <a href="mailto:kimminsoo116@gmail.com" class="contact-btn">kimminsoo116@gmail.com</a>
   </div>
 </div>
 </body>
