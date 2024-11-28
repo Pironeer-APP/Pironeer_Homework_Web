@@ -61,10 +61,10 @@
                 </div>
             </div>
 
-            <div class="manage-footer">
-
-                    <a href="/system/management" class="back-btn">이전 화면으로</a>
-
+            <div class="footer">
+                <form th:action="@{/logout}" method="post" >
+                    <button type="submit" class="logout-btn" style="cursor: pointer;"> 로그아웃</button>
+                </form>
             </div>
         </div>
     </main>
