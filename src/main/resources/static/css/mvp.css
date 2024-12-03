@@ -1,0 +1,134 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+    margin: 20px;
+}
+
+.page-title {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.mvp-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.mvp-item {
+    padding: 20px;
+    background-color: var(--card-bg);
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    transition: transform 0.2s;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mvp-item:hover {
+    transform: translateY(-5px);
+}
+
+.mvp-item h3 {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.mvp-icon {
+    font-size: 2rem;
+    margin: 10px 0;
+    color: var(--primary-color);
+}
+
+.mvp-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.challenge-container {
+    display: flex;
+    justify-content: center;
+}
+
+.challenge {
+    background-color: var(--card-bg);
+    border: 2px solid #FFD700;
+    width: calc(25% - 15px);
+}
+
+.challenge h3 {
+    color: #FFD700;
+}
+
+.challenge .mvp-icon {
+    color: #FFD700;
+}
+
+.btn {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .card {
+        padding: 30px 20px;
+        margin: 10px;
+    }
+
+    .page-title {
+        font-size: 1.7rem;
+    }
+
+    .mvp-list {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .challenge {
+        width: 100%;
+    }
+
+    .mvp-icon {
+        display: none;
+    }
+
+    .mvp-item {
+        padding: 15px;
+        aspect-ratio: unset;
+        min-height: 100px;
+    }
+
+    .mvp-item h3 {
+        margin-bottom: 5px;
+    }
+
+    .mvp-list {
+        margin-bottom: 15px;
+    }
+}
