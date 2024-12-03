@@ -65,9 +65,13 @@
     font-size: 0.9rem;
 }
 
-.assignmentcheck-btn {
+.assignmentcheck-btn, .mvp-btn {
     padding: 15px 30px;
     font-size: 1.2rem;
+}
+
+.mvp-btn {
+    margin-left: 10px;
 }
 
 @media (max-width: 768px) {
@@ -86,5 +90,10 @@
 
     .welcome-text, .feature-icon {
         display: none;
+    }
+
+    .assignmentcheck-btn, .mvp-btn {
+        display: block;
+        margin: 10px auto;
     }
 }
