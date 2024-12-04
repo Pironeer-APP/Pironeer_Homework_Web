@@ -7,63 +7,193 @@
     <link rel="shortcut icon" href="/logo/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/mvp.css">
+    <link rel="stylesheet" href="/css/firework.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&family=Poor+Story&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&family=Poor+Story&display=swap"
+          rel="stylesheet">
+
+    <style>
+        .mvpName {
+            font-weight: bold;
+            font-size: 40px;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <a href="/" class="logo-link"></a>
-            <h1 id="pirocheck" class="title">PiroCheck</h1>
-        </header>
 
-        <main class="main">
-            <div class="card">
-                <h2 class="page-title">👑피로그래밍 MVP👑</h2>
-                
-                <div class="mvp-list">
-                    <div class="mvp-item">
+<div class="popup-container" th:if="${mvp1.mvpMember.memberId == member.memberId}">
+    <div class="popup" style="background-color: white;">
+        <canvas class="stage"></canvas>
+        <div class="trophy-icon">🏆</div>
+        <h1 style="color: black;">1주차 MVP 축하드립니다!</h1>
+        <p style="color: black;" class="mvpName" th:text="|${mvp1.mvpMember.name}님|">🍀최승호님🍀</p>
+
+        <button class="close-button" style=" font-weight: bold;">닫기</button>
+    </div>
+</div>
+
+<div class="popup-container" th:if="${mvp2.mvpMember.memberId == member.memberId}">
+    <div class="popup" style="background-color: white;">
+        <canvas class="stage"></canvas>
+        <div class="trophy-icon">🏆</div>
+        <h1 style="color: black;">2주차 MVP 축하드립니다!</h1>
+        <p style="color: black;" class="mvpName" th:text="|${mvp2.mvpMember.name}님|">🍀최승호님🍀</p>
+
+        <button class="close-button" style=" font-weight: bold;">닫기</button>
+    </div>
+</div>
+
+<div class="popup-container" th:if="${mvp3.mvpMember.memberId == member.memberId}">
+    <div class="popup" style="background-color: white;">
+        <canvas class="stage"></canvas>
+        <div class="trophy-icon">🏆</div>
+        <h1 style="color: black;">3주차 MVP 축하드립니다!</h1>
+        <p style="color: black;" class="mvpName" th:text="|${mvp3.mvpMember.name}님|">🍀최승호님🍀</p>
+
+        <button class="close-button" style=" font-weight: bold;">닫기</button>
+    </div>
+</div>
+
+<div class="popup-container" th:if="${mvp4.mvpMember.memberId == member.memberId}">
+    <div class="popup" style="background-color: white;">
+        <canvas class="stage"></canvas>
+        <div class="trophy-icon">🏆</div>
+        <h1 style="color: black;">4주차 MVP 축하드립니다!</h1>
+        <p style="color: black;" class="mvpName" th:text="|${mvp4.mvpMember.name}님|">🍀최승호님🍀</p>
+
+        <button class="close-button" style=" font-weight: bold;">닫기</button>
+    </div>
+</div>
+
+<div class="popup-container" th:if="${mvp5.mvpMember.memberId == member.memberId}">
+    <div class="popup" style="background-color: white;">
+        <canvas class="stage"></canvas>
+        <div class="trophy-icon">🏆</div>
+        <h1 style="color: black;">챌린저 MVP 축하드립니다!</h1>
+        <p style="color: black;" class="mvpName" th:text="|${mvp5.mvpMember.name}님|">🍀최승호님🍀</p>
+
+        <button class="close-button" style=" font-weight: bold;">닫기</button>
+    </div>
+</div>
+
+
+<div class="container">
+    <header class="header">
+        <a href="/" class="logo-link">
+            <h1 class="title">PiroCheck</h1>
+        </a>
+    </header>
+
+    <main class="main">
+        <div class="card">
+            <h2 class="page-title">👑피로그래밍 MVP👑</h2>
+
+            <div class="mvp-list">
+
+                <div class="mvp-item" data-id="1" th:data-flag="${mvp1.flag}">
                         <h3>1주차 MVP</h3>
                         <div class="mvp-icon">🏆</div>
                         <p class="mvp-name" th:text="${mvp1.mvpMember.name}">최승호</p>
-                    </div>
+                </div>
+                <div class="mvp-item" data-id="2" th:data-flag="${mvp2.flag}">
 
-                    <div class="mvp-item">
                         <h3>2주차 MVP</h3>
                         <div class="mvp-icon">🏆</div>
                         <p class="mvp-name" th:text="${mvp2.mvpMember.name}">김민수</p>
-                    </div>
+                </div>
 
-                    <div class="mvp-item">
+                <div class="mvp-item" data-id="3" th:data-flag="${mvp3.flag}">
                         <h3>3주차 MVP</h3>
                         <div class="mvp-icon">🏆</div>
                         <p class="mvp-name" th:text="${mvp3.mvpMember.name}">이지현</p>
-                    </div>
-
-                    <div class="mvp-item">
-                        <h3>4주차 MVP</h3>
-                        <div class="mvp-icon">🏆</div>
-                        <p class="mvp-name" th:text="${mvp4.mvpMember.name}">장지요</p>
-                    </div>
                 </div>
 
-                <div class="challenge-container">
-                    <div class="mvp-item challenge">
+                <div class="mvp-item" data-id="4" th:data-flag="${mvp4.flag}">
+                    <h3>4주차 MVP</h3>
+                    <div class="mvp-icon">🏆</div>
+                    <p class="mvp-name" th:text="${mvp4.mvpMember.name}">장지요</p>
+
+                </div>
+            </div>
+
+            <div class="challenge-container">
+                <div class="mvp-item challenge" data-id="5" th:data-flag="${mvp5.flag}">
+                    <a href="/mvp/5">
                         <h3>챌린지 MVP</h3>
                         <div class="mvp-icon">👑</div>
                         <p class="mvp-name" th:text="${mvp5.mvpMember.name}">손관우</p>
-                    </div>
+                    </a>
                 </div>
             </div>
-        </main>
-
-        <div class="footer">
-            <form th:action="@{/logout}" method="post" >
-                <button type="submit" class="logout-btn" style="cursor: pointer;"> 로그아웃</button>
-            </form>
         </div>
+    </main>
+
+    <div class="footer">
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="logout-btn" style="cursor: pointer;"> 로그아웃</button>
+        </form>
     </div>
+</div>
+<script src='/js/fireworks/src/index.js' type='module'></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // 모든 팝업 컨테이너 가져오기
+        const popups = document.querySelectorAll('.popup-container');
+
+        // 팝업 컨테이너에 'show' 클래스 추가
+        popups.forEach(popup => {
+            popup.classList.add('show'); // 페이지 로드 시 팝업 표시
+        });
+
+        // 닫기 버튼 클릭 이벤트 등록
+        const closeButtons = document.querySelectorAll('.close-button');
+        closeButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const popupContainer = event.target.closest('.popup-container');
+                if (popupContainer) {
+                    popupContainer.classList.remove('show'); // 'show' 클래스 제거
+                }
+            });
+        });
+    });
+
+</script>
+
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // 모든 mvp-item을 선택
+        const mvpItems = document.querySelectorAll(".mvp-item");
+
+        // 각 mvp-item에 클릭 이벤트 추가
+        mvpItems.forEach(item => {
+            item.addEventListener("click", function () {
+                // data-id와 data-flag 값 가져오기
+                const id = this.getAttribute("data-id");
+                const flag = this.getAttribute("data-flag") === "true"; // flag 값을 boolean으로 변환
+
+                // flag가 false이면 알림창 띄우기
+                if (!flag) {
+                    alert("해당 항목은 현재 선택할 수 없습니다.");
+                } else {
+                    // flag가 true일 때만 페이지 이동
+                    window.location.href = `/mvp/${id}`;
+                }
+            });
+        });
+    });
+
+</script>
 </body>
 </html>

@@ -1,0 +1,64 @@
+
+
+.stage{
+  position: absolute; /* 부모 요소인 .popup을 기준으로 배치 */
+  top: 0;
+  left: 0;
+  width: 100%; /* 팝업의 크기에 맞춤 */
+  height: 100%;
+  z-index: -1; /* 배경으로 설정 */
+  pointer-events: none; /* 클릭 이벤트가 다른 요소에만 전달되도록 */
+}
+
+
+.text-overlay {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+  white-space: nowrap; /* 줄바꿈 방지 */
+}
+
+/* 작은 화면 (예: 768px 이하) */
+@media (max-width: 768px) {
+  .text-overlay {
+    font-size: 20px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    font-weight: bold;
+    color: white;
+    white-space: nowrap; /* 줄바꿈 방지 */
+  }
+}
+
+/* 더 작은 화면 (예: 480px 이하) */
+@media (max-width: 480px) {
+  .text-overlay {
+    font-size: 16px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    font-weight: bold;
+    color: white;
+    white-space: nowrap; /* 줄바꿈 방지 */
+  }
+}
+

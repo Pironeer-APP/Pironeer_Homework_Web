@@ -51,6 +51,7 @@
 
 .mvp-item:hover {
     transform: translateY(-5px);
+    cursor: pointer;
 }
 
 .mvp-item h3 {
@@ -132,3 +133,81 @@
         margin-bottom: 15px;
     }
 }
+
+.popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden; /* 팝업 숨기기 */
+    pointer-events: none; /* 팝업 숨겨진 상태에서 클릭 차단 */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.popup-container.show {
+    opacity: 1;
+    visibility: visible; /* 팝업 보이기 */
+    pointer-events: auto; /* 팝업 보이는 상태에서 클릭 가능 */
+}
+
+.popup {
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    animation: popup-appear 0.5s ease-out;
+}
+
+@keyframes popup-appear {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+.trophy-icon {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    color: #343a40;
+    margin: 10px 0;
+}
+
+
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0BEC12;
+    color: #212529;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #e0a800;
+}
+
+.hidden {
+    display: none;
+}
+

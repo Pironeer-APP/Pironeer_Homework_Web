@@ -5,7 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import prioneer.homework.config.session.SessionConst;
 import prioneer.homework.member.domain.Member;
 import prioneer.homework.mvp.domain.MVP;
@@ -30,6 +32,24 @@ public class MvpController {
         model.addAttribute("mvp3",mvp.get(2));
         model.addAttribute("mvp4",mvp.get(3));
         model.addAttribute("mvp5",mvp.get(4));
+
+        model.addAttribute("member",loginMember);
         return "home/mvp";
     }
+
+    @GetMapping("/mvp/{id}")
+    public String getMvp1(@PathVariable Long id, Model model ,
+                          @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false)
+                         Member loginMember,
+                          RedirectAttributes redirectAttributes){
+        List<MVP> mvp = mvpRepository.findAll();
+        if(!mvp.get(Math.toIntExact(id)-1).isFlag()){
+            redirectAttributes.addFlashAttribute("alertMessage", "아직 시간이 안됐어요!.");
+            return "redirect:/";
+        }
+        model.addAttribute("mvpfire",mvp.get(Math.toIntExact(id)-1));
+        return "home/mvpfire";
+    }
+
+
 }

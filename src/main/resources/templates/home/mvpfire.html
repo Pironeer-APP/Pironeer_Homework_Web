@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>피로체크</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/firework.css">
+    <link rel="shortcut icon" href="/logo/logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&family=Poor+Story&display=swap"
+          rel="stylesheet">
+    <style>
+        *{
+            margin : 0;
+            padding : 0;
+            box-sizing: border-box;
+            font-size : 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+<div>
+    <canvas class="stage"></canvas>
+    <div class="text-overlay" th:text="|🏆 ${mvpfire.week} 과제 MVP ${mvpfire.mvpMember.name}님 축하드려요! 🏆|">
+        🏆 1주차 과제 MVP 최승호님 축하드려요! 🏆
+    </div>
+
+
+</div>
+
+<div class="footer">
+    <a href="/mvp" class="logout-btn" style="cursor: pointer; font-weight: bold;">
+        이전으로
+    </a>
+</div>
+<script src='/js/fireworks/src/index.js' type='module'></script>
+</body>
+</html>

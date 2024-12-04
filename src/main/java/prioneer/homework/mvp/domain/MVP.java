@@ -20,4 +20,8 @@ public class MVP {
     @JoinColumn(name = "mvp_member_id")
     private Member mvpMember;
 
+    private boolean flag;
+
+    private String week;
+
 }

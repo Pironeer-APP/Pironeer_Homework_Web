@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import prioneer.homework.config.session.SessionConst;
 import prioneer.homework.member.domain.Member;
@@ -21,14 +22,16 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model model,
                        @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false)
-                       Member loginMember) {
+                       Member loginMember,
+                       @ModelAttribute("alertMessage") String alertMessage) {
 
         if (loginMember == null) {
             return "home/home_loginbefore";
         }
 
-        log.info(loginMember.getRole());
+
         if (loginMember.getRole().equals("USER")) {
+
             return "home/home_loginafter";
         }
 
