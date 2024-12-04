@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import prioneer.homework.board.domain.Board;
+import prioneer.homework.mvp.domain.MVP;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,7 @@ public class Member {
     private List<Board> adminBoard = new ArrayList<>();
 
     @OneToMany(mappedBy = "mvpMember", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Board> mvpMember = new ArrayList<>();
+    private List<MVP> mvpMember = new ArrayList<>();
 
 
     @Transient
