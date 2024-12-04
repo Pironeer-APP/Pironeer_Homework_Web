@@ -27,6 +27,9 @@ public class Member {
     @OneToMany(mappedBy = "adminMember", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Board> adminBoard = new ArrayList<>();
 
+    @OneToMany(mappedBy = "mvpMember", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Board> mvpMember = new ArrayList<>();
+
 
     @Transient
     private String passwordCheck;

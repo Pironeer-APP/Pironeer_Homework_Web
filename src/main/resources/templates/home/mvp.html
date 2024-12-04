@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,25 +27,25 @@
                     <div class="mvp-item">
                         <h3>1주차 MVP</h3>
                         <div class="mvp-icon">🏆</div>
-                        <p class="mvp-name">최승호</p>
+                        <p class="mvp-name" th:text="${mvp1.mvpMember.name}">최승호</p>
                     </div>
 
                     <div class="mvp-item">
                         <h3>2주차 MVP</h3>
                         <div class="mvp-icon">🏆</div>
-                        <p class="mvp-name">김민수</p>
+                        <p class="mvp-name" th:text="${mvp2.mvpMember.name}">김민수</p>
                     </div>
 
                     <div class="mvp-item">
                         <h3>3주차 MVP</h3>
                         <div class="mvp-icon">🏆</div>
-                        <p class="mvp-name">이지현</p>
+                        <p class="mvp-name" th:text="${mvp3.mvpMember.name}">이지현</p>
                     </div>
 
                     <div class="mvp-item">
                         <h3>4주차 MVP</h3>
                         <div class="mvp-icon">🏆</div>
-                        <p class="mvp-name">장지요</p>
+                        <p class="mvp-name" th:text="${mvp4.mvpMember.name}">장지요</p>
                     </div>
                 </div>
 
@@ -53,15 +53,17 @@
                     <div class="mvp-item challenge">
                         <h3>챌린지 MVP</h3>
                         <div class="mvp-icon">👑</div>
-                        <p class="mvp-name">손관우</p>
+                        <p class="mvp-name" th:text="${mvp5.mvpMember.name}">손관우</p>
                     </div>
                 </div>
             </div>
         </main>
 
-        <footer class="footer">
-            <a href="/logout" class="logout-btn">로그아웃</a>
-        </footer>
+        <div class="footer">
+            <form th:action="@{/logout}" method="post" >
+                <button type="submit" class="logout-btn" style="cursor: pointer;"> 로그아웃</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>

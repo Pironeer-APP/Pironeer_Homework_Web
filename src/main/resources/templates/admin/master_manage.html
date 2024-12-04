@@ -61,16 +61,15 @@
                 </div>
             </div>
 
-            <div class="footer">
-                <form th:action="@{/logout}" method="post" >
-                    <button type="submit" class="logout-btn" style="cursor: pointer;"> 로그아웃</button>
-                </form>
-            </div>
+
         </div>
     </main>
 </div>
+
 <div class="footer">
-    <a href="/logout" class="logout-btn">로그아웃</a>
+    <form th:action="@{/logout}" method="post" >
+        <button type="submit" class="logout-btn" style="cursor: pointer;"> 로그아웃</button>
+    </form>
 </div>
 <script>
     function deletePreadmin(button) {
