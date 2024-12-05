@@ -11,7 +11,9 @@ import prioneer.homework.board.repository.HomeworkRepository;
 import prioneer.homework.config.session.SessionConst;
 import prioneer.homework.member.domain.Member;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 @Controller
@@ -53,8 +55,11 @@ public class UserHomeworkController {
         for(int i=0; i<18; i++){
             sum+=memberHomework.get(i).getDeposit();
         }
-log.info(String.valueOf(memberHomework.get(0).isFlag()));
-        model.addAttribute("sum",120000+sum);
+
+        NumberFormat numberFormat=NumberFormat.getInstance(Locale.KOREA);
+        String format = numberFormat.format(120000 + sum);
+
+        model.addAttribute("sum",format);
         return "user/assignment_user";
     }
 }
