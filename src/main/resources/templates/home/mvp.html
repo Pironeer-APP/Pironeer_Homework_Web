@@ -31,7 +31,7 @@
 </head>
 <body>
 
-<div class="popup-container" th:if="${mvp1.mvpMember.memberId == member.memberId}">
+<div class="popup-container" th:if="${mvp1.mvpMember.memberId == member.memberId and mvp1.visual}">
     <div class="popup" style="background-color: white;">
         <canvas class="stage"></canvas>
         <div class="trophy-icon">🏆</div>
@@ -42,7 +42,7 @@
     </div>
 </div>
 
-<div class="popup-container" th:if="${mvp2.mvpMember.memberId == member.memberId}">
+<div class="popup-container" th:if="${mvp2.mvpMember.memberId == member.memberId and mvp2.visual}">
     <div class="popup" style="background-color: white;">
         <canvas class="stage"></canvas>
         <div class="trophy-icon">🏆</div>
@@ -53,7 +53,7 @@
     </div>
 </div>
 
-<div class="popup-container" th:if="${mvp3.mvpMember.memberId == member.memberId}">
+<div class="popup-container" th:if="${mvp3.mvpMember.memberId == member.memberId and mvp3.visual}">
     <div class="popup" style="background-color: white;">
         <canvas class="stage"></canvas>
         <div class="trophy-icon">🏆</div>
@@ -64,7 +64,7 @@
     </div>
 </div>
 
-<div class="popup-container" th:if="${mvp4.mvpMember.memberId == member.memberId}">
+<div class="popup-container" th:if="${mvp4.mvpMember.memberId == member.memberId and mvp4.visual}">
     <div class="popup" style="background-color: white;">
         <canvas class="stage"></canvas>
         <div class="trophy-icon">🏆</div>
@@ -75,7 +75,7 @@
     </div>
 </div>
 
-<div class="popup-container" th:if="${mvp5.mvpMember.memberId == member.memberId}">
+<div class="popup-container" th:if="${mvp5.mvpMember.memberId == member.memberId and mvp5.visual}">
     <div class="popup" style="background-color: white;">
         <canvas class="stage"></canvas>
         <div class="trophy-icon">🏆</div>
