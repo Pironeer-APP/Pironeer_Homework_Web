@@ -37,9 +37,11 @@ public class MemberRepository {
 
 
     //보증금 업데이트
-    public void updateDeposit(Member member, Long money){
+    public Long updateDeposit(Member member, Long money){
         Member member1 = em.find(Member.class, member.getMemberId());
         member1.setDeposit(money);
+
+        return money;
     }
 
     //회원 찾기

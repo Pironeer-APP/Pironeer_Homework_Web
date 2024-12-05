@@ -2,6 +2,8 @@ package prioneer.homework.board.web.admin;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,8 +15,8 @@ import prioneer.homework.member.domain.Member;
 import prioneer.homework.member.repository.MemberRepository;
 import prioneer.homework.member.service.admin.AdminMemberService;
 
-import java.util.List;
-import java.util.Optional;
+import java.text.NumberFormat;
+import java.util.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -74,8 +76,10 @@ public class AdminHomeworkController {
         for(int i=0; i<18; i++){
             sum+=memberHomework.get(i).getDeposit();
         }
+        NumberFormat numberFormat=NumberFormat.getInstance(Locale.KOREA);
+        String format = numberFormat.format(120000 + sum);
 
-        model.addAttribute("sum",120000+sum);
+        model.addAttribute("sum",format);
 
         return "admin/assignment_admin";
 
@@ -83,53 +87,53 @@ public class AdminHomeworkController {
 
     // 과제 채점
     @PostMapping("/homework/{memberId}/{boardId}")
-    public String gradeHomework(@PathVariable String memberId, @PathVariable Long boardId,
-                                @ModelAttribute Board board,
-                                @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false)
-                                    Member loginMember) {
+    @ResponseBody // JSON 응답 반환
+    public ResponseEntity<Map<String, Object>> gradeHomework(
+            @PathVariable String memberId,
+            @PathVariable Long boardId,
+            @ModelAttribute Board board,
+            @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) {
         try {
-
             board.setBoardId(boardId);
             Optional<Member> findMember = memberRepository.findMemberById(memberId);
             Optional<Board> findBoard = homeworkRepository.findByBoardId(boardId);
-            log.info(board.getResult());
-            if(findMember.isPresent() && findBoard.isPresent()){
-                int money=0;
-                if(board.getResult().equals("실패")){
-                    money=-20000;
+
+            if (findMember.isPresent() && findBoard.isPresent()) {
+                int money = 0;
+                if (board.getResult().equals("실패")) {
+                    money = -20000;
                     board.setDeposit(money);
-                    log.info("아니 여기");
                     board.setResult("실패");
-                    homeworkRepository.gradeHomework(board, loginMember);
-                }
-                else if(board.getResult().equals("미흡")){
-                    money=-10000;
+                } else if (board.getResult().equals("미흡")) {
+                    money = -10000;
                     board.setDeposit(money);
                     board.setResult("미흡");
-                    homeworkRepository.gradeHomework(board, loginMember);
-                }else{
-                    money=0;
+                } else {
+                    money = 0;
                     board.setDeposit(money);
                     board.setResult("성공");
-                    homeworkRepository.gradeHomework(board, loginMember);
                 }
+
+                homeworkRepository.gradeHomework(board, loginMember);
 
                 List<Board> memberHomework = adminBoardService.getMemberHomework(memberId);
-                int sum=0;
-                for(int i=0; i<18; i++){
-                    sum+=memberHomework.get(i).getDeposit();
-                }
-                memberRepository.updateDeposit(findMember.get(), 120000+(long) sum);
+                int sum = memberHomework.stream().mapToInt(Board::getDeposit).sum();
+                Long deposit = memberRepository.updateDeposit(findMember.get(), 120000 + (long) sum);
 
+                // JSON 데이터 반환
+                Map<String, Object> response = new HashMap<>();
+                response.put("message", "업데이트 성공");
+                response.put("deposit", deposit); // 현재 deposit 값
+
+                return ResponseEntity.ok(response); // JSON 응답
             }
-
-
-            return "redirect:/homework/" + memberId;
-
-        } catch (IllegalArgumentException e) {
-            // 과제 채점 실패
-            return "redirect:/homework/" + memberId;
+            return ResponseEntity.badRequest().body(Map.of("message", "유효하지 않은 요청입니다."));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("message", "서버 오류"));
         }
     }
+
+
 
 }
