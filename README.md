@@ -32,6 +32,8 @@
 ## 👀 서비스 화면
 ### ✨ 모든 페이지 `모바일(아이폰 12 Pro 기준 max-width:480px)` 지원
 
+<hr>
+
 ### 🍀 부원 기준 🍀
 ### 홈
 - 로그인 유도 화면
@@ -59,6 +61,7 @@
 <img src="https://github.com/user-attachments/assets/47619149-244c-4326-8e2c-6b81a19ca8a8" width="20%">
 </div>
 
+<hr>
 
 ### 🍀 운영진 기준 🍀
 ### 홈
@@ -90,7 +93,7 @@
 ### 부원 등록 화면
 - 이름 + 전화번호로 부원들의 회원을 등록할 수 있다. 
 <div>
-<img src="https://github.com/user-attachments/assets/b153ded0-f9ce-4879-a4b9-a610c65515ce" width="20%">
+<img src="https://github.com/user-attachments/assets/3a45dcd3-3c69-425e-beae-7685ccaa99e4" width="20%">
 <img src="https://github.com/user-attachments/assets/ff7cbce7-bab4-43a2-93a2-83f9f70f13a9" width="75%" height="360px" >
 </div>
 
@@ -104,6 +107,8 @@
 <img src="https://github.com/user-attachments/assets/fae71269-4862-43e8-af10-27d195f2c4d3" width="20%">
 </div>
 
+<hr>
+
 ### 🍀 마스터 기준 🍀
 ### 운영진 등급 향상 화면
 - 처음 회원 가입한 운영진은 PREADMIN이다. 따라서 ADMIN으로 올릴 수 있다.  
@@ -112,6 +117,26 @@
 <img src="https://github.com/user-attachments/assets/c0ba8d52-4852-4a51-8627-68d34133c1db" width="75%" height="360px" >
 </div>
 
+<hr>
+
+### 🍀 MVP 기준 🍀
+### MVP 부원이 MVP 화면 들어왔을때
+- MVP를 받은 부원만 해당 화면이 뜹니다.   
+<div>
+<img src="https://github.com/user-attachments/assets/85bf291d-d09f-42da-985b-c03d3bef4f4d" width="20%">
+<img src="https://github.com/user-attachments/assets/e732aa56-76c7-4aed-9b49-2f892c028e8c" width="75%" height="360px" >
+</div>
+
+
+### 주차별 MVP
+- 주차별로 받은 MVP를 확인할 수 있다.
+- 일정이 아직 안된 경우는 클릭할 수 없다.  
+<div>
+<img src="https://github.com/user-attachments/assets/1bfb0881-7d27-472e-b52e-08a62505bcdd" width="75%" height="360px" >
+<img src="https://github.com/user-attachments/assets/01abeda5-32c4-4fa7-81b6-372e45a9ae59" width="20%">
+</div>
+
+<hr>
   
 ## ✨ 주요 기능
 
