@@ -1,8 +1,5 @@
-[![CD Pipeline](https://github.com/chltmdgh522/FeelBuddy/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/chltmdgh522/FeelBuddy/actions/workflows/deploy.yml)
-![image](https://github.com/user-attachments/assets/01064bcd-76ba-4491-9c51-70f84f4b2a5b)
-
-# 📰 FEELBUDDY
-##### 🏆 피로그래밍 21기 최종 프로젝트 작품
+# ✅ PIROCHECK
+##### 🏆 피로그래밍 과제 채점 결과 알려주 서비스
 
 ### 📜 Contents
  1. [Overview](#-overview)
@@ -17,16 +14,18 @@
  
 ## ✨ Overview
 
-🏆 개발 기간: 24.07.01 ~ 24.08.20<br>
-현대 사회에서 많은 사람들이 스트레스와 우울감을 경험하고 있으며, 이를 해결하기 위한 심리적 지원이 필요합니다. 하지만 정신 건강 전문가와의 상담은 비용과 시간이 많이 들고, 접근성의 문제도 있을 수 있습니다. 실시간 감정 치유 웹 서비스는 이러한 문제를 해결하기 위한 대안으로, 사용자가 각기 다른 개성을 가진 캐릭터들과 대화를 통해 감정적 지지를 받을 수 있게 합니다. 특히, 현대인들이 쉽게 접근할 수 있는 디지털 플랫폼을 통해, 언제 어디서나 감정 상태를 공유하고 위로를 받을 수 있다는 점에서 유용합니다.
+🏆 개발 기간: 24.10.05 ~ 24.12.01<br>
+- 현재 부원이 본인이 제출한 과제 결과를 확인하기 위해 엑셀에서 일일이 찾아야 하는 불편함이 있었습니다.
+- 이런 문제를 해결하기 위해 과제 확인 시스템을 웹 애플리케이션 개발을 했습니다.
+- 교육팀이 과제를 검토하고, 결과를 부원의 정보에 맞게 등록하면, 부원들은 자신의 이름과 전화번호 등의 기본 정보만 입력하여 과제 결과를 간편하게 확인 가능합니다.
+- 추가로, 본인의 보증금 현황도 확인할 수 있는 기능을 제공합니다.
 
-## ✨ FEELBUDDY의 배포 사이트
-##### 🏆 [사이트](https://feelbuddy.kr/)
+## ✨ PIROCHECK의 사이트
+##### 🏆 [사이트](https://pirocheck.com/)
 
 
-
-## ✨ FEELBUDDY의 소통 플랫폼 
-##### 🏆 [노션](https://www.notion.so/Feelbuddy-6330c0b568714b6ab0a4659d635ad782)
+## ✨ PIROCHECK의 소통 플랫폼 
+##### 🏆 [노션](https://www.notion.so/12a9fae2dd7c80878b6ce3c6c7041818?pvs=0)
 ##### 🏆 [ZEP](https://zep.us/)
 
 
@@ -127,138 +126,78 @@
   
 ## ✨ 주요 기능
 
-- `캐릭터 기능`
+- `마스터 권한`
 	- 분노, 기쁨, 불안, 두려움, 불안 총 5개의 캐릭터를 생성할 수 있다. 
   	- 생성된 캐릭터를 수정 및 휴지통에 버릴 수 있다. 
 	- 휴지통에 버려진 캐릭터는 다시 복구 할 수 있고 영원히 삭제할 수 있다.
 	
-- `프롬프트 설계`
+- `운영진 권한`
 	- 총 5개의 캐릭터마다 프롬프트를 설계한다. 
 	- 프롬프트에 이전 대화를 기억할 수 있도록 DB에서 해당 데이터를 찾아와 프롬프트에 넘겨준다.
   
-- `실시간 AI와 챗봇`
+- `부원 권한`
 	- Open AI를 통해 API와 연결한뒤 사용자 답변에 따른 AI 답변이 제공이 된다.
 	- Ajax를 통해 실시간으로 대화가 진행되며 시간 마지막 답변들도 실시간으로 추가가 된다. 
    
-- `챗봇 TTS`
+- `MVP`
 	- 영상 통화 화면에 넘어간뒤 사용자가 답하면 AI 답변이 TTS로 제공이 된다. 
 	- 여러 목소리 TTS 기능이 설정이 되어있다.
 
-- `감정 로그`
-	- 사용자가 각각의 캐릭터마다 대화한 기록을 수치화하여 로그로 보여준다. 
-	- 누적 및 주간이 있어 해당 감정 로그를 확인할 수 있다.
 
-- `피드백`
+- `EC2 Dcoker`
 	- 사용자들이 서비스를 이용하고 나서 후기를 올리 수 있는 공간이다.
    
-- `회원 관리`
-	- 네이버, 구글, 카카오 소셜 로그인 기능을 도입했다. 
-	- 비밀번호 재설정 기능 도입했다.  
-   
-- `사용자 친화적 UI`
-	- 반응형 모바일 뷰 지원
-	- 색다른 3D CSS 도입
+
 
 ## 🖥️ 개발 환경
 
 **Management Tool**
 - 형상 관리 : Git
-- 이슈 관리 : Jira
 - 커뮤니케이션 : Zep, Notion
 - 디자인 : Figma
 
 **🐳 Backend**
-- Python `3.8.0`
-- Django `4.2.x`
-- Django Rest Framework `3.12.x`
-- pipenv or poetry (패키지 관리 도구)
-- MySQL  `8.0.4`
-- Gunicorn `20.1.0` (배포용 WSGI 서버)
-- Swagger (`drf-yasg`)
-- Django Rest Framework SimpleJWT (JWT 인증)
-- Celery `5.x.x` (비동기 작업 처리)
-- Redis `6.x.x` (캐시 및 Celery 브로커)
-- Jupyter Notebook `6.4.12`
-- Apache Spark `3.2.1`
-
+- Java `17`
+- SpringBoot `3.3.4`
+- `Spring JPA`
+- `Spring Thymeleaf`
+- `Spring Session`
 
 **🦊 Frontend**
 - lang: HTML5, CSS3, JAVASCRIPT
 
-**🖼️ Requirements.txt**
-```plaintext
-aiohttp==3.9.5
-aiosignal==1.3.1
-annotated-types==0.7.0
-anyio==4.4.0
-asgiref==3.8.1
-attrs==23.2.0
-certifi==2024.7.4
-cffi==1.16.0
-charset-normalizer==3.3.2
-colorama==0.4.6
-contourpy==1.2.1
-cryptography==43.0.0
-cycler==0.12.1
-distro==1.9.0
-Django==5.0.8
-django-allauth==0.63.6
-django-environ==0.11.2
-fonttools==4.53.1
-frozenlist==1.4.1
-h11==0.14.0
-httpcore==1.0.5
-httpx==0.27.0
-idna==3.7
-jwt==1.3.1
-kiwisolver==1.4.5
-matplotlib==3.9.0
-multidict==6.0.5
-mysqlclient==2.2.4
-numpy==2.0.1
-openai==0.28.0
-packaging==24.1
-pillow==10.4.0
-PyAudio==0.2.14
-pycparser==2.22
-pydantic==2.8.2
-pydantic_core==2.20.1
-pydub==0.25.1
-PyJWT==2.8.0
-PyMySQL==1.1.1
-pyparsing==3.1.2
-python-dateutil==2.9.0.post0
-pytz==2024.1
-requests==2.32.3
-setuptools==72.1.0
-six==1.16.0
-sniffio==1.3.1
-SpeechRecognition==3.10.4
-sqlparse==0.5.1
-tqdm==4.66.4
-typing_extensions==4.12.2
-tzdata==2024.1
-urllib3==2.2.2
-yarl==1.9.4
-```
-
-**🗝️ API**
-- [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)   
-- [OpenAI](https://openai.com/)
-
 **🗂️ DB**
-- MySQL `8.0.30`
+- `MySQL`  `8.0.4`
 
 **🌐 Server**
 - AWS EC2 (Ubuntu `20.04`)
 - Nginx `1.23` (Reverse Proxy)
-- Gunicorn `20.1.0` (WSGI Application Server)
-- HTTPS (TLS `1.2`)
+- `Docker`
+
+**🗝️ API**
+- [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)   
 
 **🔨 IDE**
-- Pycharm `2023.2`
+- Intellj `2023.2`
 - MySQL Workbench `8.0.29`
 - VSCode `1.69.2`
+
+**🖼️ Dependencies**
+```
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+```
 
 ## 💫 시스템 아키텍처
 
@@ -266,49 +205,43 @@ yarl==1.9.4
 
 
 ## ✨ 기술 특이점
-
-- **캐릭터별 고유 프롬프트**를 사용하여 사용자 경험을 맞춤화
-- 사용자가 선택한 캐릭터에 따라 다른 프롬프트가 적용되어 대화 진행
-- 각 캐릭터는 고유한 성격과 대화 스타일을 가지고 있으며, 감정 분석 결과에 따라 다양한 반응을 생성
-- OpenAI의 GPT 모델을 활용하여 실시간 감정 분석 및 캐릭터 기반 응답 제공
-- Celery를 통해 대규모 사용자 요청을 효율적으로 비동기 처리하여 서버 성능 최적화
+- 
 
 
 # 📂 기획 및 설계 산출물
 
-### [💭 요구사항 정의 및 기능 명세](https://www.notion.so/Feelbuddy-6330c0b568714b6ab0a4659d635ad782)
+### [💭 요구사항 정의 및 기능 명세](https://www.notion.so/12a9fae2dd7c80b0a908c1b995a0388a)
 
-![image](https://github.com/user-attachments/assets/608d90da-08f0-4e0e-bffe-09c32e2be53f)
-
-
-### [🎨 화면 설계서](https://www.figma.com/design/2MIHENt866R7jjAyDBO3lp/Untitled?node-id=0-1)
-
-![image](https://github.com/user-attachments/assets/ce15a380-b42c-49c6-906a-d86d37250992)
+![image](https://github.com/user-attachments/assets/cc99b56b-eef3-409c-a344-7e368e974fd7)
 
 
-### [✨ ER Diagram](https://www.erdcloud.com/d/p9ocstx53DrdNzupt)
+### [🎨 화면 설계서](https://www.figma.com/design/jBxM9KSvpz6mEfBB2t4dHx/Untitled?node-id=0-1&node-type=canvas&t=0uFlK9ORSMK6FDbv-0)
 
-![image](https://github.com/user-attachments/assets/135eac39-5e08-42a9-b97f-6bf5afe6fdf4)
+![image](https://github.com/user-attachments/assets/36869a76-dc8a-4666-a8e0-c674197676f4)
+
+
+
+### [✨ ER Diagram](https://www.erdcloud.com/d/7hhDca3S7tqv6RbLW)
+
+![image](https://github.com/user-attachments/assets/70248062-0edd-4be6-a741-d2256089f4a2)
 
 
 # 💞 팀원 소개
-##### ❤️‍🔥 FEELBUDDY를 개발한 `피로그래밍 21기` 팀원들을 소개합니다!
+##### ❤️‍🔥 PIROCHECK를 개발한 `피로그래밍 22기 운영진` 팀원들을 소개합니다!
 
-| **[나예원](https://github.com/Anna-user)** | **[최승호](https://github.com/chltmdgh522)** | **[전진명](https://github.com/JNMYNG)** | **[이민수](https://github.com/msoolee)** |
-| :---------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------: |
-| <img src="https://github.com/user-attachments/assets/7f6428b7-e110-40ed-98b1-be6e595c9f79" width="400"> | <img src="https://github.com/user-attachments/assets/e792dfc6-e2a7-4b42-b5a5-27672d4df6c7" width="400"> | <img src="https://github.com/user-attachments/assets/aec44d20-60ee-4411-9a6f-8dba81ff5403" width="400"> | <img src="https://github.com/user-attachments/assets/9e92ceed-574a-4bbb-80ff-78ea2587f4c2" width="400"> |
-| Leader & Frontend & Designer | Backend & AI | Frontend & Backend |  Backend |
+| **[최승호](https://github.com/chltmdgh522)** | **[이지현](https://github.com/ljh130334)** | **[김민수](https://github.com/devkev00)** |
+| :---------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------: |
+| <img src="https://github.com/user-attachments/assets/e792dfc6-e2a7-4b42-b5a5-27672d4df6c7" width="400"> | <img src="https://github.com/user-attachments/assets/ea00de58-e6c0-46a9-9ff7-646665798c5e" width="400"> | <img src="https://github.com/user-attachments/assets/4b0625e9-a7b2-460e-9524-0e35c698dc51" width="400"> |
+|  PM & Backend | Frontend & Designer |  Backend |
 
 
 
 
 ## 😃 팀원 역할
 
-- **나예원**
-  - 팀장, 기획, 캐릭터 및 로고 디자인, 프론트, 와이어프레임 설계, 3D CSS 설계, AI 프롬프트 설계
 - **최승호**
-  - ERD 설계, 챗봇 기능, 캐릭터 관리 기능, REST API 설계, AWS 서버 배포 및 CICD 설정
-- **전진명**
+  - 팀장, 기획, 회원 및 MVP API 개발 및 서버 배포
+- **이지현**
   - 회원관리, 마이페이지, 피드백, 감정 로그 
-- **이민수**
-  - 감성 글귀, User 닉네임 랜덤 기능, 캐릭터 생성관리 기능, 인스타 광고, flutter webview 
+- **김민수**
+  - 과제 API 개발 및 서버 배포
