@@ -71,7 +71,7 @@ public class AdminMemberService {
     }
 
     public Optional<Member> getNameMember(Member loginMember) {
-        return memberRepository.findByName(loginMember.getName());
+        return memberRepository.findByName(loginMember);
     }
 
     // 회원 삭제
@@ -127,17 +127,16 @@ public class AdminMemberService {
 
 
         if (memberRepository.existsByPhone(member.getPhone())) {
-            log.info("ddddd");
             throw new IllegalStateException("이미 등록된 전화번호입니다.");
         }
 
+        member.setName(member.getName().trim());
         // 신규 부원 초기값
         member.setRole(MEMBER_ROLE);
         member.setDeposit(INITIAL_DEPOSIT);
         member.setDepositDepend(INITIAL_DEPOSIT_DEPEND);
         member.setMemberId(UUID.randomUUID().toString());
         memberRepository.save(member);
-        log.info("안녕하ㅏ세요");
 
         //신규 부원 생성했으면 과제 18개??도 같이 만들어줘야됨
         // ㅋㅋㅋ 서비스 계층에서 for문이라 신비롭네
