@@ -12,13 +12,12 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&family=Poor+Story&display=swap"
           rel="stylesheet">
     <style>
-        *{
-            margin : 0;
-            padding : 0;
+        * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
-            font-size : 10px;
+            font-size: 10px;
         }
-
     </style>
 </head>
 
@@ -28,8 +27,6 @@
     <div class="text-overlay" th:text="|🏆 ${mvpfire.week} 과제 MVP ${mvpfire.mvpMember.name}님 축하드려요! 🏆|">
         🏆 1주차 과제 MVP 최승호님 축하드려요! 🏆
     </div>
-
-
 </div>
 
 <div class="footer">
@@ -37,6 +34,35 @@
         이전으로
     </a>
 </div>
+
 <script src='/js/fireworks/src/index.js' type='module'></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const textOverlay = document.querySelector(".text-overlay");
+        let speechText = textOverlay.textContent.trim();
+
+        // 트로피(🏆) 이모지를 제거
+        speechText = speechText.replace(/🏆/g, "");
+
+        // 숫자를 한글로 변환
+        speechText = speechText.replace(/1주차/g, "일주차")
+            .replace(/2주차/g, "이주차")
+            .replace(/3주차/g, "삼주차")
+            .replace(/4주차/g, "사주차");
+
+
+        if ("speechSynthesis" in window) {
+            const utterance = new SpeechSynthesisUtterance(speechText);
+            utterance.lang = "ko-KR"; // 한국어 설정
+            utterance.rate = 1; // 말하는 속도 조절
+            utterance.pitch = 1; // 음의 높낮이 설정
+
+            // 한 번만 음성을 출력
+            window.speechSynthesis.speak(utterance);
+        } else {
+            console.error("이 브라우저는 Web Speech API를 지원하지 않습니다.");
+        }
+    });
+</script>
 </body>
 </html>
