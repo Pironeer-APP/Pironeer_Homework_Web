@@ -1,5 +1,5 @@
 # ✅ PIROCHECK
-##### 🏆 피로그래밍 과제 채점 결과 알려주 서비스
+##### 🏆 피로그래밍 과제 채점 결과 알려주는 서비스
 
 ### 📜 Contents
  1. [Overview](#-overview)
@@ -215,8 +215,7 @@ dependencies {
 ```
 
 ## 💫 시스템 아키텍처
-
-![image](https://github.com/user-attachments/assets/265a7eca-8434-411e-841d-2d1887dabc82)
+![image](https://github.com/user-attachments/assets/64f59a47-fff7-4c8e-afc5-b34d3377f24e)
 
 
 ## ✨ 기술 특이점
@@ -250,10 +249,7 @@ dependencies {
 |  PM & Backend | Frontend & Designer |  Backend |
 
 
-
-
 ## 😃 팀원 역할
-
 - **최승호**
   - 팀장, 기획, 회원 및 MVP API 개발 및 서버 배포
 - **이지현**
