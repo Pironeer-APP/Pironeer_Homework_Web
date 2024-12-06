@@ -46,7 +46,7 @@
 - 이름 + 전화번호를 입력한다. 
 <div>
 <img src="https://github.com/user-attachments/assets/04c0b63e-f32b-40ee-a657-f01895564dea" width="20%"/>
-<img src="https://github.com/user-attachments/assets/dabf47c4-051f-460d-9378-7ffa9ccaba51" width="75%" height="420px">
+<img src="https://github.com/user-attachments/assets/dabf47c4-051f-460d-9378-7ffa9ccaba51" width="75%" >
 </div>
 
 
