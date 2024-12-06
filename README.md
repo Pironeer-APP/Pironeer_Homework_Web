@@ -158,6 +158,7 @@
 	- 해당 주차에 MVP 부원은 해당 화면 들어가면 바로 축하메시지가 뜬다.  
 	- MVP 테이블의 flag, visual 컬럼을 활용하여 현재 1주차면 2,3,4, 챌린저 mvp는 클릭 못하게 구현을 해놓았다. 시간이 지나면 차츰 해제할 것이다.
    	- 참고로 MVP 권한은 오직 마스터만 할 수 있다.
+   	- 주차별 MVP로 선정되신 분께 축하의 음성이 전달됩니다: "00님, 축하합니다!"
 
 - `EC2 Dcoker`
 	- 스프링과 DB를 Docker를 활용해서 배포를 했다.
@@ -179,7 +180,7 @@
 - `Spring Session`
 
 **🦊 Frontend**
-- lang: HTML5, CSS3, JAVASCRIPT
+- HTML5, CSS3, JAVASCRIPT
 
 **🗂️ DB**
 - `MySQL`  `8.0.4`
