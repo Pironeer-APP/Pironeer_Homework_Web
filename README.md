@@ -32,12 +32,9 @@
 ## 👀 서비스 화면
 ### ✨ 모든 페이지 `모바일(아이폰 12 Pro 기준 max-width:480px)` 지원
 
-
+### 🍀 부원 기준 🍀
 ### 홈
-- 닌텐도 화면 적용
-- 화면이 작아질 수록 DS - GBA - GDC 로 구현했다.
-- Start 버튼을 통해 캐릭터리스트로 갈 수 있다.
-- 로그인 및 회원가입 버튼을 누르수 있다
+- 로그인 유도 화면
   
 <div>
   <img src="https://github.com/user-attachments/assets/ece63fc2-ca98-441d-9a4c-ddc80e4b7c6b" width="75%"/>
@@ -45,83 +42,72 @@
 </div>
 
 
-### 회원가입 & 로그인 & 로그아웃
-- `네이버, 카카오 구글 소셜 로그인` 및 유저 회원가입/로그인
-- 로그인을 하면 캐릭터 리스트로 넘어간다.
+### 로그인 화면
+- 이름 + 전화번호를 입력한다. 
 <div>
 <img src="https://github.com/user-attachments/assets/0e57d0ce-0ad5-4dac-9ff1-0c662a67d439" width="20%"/>
 <img src="https://github.com/user-attachments/assets/b97d5b9e-feef-414d-9360-d90527ecb66f" width="75%">
 </div>
 
 
-### 마이페이지
-- `프로필 이미지 변경`
-- `닉넴임 변경`
+### 과제 결과 화면
+- 목록을 클릭하면서 과제 결과를 확인한다. 
+- O면 성공, X는 실패, △는 미흡이다.
+- 각각 0원 -20000, -10000원이 차감된다.
 <div>
 <img src="https://github.com/user-attachments/assets/34053b7f-a080-4a15-9e72-bcdf90e28dd0" width="75%">
 <img src="https://github.com/user-attachments/assets/5e5e1139-14d8-4a05-86ca-0d2a9ad82018" width="20%">
 </div>
 
 
-### 캐릭터 리스트
-- 생성, 삭제, 편집 버튼을 이용해 캐릭터 관리 
+### 🍀 운영진 기준 🍀
+### 홈
+- 로그인/회원가입 유도 화면
 <div>
 <img src="https://github.com/user-attachments/assets/b153ded0-f9ce-4879-a4b9-a610c65515ce" width="20%">
 <img src="https://github.com/user-attachments/assets/9a6c0d05-4b62-4656-bb69-3878b0e4e9e7" width="75%">
 </div>
 
-
-
-### 캐릭터 생성
-- 5개의 캐릭터 중 하나를 뽑는다. 하지만 이미 생성된 캐릭터는 못 고른다.
-- 캐릭터의 이름과 선택한 이유를 적으면 생성이 된다.
+### 회원가입 화면
+- 이름 + 전화번호 + 비밀번호 + 비밀번호 확인 을 입력한다.
+- 이때 가입을 하면 PREADMIN으로 로그인을 할 수 없다.
+- 마스터 권한자가 ADMIN으로 승격할때까지 기다려야된다. 
 <div>
-<img src="https://github.com/user-attachments/assets/30e88da7-8b5b-40be-b4dc-1df85bc1b333" width="75%">
-<img src="https://github.com/user-attachments/assets/80557388-2081-4a7a-8b18-91fce71355fa" width="20%">
+<img src="https://github.com/user-attachments/assets/34053b7f-a080-4a15-9e72-bcdf90e28dd0" width="75%">
+<img src="https://github.com/user-attachments/assets/5e5e1139-14d8-4a05-86ca-0d2a9ad82018" width="20%">
 </div>
 
-
-### 휴지통
-- 캐릭터 리스트에서 버린 캐릭터들을 볼 수 있다.
-- 여기서는 복구 및 영구 삭제를 할 수 있다. 
+### 로그인 화면
+- 운영진은 일반 부원과 다르게 보안을 위해 이름 + 전화번호 + 비밀번호를 입력해야된다.
 <div>
-<img src="https://github.com/user-attachments/assets/2f525651-67e9-42da-95f6-448dc40eba47" width="20%">
-<img src="https://github.com/user-attachments/assets/2c5642fe-11b9-421d-8891-6d827256086f" width="75%">
+<img src="https://github.com/user-attachments/assets/34053b7f-a080-4a15-9e72-bcdf90e28dd0" width="75%">
+<img src="https://github.com/user-attachments/assets/5e5e1139-14d8-4a05-86ca-0d2a9ad82018" width="20%">
 </div>
 
-
-### 챗봇 
-- 음성 인식을 통해 대화를 할 수 있다.
-- 영상통화 버전에서는 TTS 구현되어있다.
-- Ajax를 통해 실시간으로 캐릭터와 채팅! 
+### 부원 등록 화면
+- 이름 + 전화번호로 부원들의 회원을 등록할 수 있다. 
 <div>
-<img src="https://github.com/user-attachments/assets/3d1a2ca3-fcb7-49c9-b991-172636f5c0c2" width="75%"/>
-<img src="https://github.com/user-attachments/assets/2afcf85a-804e-4647-819b-3a02022202e8" width="20%"/>
+<img src="https://github.com/user-attachments/assets/b153ded0-f9ce-4879-a4b9-a610c65515ce" width="20%">
+<img src="https://github.com/user-attachments/assets/9a6c0d05-4b62-4656-bb69-3878b0e4e9e7" width="75%">
 </div>
 
+### 과제 결과 반영 화면
+- 방어권 갯수 및 과제 결과를 반영할 수 있다.
+- 체크박스는 해당 부원이 과제를 확인 또는 미확인 할 수 있도록 넣어났다.
+- 예시로 1주차 월요일 과제 제로초 27강이 체크박스가 해제가 된채로 있으면 해당 부원은 과제 이에 대한 과제 결과를 확인할 수 없다.
 <div>
-<img src="https://github.com/user-attachments/assets/e8f38e20-c9c6-40e6-847e-9f00ebbedbd8" width="20%"/>
-<img src="https://github.com/user-attachments/assets/76c34384-8782-4794-b18c-1a31cd966f6f" width="75%"/>
+<img src="https://github.com/user-attachments/assets/34053b7f-a080-4a15-9e72-bcdf90e28dd0" width="75%">
+<img src="https://github.com/user-attachments/assets/5e5e1139-14d8-4a05-86ca-0d2a9ad82018" width="20%">
 </div>
 
-
-### 피드백
-- 별점 및 리뷰를 통해 해당 에플리케이션의 평가를 알 수 있다.
-- 피드백을 통해 추후 계속 업데이트 할 예정이다.
- <div>
-<img src="https://github.com/user-attachments/assets/27097924-b693-4c12-aca7-93dc3a93b3c2" width="75%">
-<img src="https://github.com/user-attachments/assets/444327ce-8070-4f2b-9b6d-242c0661db92" width="20%">
-</div>
-
-
-
-### 감정 로그
-- 5개의 캐릭터들과 챗봇을 통해 나온 결과를 보여준다.
-- 주간 및 누적 기능이 있어 감저의 정보를 쉽게 파악할 수 있다.
+### 🍀 마스터 기준 🍀
+### 운영진 등급 향상 화면
+- 처음 회원 가입한 운영진은 PREADMIN이다. 따라서 ADMIN으로 올릴 수 있다.  
 <div>
-<img src="https://github.com/user-attachments/assets/9aa369fc-a257-4693-a5ce-6772540210e2" width="20%">
-<img src="https://github.com/user-attachments/assets/44cad03c-362b-4fc8-a86a-7e844ceb8c20" width="75%">
+<img src="https://github.com/user-attachments/assets/b153ded0-f9ce-4879-a4b9-a610c65515ce" width="20%">
+<img src="https://github.com/user-attachments/assets/9a6c0d05-4b62-4656-bb69-3878b0e4e9e7" width="75%">
 </div>
+
 
   
 ## ✨ 주요 기능
@@ -243,6 +229,6 @@ dependencies {
 - **최승호**
   - 팀장, 기획, 회원 및 MVP API 개발 및 서버 배포
 - **이지현**
-  - 회원관리, 마이페이지, 피드백, 감정 로그 
+  - 피그마 디자인, 프론트 개발발
 - **김민수**
   - 과제 API 개발 및 서버 배포
