@@ -46,7 +46,7 @@
 - 이름 + 전화번호를 입력한다. 
 <div>
 <img src="https://github.com/user-attachments/assets/04c0b63e-f32b-40ee-a657-f01895564dea" width="20%"/>
-<img src="https://github.com/user-attachments/assets/dabf47c4-051f-460d-9378-7ffa9ccaba51" width="75%" height="380px" >
+<img src="https://github.com/user-attachments/assets/dabf47c4-051f-460d-9378-7ffa9ccaba51" width="75%" height="370px" >
 </div>
 
 
@@ -55,7 +55,7 @@
 - O면 성공, X는 실패, △는 미흡이다.
 - 각각 0원 -20000, -10000원이 차감된다.
 <div>
-<img src="https://github.com/user-attachments/assets/99ae35ae-b5f8-46d8-b2f2-94f07f6e5ed0" width="75%"> 
+<img src="https://github.com/user-attachments/assets/99ae35ae-b5f8-46d8-b2f2-94f07f6e5ed0" width="75%" height="370px"> 
 <img src="https://github.com/user-attachments/assets/47619149-244c-4326-8e2c-6b81a19ca8a8" width="20%">
 </div>
 
