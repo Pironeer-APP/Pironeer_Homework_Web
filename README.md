@@ -37,7 +37,7 @@
 - 로그인 유도 화면
   
 <div>
-  <img src="https://github.com/user-attachments/assets/60500261-3b11-4ea3-8988-1861cfb63e26" width="75%"/>
+  <img src="https://github.com/user-attachments/assets/60500261-3b11-4ea3-8988-1861cfb63e26" width="75%" height="320px"/>
   <img src="https://github.com/user-attachments/assets/be2fcb76-6ee9-4c24-a784-4645ad5b72b0" width="20%"/>
 </div>
 
@@ -46,7 +46,7 @@
 - 이름 + 전화번호를 입력한다. 
 <div>
 <img src="https://github.com/user-attachments/assets/04c0b63e-f32b-40ee-a657-f01895564dea" width="20%"/>
-<img src="https://github.com/user-attachments/assets/dabf47c4-051f-460d-9378-7ffa9ccaba51" width="75%" height="350px" >
+<img src="https://github.com/user-attachments/assets/dabf47c4-051f-460d-9378-7ffa9ccaba51" width="75%" height="360px" >
 </div>
 
 
@@ -65,7 +65,7 @@
 - 로그인/회원가입 유도 화면
 <div>
 <img src="https://github.com/user-attachments/assets/cef7d507-fd4f-4bba-bb3c-73f5f5a061eb" width="20%">
-<img src="https://github.com/user-attachments/assets/87f098e5-6163-4f2c-8a5f-996d448276ce" width="75%" height="340px">
+<img src="https://github.com/user-attachments/assets/87f098e5-6163-4f2c-8a5f-996d448276ce" width="75%" height="320px">
 </div>
 
 
@@ -74,7 +74,7 @@
 - 이때 가입을 하면 PREADMIN으로 로그인을 할 수 없다.
 - 마스터 권한자가 ADMIN으로 승격할때까지 기다려야된다. 
 <div>
-<img src="https://github.com/user-attachments/assets/a3c34dde-3ec6-4c0b-8feb-34da6557f4ab" width="75%" >
+<img src="https://github.com/user-attachments/assets/a3c34dde-3ec6-4c0b-8feb-34da6557f4ab" width="75%" height="360px">
 <img src="https://github.com/user-attachments/assets/4a9a4eb0-bf33-43b9-b7c6-e7cbc53052c1" width="20%">
 </div>
 
@@ -82,7 +82,7 @@
 ### 로그인 화면
 - 운영진은 일반 부원과 다르게 보안을 위해 이름 + 전화번호 + 비밀번호를 입력해야된다.
 <div>
-<img src="https://github.com/user-attachments/assets/bf988bf8-e32f-476f-ae3e-fd0334779419" width="75%">
+<img src="https://github.com/user-attachments/assets/bf988bf8-e32f-476f-ae3e-fd0334779419" width="75%" height="360px">
 <img src="https://github.com/user-attachments/assets/08f3d250-a309-44f3-932b-36cc9f5fd5a7" width="20%">
 </div>
 
@@ -91,7 +91,7 @@
 - 이름 + 전화번호로 부원들의 회원을 등록할 수 있다. 
 <div>
 <img src="https://github.com/user-attachments/assets/b153ded0-f9ce-4879-a4b9-a610c65515ce" width="20%">
-<img src="https://github.com/user-attachments/assets/ff7cbce7-bab4-43a2-93a2-83f9f70f13a9" width="75%" >
+<img src="https://github.com/user-attachments/assets/ff7cbce7-bab4-43a2-93a2-83f9f70f13a9" width="75%" height="360px" >
 </div>
 
 
@@ -100,7 +100,7 @@
 - 체크박스는 해당 부원이 과제를 확인 또는 미확인 할 수 있도록 넣어났다.
 - 예시로 1주차 월요일 과제 제로초 27강이 체크박스가 해제가 된채로 있으면 해당 부원은 과제 이에 대한 과제 결과를 확인할 수 없다.
 <div>
-<img src="https://github.com/user-attachments/assets/786c73e8-7629-47ea-93f3-60acb1c53ba6" width="75%">
+<img src="https://github.com/user-attachments/assets/786c73e8-7629-47ea-93f3-60acb1c53ba6" width="75%" height="360px">
 <img src="https://github.com/user-attachments/assets/fae71269-4862-43e8-af10-27d195f2c4d3" width="20%">
 </div>
 
@@ -109,7 +109,7 @@
 - 처음 회원 가입한 운영진은 PREADMIN이다. 따라서 ADMIN으로 올릴 수 있다.  
 <div>
 <img src="https://github.com/user-attachments/assets/a7b4603d-3993-459e-a694-f5d4bf3e7e67" width="20%">
-<img src="https://github.com/user-attachments/assets/c0ba8d52-4852-4a51-8627-68d34133c1db" width="75%" >
+<img src="https://github.com/user-attachments/assets/c0ba8d52-4852-4a51-8627-68d34133c1db" width="75%" height="360px" >
 </div>
 
   
