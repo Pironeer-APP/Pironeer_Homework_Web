@@ -39,6 +39,12 @@ public class SystemLoginController {
     public String postSystemLogin(@Validated @ModelAttribute Member member, BindingResult bindingResult,
                                   HttpServletRequest request) {
 
+        Optional<Member> findPhoneMember = adminMemberService.getLoginMember(member);
+        if (findPhoneMember.isEmpty()) {
+            bindingResult.reject("global", "전화번호가 일치하지 않습니다");
+            return "admin/admin_login";
+        }
+
 
         Optional<Member> findNameMember = adminMemberService.getNameMember(member);
         if (findNameMember.isEmpty()) {
@@ -46,11 +52,7 @@ public class SystemLoginController {
             return "admin/admin_login";
         }
 
-        Optional<Member> findPhoneMember = adminMemberService.getLoginMember(member);
-        if (findPhoneMember.isEmpty()) {
-            bindingResult.reject("global", "전화번호가 일치하지 않습니다");
-            return "admin/admin_login";
-        }
+
 
         Member passwordMember = adminMemberService.passwordCheck(member);
         if (passwordMember == null) {

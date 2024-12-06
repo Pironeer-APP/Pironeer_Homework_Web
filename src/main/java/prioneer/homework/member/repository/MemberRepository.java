@@ -89,10 +89,11 @@ public class MemberRepository {
     }
 
     // 이름으로 회원 찾기
-    public Optional<Member> findByName(String name) {
+    public Optional<Member> findByName(Member member) {
         try {
-            Member findMember = em.createQuery("select m from Member m where m.name = :name", Member.class)
-                    .setParameter("name", name)
+            Member findMember = em.createQuery("select m from Member m where m.name = :name and m.phone=:phone", Member.class)
+                    .setParameter("name", member.getName())
+                    .setParameter("phone",member.getPhone())
                     .getSingleResult();
             return Optional.of(findMember);
         } catch (NoResultException e) {
