@@ -1,3 +1,11 @@
+
+/* 화면 크기가 768px 이하일 때는 커서를 표시 */
+@media (max-width: 768px) {
+    * {
+        cursor: auto;
+    }
+}
+
 body{
     cursor: none; /* 기본 마우스 커서 숨기기 */
 }
