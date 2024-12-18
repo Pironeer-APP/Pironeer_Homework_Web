@@ -1,0 +1,242 @@
+.footer {
+    position: relative; /* 문서 흐름에 맞춤 */
+    width: 100%;
+    z-index: 1;
+    --footer-background: #0BE120;
+    display: grid;
+    min-height: 6rem; /* 최소 높이로 변경 */
+    padding: 1rem 0; /* 상하 여백 추가 */
+    margin: 0; /* 여백 제거 */
+    padding: 0; /* 패딩 제거 */
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden; /* 가로 스크롤 방지 */
+}
+
+
+.footer-main{
+    position: relative; /* 기본적으로 문서 흐름에 따라 위치 */
+    padding-top: 100px;
+
+}
+.footer .bubbles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; /* 하단 정렬 */
+    background: var(--footer-background);
+    filter: url("#blob");
+    margin: 0; /* 여백 제거 */
+    padding: 0;
+    height: 0.3rem;
+}
+
+
+.footer .bubbles .bubble {
+    position: absolute;
+    left: var(--position, 50%);
+    background: var(--footer-background);
+    border-radius: 100%;
+    animation: bubble-size var(--time, 4s) ease-in infinite var(--delay, 0s),
+    bubble-move var(--time, 4s) ease-in infinite var(--delay, 0s);
+    transform: translate(-50%, 100%);
+}
+
+.footer .footer-content {
+    z-index: 2;
+    display: grid;
+    grid-template-columns: auto auto; /* 두 섹션을 나란히 */
+    justify-content: center; /* 중앙 정렬 */
+    grid-gap: 26rem; /* 섹션 간격 줄임 */
+    padding: 2rem;
+    background: var(--footer-background);
+    width: 100%;
+}
+
+
+.footer .footer-content a,
+.footer .footer-content p {
+
+    text-decoration: none;
+}
+
+.footer .footer-content b {
+
+}
+
+.footer .footer-content p {
+    margin: 0;
+    font-size: .75rem;
+}
+
+.footer .footer-content > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footer .footer-content > div > div {
+    margin: 0.25rem 0;
+}
+
+.footer .footer-content > div > div > * {
+    margin-right: .5rem;
+}
+
+.footer .footer-content .image {
+    align-self: center;
+    width: 4rem;
+    height: 4rem;
+    margin: 0.25rem 0;
+    background-size: cover;
+    background-position: center;
+}
+
+@keyframes bubble-size {
+    0%, 75% {
+        width: var(--size, 4rem);
+        height: var(--size, 4rem);
+    }
+    100% {
+        width: 0rem;
+        height: 0rem;
+    }
+}
+
+@keyframes bubble-move {
+    0% {
+        bottom: -4rem;
+    }
+    100% {
+        bottom: var(--distance, 10rem);
+    }
+}
+
+
+.footer-title {
+    font-size: 1.5rem;
+    margin-bottom: 0; /* Remove default margin-bottom */
+    font-weight: bold;
+}
+
+/* 아이콘 스타일 */
+.icons a {
+    color: white; /* 아이콘 색상 */
+    font-size: 1.2rem; /* 아이콘 크기 */
+    margin-right: 15px; /* 아이콘 간격 */
+    display: inline-flex; /* 아이콘 배경 중앙 정렬 */
+    justify-content: center;
+    align-items: center;
+    width: 2.3rem; /* 원형 크기 */
+    height: 2.3rem; /* 원형 크기 */
+    background-color: black; /* 검정 원 배경 */
+    border-radius: 50%; /* 원형으로 만들기 */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.icons a:hover {
+    background-color: #0BE120; /* 호버 시 원 배경색 변경 */
+    color: black; /* 아이콘 색상 변경 */
+    transform: scale(1.1); /* 살짝 확대 */
+}
+
+.icons {
+    margin-bottom: 0; /* Remove default margin-bottom */
+}
+
+.left-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* Adjust spacing between sections */
+    padding: 1rem; /* Optional: add padding around the container */
+}
+
+.email {
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 0; /* Remove default margin-top */
+}
+
+.email a {
+    color: black; /* 기본 색상 */
+    text-decoration: none; /* 밑줄 제거 */
+    display: inline-flex;
+    align-items: center; /* 아이콘과 텍스트 정렬 */
+    gap: 0.5rem; /* 아이콘과 텍스트 간격 */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.email a:hover {
+    color: black; /* 호버 시 색상 변경 */
+
+    font-weight: bold;
+    transform: scale(1.05); /* 살짝 확대 */
+}
+
+.email i {
+    font-size: 1.2rem; /* 아이콘 크기 */
+}
+
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .footer .footer-content {
+        grid-template-columns: 1fr 1fr; /* 좌우 섹션 동일한 폭 */
+        gap: 1rem; /* 좌우 섹션 간 간격 */
+        text-align: center;
+        align-items: center;
+        padding: 0 1rem; /* 좌우 여백 추가 */
+    }
+
+
+    .left-section {
+        font-size: 3px; /* 폰트 크기 조정 */
+    }
+
+    .left-section .footer-title {
+        font-size: 1rem; /* 제목 크기 줄임 */
+    }
+
+    .icons a {
+        width: 2rem; /* 아이콘 크기 조정 */
+        height: 2rem;
+        font-size: 1rem;
+        margin-right: 8px; /* 간격 축소 */
+    }
+
+    .email a {
+        font-size: 0.7rem; /* 이메일 링크 폰트 크기 조정 */
+        gap: 0.1rem; /* 아이콘과 텍스트 간격 줄임 */
+        white-space: nowrap;
+    }
+
+    .right-section {
+        font-size: 0.8rem; /* 폰트 크기 */
+        margin-right: 0; /* 여분의 오른쪽 마진 제거 */
+    }
+
+    .right-section .image {
+        width: 3rem;
+        height: 3rem;
+        margin-right: 0; /* 잘림 방지 */
+    }
+
+    .right-section p {
+        margin-top: 0.5rem;
+        white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+    }
+}
+
+
+.right-section .image {
+    transition: transform 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+.right-section .image:hover {
+    transform: scale(1.2); /* 호버 시 이미지 1.2배 확대 */
+}
