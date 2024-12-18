@@ -6,21 +6,18 @@
     --card-bg: #1a1a1a;
     --text-secondary: #b3b3b3;
 }
-
-* {
+html, body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow-x: hidden; /* 가로 스크롤 방지 */
 }
 
-body {
+.container {
     font-family: "IBM Plex Sans KR", sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
-}
-
-.container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
@@ -72,11 +69,7 @@ body {
     background-color: var(--primary-dark);
 }
 
-.footer {
-    margin-top: auto;
-    padding: 20px;
-    text-align: center;
-}
+
 
 .logout-btn {
     padding: 8px 16px;
@@ -87,6 +80,7 @@ body {
     text-decoration: none;
     transition: all 0.2s;
     display: inline-block;
+    z-index: 9999;
 }
 
 .logout-btn:hover {
@@ -103,3 +97,12 @@ body {
         font-size: 2rem;
     }
 }
+
+
+
+
+
+
+
+
+

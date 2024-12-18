@@ -1,0 +1,60 @@
+
+<div th:fragment="" class="footer-main">
+    <div class="footer">
+        <div class="bubbles">
+            <!-- Generate bubbles with JavaScript -->
+            <script>
+                for (var i = 0; i < 128; i++) { // Small numbers look nice too
+                    let size = 2 + Math.random() * 4;
+                    let distance = 6 + Math.random() * 4;
+                    let position = -5 + Math.random() * 110;
+                    let time = 2 + Math.random() * 2;
+                    let delay = -(2 + Math.random() * 2);
+                    let bubble = document.createElement("div");
+                    bubble.className = "bubble";
+                    bubble.style.setProperty("--size", `${size}rem`);
+                    bubble.style.setProperty("--distance", `${distance}rem`);
+                    bubble.style.setProperty("--position", `${position}%`);
+                    bubble.style.setProperty("--time", `${time}s`);
+                    bubble.style.setProperty("--delay", `${delay}s`);
+                    document.querySelector(".bubbles").appendChild(bubble);
+                }
+            </script>
+        </div>
+        <div class="footer-content">
+
+            <div class="left-section">
+                <div class="footer-title" style="color: black;">PIROGRAMMING 22기</div>
+                <!-- Icons Section -->
+                <div class="icons">
+                    <a href="https://pf.kakao.com/_xdHxdXK" target="_blank"><i class="far fa-comment-dots"></i></a>
+                    <a href="https://github.com/pirogramming-project" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/pirogramming_official/" target="_blank"><i class="fab fa-instagram"></i></a>
+
+                </div>
+                <!-- Email Section -->
+                <div class="email">
+                    <a href="https://www.instagram.com/kevingonnastaylit_?igsh=Y3p2dnd4eW9mcXo5" target="_blank">
+                        <i class="fas fa-envelope"></i> 김민수 교육팀장님께 문의하기
+                    </a>
+                </div>
+
+            </div>
+            <div class="right-section">
+                <a class="image" href="https://pirogramming.com/" target="_blank"
+                   style="background-image: url('https://piro-homepage-bucket.s3.ap-northeast-2.amazonaws.com/images/favicons/android-icon-144x144.png')"></a>
+                <p>©2025 PIROCHECK</p>
+            </div>
+        </div>
+    </div>
+
+<svg style="position:fixed; top:100vh">
+    <defs>
+        <filter id="blob">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur>
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+                           result="blob"></feColorMatrix>
+        </filter>
+    </defs>
+</svg>
+</div>
