@@ -1,0 +1,13 @@
+body{
+    cursor: none; /* 기본 마우스 커서 숨기기 */
+}
+.cursor {
+    position: fixed;
+    width: 20px; /* 동그라미의 크기 */
+    height: 20px;
+    background-color: #0bec12;
+    border-radius: 50%;
+    pointer-events: none; /* 커서의 클릭 이벤트 방지 */
+    z-index: 1000;
+    transition: opacity 0.2s ease-in-out; /* 부드러운 숨김 효과 */
+}

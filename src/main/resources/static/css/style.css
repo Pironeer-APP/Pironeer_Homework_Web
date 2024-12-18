@@ -60,7 +60,7 @@ body {
     border-radius: 5px;
     font-size: 1.1rem;
     font-weight: bold;
-    cursor: pointer;
+
     text-decoration: none;
     display: inline-block;
     transition: transform 0.2s, opacity 0.2s;

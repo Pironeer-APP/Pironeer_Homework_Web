@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+<script src="/js/main.js"></script>
+
+    <link rel="stylesheet" href="/css/main.css">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>피로체크</title>
@@ -46,7 +50,7 @@
     </div>
     <div class="footer">
         <form th:action="@{/logout}" method="post" >
-            <button type="submit" class="logout-btn" style="cursor: pointer;"> 로그아웃</button>
+            <button type="submit" class="logout-btn" style=""> 로그아웃</button>
         </form>
     </div>
 

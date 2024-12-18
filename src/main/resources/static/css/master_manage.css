@@ -86,7 +86,7 @@
     background-color: transparent;
     border: 1px solid #ff4444;
     color: #ff4444;
-    cursor: pointer;
+
     transition: all 0.2s;
 }
 
@@ -96,7 +96,7 @@
     background-color: transparent;
     border: 1px solid #0BEC12;
     color: #0BEC12;
-    cursor: pointer;
+
     transition: all 0.2s;
 }
 .back-btn {
@@ -132,7 +132,7 @@
     color: var(--bg-color);
     border: none;
     font-size: 1rem;
-    cursor: pointer;
+
     transition: all 0.2s;
 }
 

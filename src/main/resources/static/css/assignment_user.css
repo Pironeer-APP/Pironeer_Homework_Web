@@ -57,7 +57,7 @@
     padding: 15px 20px;
     background-color: rgba(11, 236, 18, 0.1);
     border-radius: 5px;
-    cursor: pointer;
+
     transition: all 0.3s ease;
 }
 
@@ -166,7 +166,7 @@
     border: none;
     border-radius: 3px;
     padding: 5px 10px;
-    cursor: pointer;
+
     font-size: 0.9rem;
 }
 
@@ -197,7 +197,7 @@
     color: var(--primary-color);
     padding: 4px 15px;
     border-radius: 3px;
-    cursor: pointer;
+
     margin-top: 15px;
     text-decoration: none;
 }
