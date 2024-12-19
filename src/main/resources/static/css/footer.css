@@ -14,12 +14,14 @@ html, body {
     padding: 0;
     box-sizing: border-box;
     overflow-x: hidden; /* 가로 스크롤 방지 */
+    background-color: black;
 }
 
 
 .footer-main{
     position: relative; /* 기본적으로 문서 흐름에 따라 위치 */
     padding-top: 100px;
+    background-color: black;
 
 }
 .footer .bubbles {
@@ -51,7 +53,7 @@ html, body {
     display: grid;
     grid-template-columns: auto auto; /* 두 섹션을 나란히 */
     justify-content: center; /* 중앙 정렬 */
-    grid-gap: 26rem; /* 섹션 간격 줄임 */
+    grid-gap: 10rem; /* 섹션 간격 줄임 */
     padding: 2rem;
     background: var(--footer-background);
     width: 100%;

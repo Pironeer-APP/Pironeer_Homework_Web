@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<script src="/js/main.js"></script>
+    <script src="/js/main.js"></script>
 
     <link rel="stylesheet" href="/css/main.css">
 
@@ -31,8 +31,20 @@
         a {
             text-decoration: none;
         }
+
+        .footer-log {
+            margin-top: auto;
+            padding: 20px;
+            text-align: center;
+
+        }
+
+        body {
+            background-color: black;
+        }
+
     </style>
-<link
+    <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
@@ -110,21 +122,21 @@
             <div class="mvp-list">
 
                 <div class="mvp-item" data-id="1" th:data-flag="${mvp1.flag}">
-                        <h3>1주차 MVP</h3>
-                        <div class="mvp-icon">🏆</div>
-                        <p class="mvp-name" th:text="${mvp1.mvpMember.name}">최승호</p>
+                    <h3>1주차 MVP</h3>
+                    <div class="mvp-icon">🏆</div>
+                    <p class="mvp-name" th:text="${mvp1.mvpMember.name}">최승호</p>
                 </div>
                 <div class="mvp-item" data-id="2" th:data-flag="${mvp2.flag}">
 
-                        <h3>2주차 MVP</h3>
-                        <div class="mvp-icon">🏆</div>
-                        <p class="mvp-name" th:text="${mvp2.mvpMember.name}">김민수</p>
+                    <h3>2주차 MVP</h3>
+                    <div class="mvp-icon">🏆</div>
+                    <p class="mvp-name" th:text="${mvp2.mvpMember.name}">김민수</p>
                 </div>
 
                 <div class="mvp-item" data-id="3" th:data-flag="${mvp3.flag}">
-                        <h3>3주차 MVP</h3>
-                        <div class="mvp-icon">🏆</div>
-                        <p class="mvp-name" th:text="${mvp3.mvpMember.name}">이지현</p>
+                    <h3>3주차 MVP</h3>
+                    <div class="mvp-icon">🏆</div>
+                    <p class="mvp-name" th:text="${mvp3.mvpMember.name}">이지현</p>
                 </div>
 
                 <div class="mvp-item" data-id="4" th:data-flag="${mvp4.flag}">
@@ -147,7 +159,7 @@
         </div>
     </main>
 
-    <div class="footer">
+    <div class="footer-log">
         <form th:action="@{/logout}" method="post">
             <button type="submit" class="logout-btn" style=""> 로그아웃</button>
         </form>
@@ -204,6 +216,6 @@
     });
 
 </script>
-    <footer th:replace="~{footer/footer}"></footer>
+<footer th:replace="~{footer/footer}"></footer>
 </body>
 </html>
