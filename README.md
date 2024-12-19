@@ -93,7 +93,7 @@
 ### 부원 등록 화면
 - 이름 + 전화번호로 부원들의 회원을 등록할 수 있다. 
 <div>
-<img src="https://github.com/user-attachments/assets/3a45dcd3-3c69-425e-beae-7685ccaa99e4" width="20%">
+<img src="https://github.com/user-attachments/assets/fae71269-4862-43e8-af10-27d195f2c4d3" width="20%">
 <img src="https://github.com/user-attachments/assets/ff7cbce7-bab4-43a2-93a2-83f9f70f13a9" width="75%" height="360px" >
 </div>
 
@@ -101,10 +101,10 @@
 ### 과제 결과 반영 화면
 - 방어권 갯수 및 과제 결과를 반영할 수 있다.
 - 체크박스는 해당 부원이 과제를 확인 또는 미확인 할 수 있도록 넣어났다.
-- 예시로 1주차 월요일 과제 제로초 27강이 체크박스가 해제가 된채로 있으면 해당 부원은 과제 이에 대한 과제 결과를 확인할 수 없다.
+- 예시로 1주차 월요일 과제 제로초 27강이 체크박스가 해제가 된채로 있으면 해당 부원은 이에 대한 과제 결과를 확인할 수 없다.
 <div>
-<img src="https://github.com/user-attachments/assets/786c73e8-7629-47ea-93f3-60acb1c53ba6" width="75%" height="360px">
-<img src="https://github.com/user-attachments/assets/fae71269-4862-43e8-af10-27d195f2c4d3" width="20%">
+<img src="https://github.com/user-attachments/assets/786c73e8-7629-47ea-93f3-60acb1c53ba6" width="75%" height="360px">	
+<img src="https://github.com/user-attachments/assets/3a45dcd3-3c69-425e-beae-7685ccaa99e4" width="20%">
 </div>
 
 <hr>
