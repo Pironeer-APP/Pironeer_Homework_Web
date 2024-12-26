@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import prioneer.homework.info.domain.Info;
 import prioneer.homework.member.domain.Member;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -32,5 +33,10 @@ public class InfoRepository {
         } catch (NoResultException e) {
             return null;
         }
+    }
+
+    public List<Info> infoALl(){
+        return em.createQuery("select i from Info i order by i.id",Info.class)
+                .getResultList();
     }
 }
