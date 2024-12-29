@@ -18,6 +18,13 @@
     margin: 0;
 }
 
+.user-name2 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+
+}
+
+
 .deposit-info {
     text-align: right;
 }

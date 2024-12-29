@@ -46,6 +46,10 @@
                     <h2 class="user-name" th:text="${member.name}">이지현님</h2>
                     <div class="info-details">
                         <div class="deposit-info">
+                            <span class="deposit-label">과제 순위</span>
+                            <span class="deposit-amount" th:text="|${member.grade}등|">30,000원</span>
+                        </div>
+                        <div class="deposit-info">
                             <span class="deposit-label">보증금 현황</span>
                             <span class="deposit-amount" th:text="${sum}">30,000원</span>
                         </div>

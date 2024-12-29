@@ -11,6 +11,7 @@ import prioneer.homework.member.service.admin.AdminMemberService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -147,6 +148,29 @@ public class MemberRepository {
 
         Member member = em.find(Member.class, memberId);
         member.setRole(role);
-        log.info("ㅎㅇ");
+
+    }
+
+
+    // 순위
+    public void listOrder(){
+        List<Member> listMember = em.createQuery("select m from Member m where m.role='User' order by m.deposit DESC", Member.class)
+                .getResultList();
+        Long previousDeposit=-10000000L;
+        long grade=0;
+        int cnt=1;
+        for (Member member : listMember) {
+
+            Member findMember = em.find(Member.class, member.getMemberId());
+            if (Objects.equals(previousDeposit, findMember.getDeposit())) {
+                findMember.setGrade(grade);
+                cnt++;
+            } else {
+                findMember.setGrade(grade + cnt);
+                previousDeposit = findMember.getDeposit();
+                grade+=cnt;
+                cnt=1;
+            }
+        }
     }
 }

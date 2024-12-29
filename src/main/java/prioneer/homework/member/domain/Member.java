@@ -42,6 +42,10 @@ public class Member {
 
     private String phone;
 
+    // 과제 순위
+    @Column(columnDefinition = "bigint default '0'")
+    private Long grade;
+
     // 현재 보증금
     @Column(columnDefinition = "bigint default '0'")
     private Long deposit;

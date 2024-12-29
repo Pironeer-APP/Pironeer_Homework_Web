@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import prioneer.homework.config.session.SessionConst;
 import prioneer.homework.member.domain.Member;
+import prioneer.homework.member.repository.MemberRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +18,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Slf4j
 public class HomeController {
+    private final MemberRepository memberRepository;
 
     // 22기 부원
     @GetMapping("/")
@@ -25,6 +27,7 @@ public class HomeController {
                        Member loginMember,
                        @ModelAttribute("alertMessage") String alertMessage) {
 
+        memberRepository.listOrder();
         if (loginMember == null) {
             return "home/home_loginbefore";
         }
