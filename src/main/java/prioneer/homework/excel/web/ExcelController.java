@@ -42,8 +42,10 @@ public class ExcelController {
             // Header Row 설정
             Row headerRow = sheet.createRow(0);
             headerRow.createCell(0).setCellValue("이름");
-            for (int i = 0; i < titles.size(); i++) {
-                headerRow.createCell(i + 1).setCellValue(titles.get(i).getContent());
+            headerRow.createCell(1).setCellValue("보증금");
+            headerRow.createCell(2).setCellValue("보증금 방어권");
+            for (int i = 2; i < titles.size()+2; i++) {
+                headerRow.createCell(i + 1).setCellValue(titles.get(i-2).getContent());
             }
 
             // 데이터 행 작성
@@ -53,11 +55,13 @@ public class ExcelController {
 
                 // 첫 번째 열: 이름
                 dataRow.createCell(0).setCellValue(excel.getMember().getName());
+                dataRow.createCell(1).setCellValue(excel.getMember().getDeposit());
+                dataRow.createCell(2).setCellValue(excel.getMember().getDepositDepend());
 
                 // 두 번째 열부터: Board 내용
                 List<Board> boards = excel.getBoardExcels();
-                for (int j = 0; j < titles.size() && j < boards.size(); j++) {
-                    dataRow.createCell(j + 1).setCellValue(boards.get(j).getResult());
+                for (int j = 2; j < titles.size()+2 && j < boards.size()+2; j++) {
+                    dataRow.createCell(j + 1).setCellValue(boards.get(j-2).getResult());
                 }
             }
 
