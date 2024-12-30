@@ -34,7 +34,7 @@ public class HomeController {
 
 
         if (loginMember.getRole().equals("USER")) {
-
+            log.info(loginMember.getName());
             return "home/home_loginafter";
         }
 
