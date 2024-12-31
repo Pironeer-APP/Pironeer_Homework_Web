@@ -33,9 +33,10 @@ public class SystemController {
 
     }
 
-    @Scheduled(cron = "0 0 0 * * *") // 매일 00:00:00에 실행
+    @Scheduled(fixedRate = 3600000) // 1시간(3600000ms)마다 실행
     public void executeOrderTask() {
-        memberRepository.listOrder(); // getOrder()의 로직을 실행
-        log.info("00시 작업 실행 완료");
+        memberRepository.listOrder();
+        log.info("1시간 간격으로 작업 실행");
     }
+
 }

@@ -54,8 +54,7 @@ public class HomeworkRepository {
 
         Board homework = em.find(Board.class, board.getBoardId());
 
-        log.info(String.valueOf(board.getDeposit()));
-        log.info(board.getResult());
+
         homework.setResult(board.getResult());
         homework.setFlag(board.isFlag());
         homework.setAdminMember(adminMember);

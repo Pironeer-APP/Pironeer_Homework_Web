@@ -41,6 +41,11 @@
     font-weight: bold;
 }
 
+.deposit-amount2 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
 .assignments-container {
     background-color: var(--card-bg);
     border-radius: 10px;

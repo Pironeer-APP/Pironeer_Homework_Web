@@ -30,7 +30,7 @@ public class MemberRepository {
 
     // 회원 업데이트
     public void update(Member member){
-        log.info("zzz");
+
         Member member1 = em.find(Member.class, member.getMemberId());
         member1.setDepositDepend(member.getDepositDepend());
 
@@ -67,7 +67,7 @@ public class MemberRepository {
     // 전화번호 정보로 회원 유무 찾기
     public boolean existsByPhone(String phone) {
         try {
-            log.info(phone);
+
             em.createQuery("select m from Member m where m.phone = :phone ", Member.class)
                     .setParameter("phone", phone)
                     .getSingleResult();
