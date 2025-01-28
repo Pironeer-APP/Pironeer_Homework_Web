@@ -1,7 +1,7 @@
 # ✅ PIROCHECK
 ![image](https://github.com/user-attachments/assets/85aa8a1a-69ba-49aa-b8fb-886ff658c596)
 
-##### 🏆 피로그래밍 과제 채점 결과 알려주는 서비스
+# 🏆 피로그래밍 과제 채점 정보 제공 서비스
 
 ### 📜 Contents
  1. [Overview](#-overview)
